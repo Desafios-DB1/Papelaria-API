@@ -1,0 +1,2748 @@
+Index: API/obj/rider.project.model.nuget.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/rider.project.model.nuget.info b/API/obj/rider.project.model.nuget.info
+new file mode 100644
+--- /dev/null	(date 1744739351603)
++++ b/API/obj/rider.project.model.nuget.info	(date 1744739351603)
+@@ -0,0 +1,1 @@
++17447393510103599
+\ No newline at end of file
+Index: API/bin/Debug/net9.0/Papelaria.API.runtimeconfig.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/bin/Debug/net9.0/Papelaria.API.runtimeconfig.json b/API/bin/Debug/net9.0/Papelaria.API.runtimeconfig.json
+new file mode 100644
+--- /dev/null	(date 1744740251812)
++++ b/API/bin/Debug/net9.0/Papelaria.API.runtimeconfig.json	(date 1744740251812)
+@@ -0,0 +1,19 @@
++{
++  "runtimeOptions": {
++    "tfm": "net9.0",
++    "frameworks": [
++      {
++        "name": "Microsoft.NETCore.App",
++        "version": "9.0.0"
++      },
++      {
++        "name": "Microsoft.AspNetCore.App",
++        "version": "9.0.0"
++      }
++    ],
++    "configProperties": {
++      "System.GC.Server": true,
++      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false
++    }
++  }
++}
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/staticwebassets.build.endpoints.json b/API/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+new file mode 100644
+--- /dev/null	(date 1744740163546)
++++ b/API/obj/Debug/net9.0/staticwebassets.build.endpoints.json	(date 1744740163546)
+@@ -0,0 +1,5 @@
++{
++  "Version": 1,
++  "ManifestType": "Build",
++  "Endpoints": []
++}
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/staticwebassets.build.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/staticwebassets.build.json b/API/obj/Debug/net9.0/staticwebassets.build.json
+new file mode 100644
+--- /dev/null	(date 1744740163546)
++++ b/API/obj/Debug/net9.0/staticwebassets.build.json	(date 1744740163546)
+@@ -0,0 +1,12 @@
++{
++  "Version": 1,
++  "Hash": "r1L503OWen+dzS4u0n3NOMkMyiaWTHFbOfVju0XMlRM=",
++  "Source": "Papelaria.API",
++  "BasePath": "_content/Papelaria.API",
++  "Mode": "Default",
++  "ManifestType": "Build",
++  "ReferencedProjectsConfiguration": [],
++  "DiscoveryPatterns": [],
++  "Assets": [],
++  "Endpoints": []
++}
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/staticwebassets/msbuild.build.Papelaria.API.props
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/staticwebassets/msbuild.build.Papelaria.API.props b/API/obj/Debug/net9.0/staticwebassets/msbuild.build.Papelaria.API.props
+new file mode 100644
+--- /dev/null	(date 1744740163561)
++++ b/API/obj/Debug/net9.0/staticwebassets/msbuild.build.Papelaria.API.props	(date 1744740163561)
+@@ -0,0 +1,4 @@
++<Project>
++  <Import Project="Microsoft.AspNetCore.StaticWebAssetEndpoints.props" />
++  <Import Project="Microsoft.AspNetCore.StaticWebAssets.props" />
++</Project>
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.Papelaria.API.props
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.Papelaria.API.props b/API/obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.Papelaria.API.props
+new file mode 100644
+--- /dev/null	(date 1744740163566)
++++ b/API/obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.Papelaria.API.props	(date 1744740163566)
+@@ -0,0 +1,3 @@
++<Project>
++  <Import Project="..\buildMultiTargeting\Papelaria.API.props" />
++</Project>
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.Papelaria.API.props
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.Papelaria.API.props b/API/obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.Papelaria.API.props
+new file mode 100644
+--- /dev/null	(date 1744740163566)
++++ b/API/obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.Papelaria.API.props	(date 1744740163566)
+@@ -0,0 +1,3 @@
++<Project>
++  <Import Project="..\build\Papelaria.API.props" />
++</Project>
+\ No newline at end of file
+Index: API/bin/Debug/net9.0/Papelaria.API.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/bin/Debug/net9.0/Papelaria.API.xml b/API/bin/Debug/net9.0/Papelaria.API.xml
+new file mode 100644
+--- /dev/null	(date 1744740502325)
++++ b/API/bin/Debug/net9.0/Papelaria.API.xml	(date 1744740502325)
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<doc>
++    <assembly>
++        <name>Papelaria.API</name>
++    </assembly>
++    <members>
++    </members>
++</doc>
+Index: API/API.csproj
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/API.csproj b/API/API.csproj
+new file mode 100644
+--- /dev/null	(date 1744742068801)
++++ b/API/API.csproj	(date 1744742068801)
+@@ -0,0 +1,27 @@
++<Project Sdk="Microsoft.NET.Sdk.Web">
++
++    <PropertyGroup>
++        <TargetFramework>net9.0</TargetFramework>
++        <Nullable>enable</Nullable>
++        <ImplicitUsings>enable</ImplicitUsings>
++        <GenerateDocumentationFile>true</GenerateDocumentationFile>
++        <NoWarn>$(NoWarn);1591</NoWarn>
++        <RootNamespace>Papelaria.API</RootNamespace>
++    </PropertyGroup>
++
++    <ItemGroup>
++        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
++        <PackageReference Include="MediatR" Version="12.5.0" />
++        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
++        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3"/>
++        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="8.1.1" />
++        <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
++        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.1" />
++        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.1.1" />
++    </ItemGroup>
++
++    <ItemGroup>
++      <Folder Include="Controllers\" />
++    </ItemGroup>
++
++</Project>
+Index: API/appsettings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/appsettings.json b/API/appsettings.json
+new file mode 100644
+--- /dev/null	(date 1744738103977)
++++ b/API/appsettings.json	(date 1744738103977)
+@@ -0,0 +1,9 @@
++{
++  "Logging": {
++    "LogLevel": {
++      "Default": "Information",
++      "Microsoft.AspNetCore": "Warning"
++    }
++  },
++  "AllowedHosts": "*"
++}
+Index: API/obj/Debug/net9.0/Papelaria.API.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/Papelaria.API.xml b/API/obj/Debug/net9.0/Papelaria.API.xml
+new file mode 100644
+--- /dev/null	(date 1744740502325)
++++ b/API/obj/Debug/net9.0/Papelaria.API.xml	(date 1744740502325)
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<doc>
++    <assembly>
++        <name>Papelaria.API</name>
++    </assembly>
++    <members>
++    </members>
++</doc>
+Index: API/Papelaria.API.http
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/Papelaria.API.http b/API/Papelaria.API.http
+new file mode 100644
+--- /dev/null	(date 1744738103981)
++++ b/API/Papelaria.API.http	(date 1744738103981)
+@@ -0,0 +1,6 @@
++@Papelaria.API_HostAddress = http://localhost:5127
++
++GET {{Papelaria.API_HostAddress}}/weatherforecast/
++Accept: application/json
++
++###
+Index: API/Program.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/Program.cs b/API/Program.cs
+new file mode 100644
+--- /dev/null	(date 1744739352121)
++++ b/API/Program.cs	(date 1744739352121)
+@@ -0,0 +1,30 @@
++using System.Text.Json.Serialization;
++using Papelaria.API;
++using Papelaria.API.Middleware;
++
++var builder = WebApplication.CreateBuilder(args);
++
++builder.Services.AddControllers().AddJsonOptions(options =>
++{
++    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
++});
++builder.Services.AddEndpointsApiExplorer();
++
++builder.Services.ConfigureServices(builder.Configuration);
++
++var app = builder.Build();
++
++if (app.Environment.IsDevelopment())
++{
++    app.UseSwagger();
++    app.UseSwaggerUI(c =>
++    {
++        c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
++    });
++}
++
++app.UseMiddleware<ExceptionMiddleware>();
++app.UseAuthentication();
++app.UseAuthorization();
++app.MapControllers();
++await app.RunAsync();
+\ No newline at end of file
+Index: API/appsettings.Development.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/appsettings.Development.json b/API/appsettings.Development.json
+new file mode 100644
+--- /dev/null	(date 1744738103989)
++++ b/API/appsettings.Development.json	(date 1744738103989)
+@@ -0,0 +1,8 @@
++{
++  "Logging": {
++    "LogLevel": {
++      "Default": "Information",
++      "Microsoft.AspNetCore": "Warning"
++    }
++  }
++}
+Index: API/Properties/launchSettings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/Properties/launchSettings.json b/API/Properties/launchSettings.json
+new file mode 100644
+--- /dev/null	(date 1744740156816)
++++ b/API/Properties/launchSettings.json	(date 1744740156816)
+@@ -0,0 +1,24 @@
++{
++  "$schema": "https://json.schemastore.org/launchsettings.json",
++  "profiles": {
++    "http": {
++      "commandName": "Project",
++      "dotnetRunMessages": true,
++      "launchBrowser": true,
++      "applicationUrl": "http://localhost:5127",
++      "environmentVariables": {
++        "ASPNETCORE_ENVIRONMENT": "Development"
++      },
++      "launchUrl": "swagger"
++    },
++    "https": {
++      "commandName": "Project",
++      "dotnetRunMessages": true,
++      "launchBrowser": false,
++      "applicationUrl": "https://localhost:7280;http://localhost:5127",
++      "environmentVariables": {
++        "ASPNETCORE_ENVIRONMENT": "Development"
++      }
++    }
++  }
++}
+Index: API/obj/Debug/net9.0/Papelaria.API.sourcelink.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/Papelaria.API.sourcelink.json b/API/obj/Debug/net9.0/Papelaria.API.sourcelink.json
+new file mode 100644
+--- /dev/null	(date 1744739506679)
++++ b/API/obj/Debug/net9.0/Papelaria.API.sourcelink.json	(date 1744739506679)
+@@ -0,0 +1,1 @@
++{"documents":{"C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\*":"https://raw.githubusercontent.com/Desafios-DB1/Papelaria-API/ce39caf60dfd8b38686a3b70783155e12f087b93/*"}}
+\ No newline at end of file
+Index: API/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/rider.project.restore.info b/API/obj/rider.project.restore.info
+new file mode 100644
+--- /dev/null	(date 1744742251519)
++++ b/API/obj/rider.project.restore.info	(date 1744742251519)
+@@ -0,0 +1,1 @@
++17447422514970207
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/API.GlobalUsings.g.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/API.GlobalUsings.g.cs b/API/obj/Debug/net9.0/API.GlobalUsings.g.cs
+new file mode 100644
+--- /dev/null	(date 1744742068057)
++++ b/API/obj/Debug/net9.0/API.GlobalUsings.g.cs	(date 1744742068057)
+@@ -0,0 +1,17 @@
++// <auto-generated/>
++global using global::Microsoft.AspNetCore.Builder;
++global using global::Microsoft.AspNetCore.Hosting;
++global using global::Microsoft.AspNetCore.Http;
++global using global::Microsoft.AspNetCore.Routing;
++global using global::Microsoft.Extensions.Configuration;
++global using global::Microsoft.Extensions.DependencyInjection;
++global using global::Microsoft.Extensions.Hosting;
++global using global::Microsoft.Extensions.Logging;
++global using global::System;
++global using global::System.Collections.Generic;
++global using global::System.IO;
++global using global::System.Linq;
++global using global::System.Net.Http;
++global using global::System.Net.Http.Json;
++global using global::System.Threading;
++global using global::System.Threading.Tasks;
+Index: API/obj/Papelaria.API.csproj.nuget.g.targets
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Papelaria.API.csproj.nuget.g.targets b/API/obj/Papelaria.API.csproj.nuget.g.targets
+new file mode 100644
+--- /dev/null	(date 1744738149697)
++++ b/API/obj/Papelaria.API.csproj.nuget.g.targets	(date 1744738149697)
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8" standalone="no"?>
++<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+\ No newline at end of file
+Index: API/Setups/SwaggerSetup.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/Setups/SwaggerSetup.cs b/API/Setups/SwaggerSetup.cs
+new file mode 100644
+--- /dev/null	(date 1744740469065)
++++ b/API/Setups/SwaggerSetup.cs	(date 1744740469065)
+@@ -0,0 +1,48 @@
++using System.Reflection;
++using Microsoft.OpenApi.Models;
++using Swashbuckle.AspNetCore.Filters;
++using Swashbuckle.AspNetCore.SwaggerGen;
++
++namespace Papelaria.API.Setups;
++
++public static class SwaggerSetup
++{
++    public static void ConfigureSwagger(SwaggerGenOptions c)
++    {
++        c.EnableAnnotations();
++        c.SwaggerDoc("v1", new OpenApiInfo
++        {
++            Version = "v1",
++            Title = "Papelaria API",
++            Description = "Documentação sobre consumo da api do estoque da papelaria"
++        });
++
++        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
++        {
++            In = ParameterLocation.Header,
++            Description = "Insira o Token",
++            Name = "Authorization",
++            Type = SecuritySchemeType.ApiKey,
++            BearerFormat = "JWT",
++            Scheme = "Bearer",
++        });
++        c.AddSecurityRequirement(new OpenApiSecurityRequirement
++        {
++            {
++                new OpenApiSecurityScheme
++                {
++                    Reference = new OpenApiReference
++                    { 
++                        Type = ReferenceType.SecurityScheme, 
++                        Id = "Bearer"
++                    }
++                },
++                new List<string>()
++            }
++        });
++        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
++        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile); 
++        c.IncludeXmlComments(xmlPath);
++        /*c.ExampleFilters();*/
++    }
++}
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/API.GeneratedMSBuildEditorConfig.editorconfig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/API.GeneratedMSBuildEditorConfig.editorconfig b/API/obj/Debug/net9.0/API.GeneratedMSBuildEditorConfig.editorconfig
+new file mode 100644
+--- /dev/null	(date 1744742069555)
++++ b/API/obj/Debug/net9.0/API.GeneratedMSBuildEditorConfig.editorconfig	(date 1744742069555)
+@@ -0,0 +1,21 @@
++is_global = true
++build_property.TargetFramework = net9.0
++build_property.TargetPlatformMinVersion = 
++build_property.UsingMicrosoftNETSdkWeb = true
++build_property.ProjectTypeGuids = 
++build_property.InvariantGlobalization = 
++build_property.PlatformNeutralAssembly = 
++build_property.EnforceExtendedAnalyzerRules = 
++build_property._SupportedPlatformList = Linux,macOS,Windows
++build_property.RootNamespace = Papelaria.API
++build_property.RootNamespace = Papelaria.API
++build_property.ProjectDir = C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\API\
++build_property.EnableComHosting = 
++build_property.EnableGeneratedComInterfaceComImportInterop = 
++build_property.RazorLangVersion = 9.0
++build_property.SupportLocalizedComponentNames = 
++build_property.GenerateRazorMetadataSourceChecksumAttributes = 
++build_property.MSBuildProjectDirectory = C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\API
++build_property._RazorSourceGeneratorDebug = 
++build_property.EffectiveAnalysisLevelStyle = 9.0
++build_property.EnableCodeStyleSeverity = 
+Index: API/obj/Papelaria.API.csproj.nuget.g.props
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Papelaria.API.csproj.nuget.g.props b/API/obj/Papelaria.API.csproj.nuget.g.props
+new file mode 100644
+--- /dev/null	(date 1744738149692)
++++ b/API/obj/Papelaria.API.csproj.nuget.g.props	(date 1744738149692)
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="utf-8" standalone="no"?>
++<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
++    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
++    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
++    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
++    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
++    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\lucas.goncalves\.nuget\packages\</NuGetPackageFolders>
++    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
++    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.12.2</NuGetToolVersion>
++  </PropertyGroup>
++  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
++    <SourceRoot Include="C:\Users\lucas.goncalves\.nuget\packages\" />
++  </ItemGroup>
++</Project>
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/API.AssemblyInfo.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/API.AssemblyInfo.cs b/API/obj/Debug/net9.0/API.AssemblyInfo.cs
+new file mode 100644
+--- /dev/null	(date 1744742325635)
++++ b/API/obj/Debug/net9.0/API.AssemblyInfo.cs	(date 1744742325635)
+@@ -0,0 +1,22 @@
++//------------------------------------------------------------------------------
++// <auto-generated>
++//     This code was generated by a tool.
++//
++//     Changes to this file may cause incorrect behavior and will be lost if
++//     the code is regenerated.
++// </auto-generated>
++//------------------------------------------------------------------------------
++
++using System;
++using System.Reflection;
++
++[assembly: System.Reflection.AssemblyCompanyAttribute("API")]
++[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
++[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
++[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce39caf60dfd8b38686a3b70783155e12f087b93")]
++[assembly: System.Reflection.AssemblyProductAttribute("API")]
++[assembly: System.Reflection.AssemblyTitleAttribute("API")]
++[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
++
++// Gerado pela classe WriteCodeFragment do MSBuild.
++
+Index: API/obj/Papelaria.API.csproj.nuget.dgspec.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Papelaria.API.csproj.nuget.dgspec.json b/API/obj/Papelaria.API.csproj.nuget.dgspec.json
+new file mode 100644
+--- /dev/null	(date 1744739351669)
++++ b/API/obj/Papelaria.API.csproj.nuget.dgspec.json	(date 1744739351669)
+@@ -0,0 +1,110 @@
++{
++  "format": 1,
++  "restore": {
++    "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\Papelaria.API.csproj": {}
++  },
++  "projects": {
++    "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\Papelaria.API.csproj": {
++      "version": "1.0.0",
++      "restore": {
++        "projectUniqueName": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\Papelaria.API.csproj",
++        "projectName": "Papelaria.API",
++        "projectPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\Papelaria.API.csproj",
++        "packagesPath": "C:\\Users\\lucas.goncalves\\.nuget\\packages\\",
++        "outputPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\obj\\",
++        "projectStyle": "PackageReference",
++        "configFilePaths": [
++          "C:\\Users\\lucas.goncalves\\AppData\\Roaming\\NuGet\\NuGet.Config"
++        ],
++        "originalTargetFrameworks": [
++          "net9.0"
++        ],
++        "sources": {
++          "https://api.nuget.org/v3/index.json": {}
++        },
++        "frameworks": {
++          "net9.0": {
++            "targetAlias": "net9.0",
++            "projectReferences": {}
++          }
++        },
++        "warningProperties": {
++          "warnAsError": [
++            "NU1605"
++          ]
++        },
++        "restoreAuditProperties": {
++          "enableAudit": "true",
++          "auditLevel": "low",
++          "auditMode": "all"
++        },
++        "SdkAnalysisLevel": "9.0.200"
++      },
++      "frameworks": {
++        "net9.0": {
++          "targetAlias": "net9.0",
++          "dependencies": {
++            "FluentValidation.AspNetCore": {
++              "target": "Package",
++              "version": "[11.3.0, )"
++            },
++            "MediatR": {
++              "target": "Package",
++              "version": "[12.5.0, )"
++            },
++            "Microsoft.AspNetCore.Authentication.JwtBearer": {
++              "target": "Package",
++              "version": "[9.0.4, )"
++            },
++            "Microsoft.AspNetCore.OpenApi": {
++              "target": "Package",
++              "version": "[9.0.3, )"
++            },
++            "Swashbuckle.AspNetCore.Annotations": {
++              "target": "Package",
++              "version": "[8.1.1, )"
++            },
++            "Swashbuckle.AspNetCore.Filters": {
++              "target": "Package",
++              "version": "[8.0.2, )"
++            },
++            "Swashbuckle.AspNetCore.Swagger": {
++              "target": "Package",
++              "version": "[8.1.1, )"
++            },
++            "Swashbuckle.AspNetCore.SwaggerUI": {
++              "target": "Package",
++              "version": "[8.1.1, )"
++            }
++          },
++          "imports": [
++            "net461",
++            "net462",
++            "net47",
++            "net471",
++            "net472",
++            "net48",
++            "net481"
++          ],
++          "assetTargetFallback": true,
++          "warn": true,
++          "downloadDependencies": [
++            {
++              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
++              "version": "[9.0.202, 9.0.202]"
++            }
++          ],
++          "frameworkReferences": {
++            "Microsoft.AspNetCore.App": {
++              "privateAssets": "none"
++            },
++            "Microsoft.NETCore.App": {
++              "privateAssets": "all"
++            }
++          },
++          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
++        }
++      }
++    }
++  }
++}
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/Papelaria.API.csproj.FileListAbsolute.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/Papelaria.API.csproj.FileListAbsolute.txt b/API/obj/Debug/net9.0/Papelaria.API.csproj.FileListAbsolute.txt
+new file mode 100644
+--- /dev/null	(date 1744740251840)
++++ b/API/obj/Debug/net9.0/Papelaria.API.csproj.FileListAbsolute.txt	(date 1744740251840)
+@@ -0,0 +1,57 @@
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.csproj.AssemblyReference.cache
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.GeneratedMSBuildEditorConfig.editorconfig
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.AssemblyInfoInputs.cache
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.AssemblyInfo.cs
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.csproj.CoreCompileInputs.cache
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.MvcApplicationPartsAssemblyInfo.cs
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.MvcApplicationPartsAssemblyInfo.cache
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.sourcelink.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\appsettings.Development.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\appsettings.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Papelaria.API.staticwebassets.endpoints.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Papelaria.API.exe
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Papelaria.API.deps.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Papelaria.API.runtimeconfig.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Papelaria.API.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Papelaria.API.pdb
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\FluentValidation.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\MediatR.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\MediatR.Contracts.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Microsoft.OpenApi.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Scrutor.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Filters.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\scopedcss\bundle\Papelaria.API.styles.css
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets.build.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets.development.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets\msbuild.Papelaria.API.Microsoft.AspNetCore.StaticWebAssets.props
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets\msbuild.Papelaria.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets\msbuild.build.Papelaria.API.props
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.Papelaria.API.props
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.Papelaria.API.props
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\staticwebassets.pack.json
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelari.2B47BEC5.Up2Date
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\refint\Papelaria.API.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.pdb
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.genruntimeconfig.cache
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\ref\Papelaria.API.dll
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\bin\Debug\net9.0\Papelaria.API.xml
++C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\obj\Debug\net9.0\Papelaria.API.xml
+Index: API/obj/project.assets.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/project.assets.json b/API/obj/project.assets.json
+new file mode 100644
+--- /dev/null	(date 1744742251464)
++++ b/API/obj/project.assets.json	(date 1744742251464)
+@@ -0,0 +1,1063 @@
++{
++  "version": 3,
++  "targets": {
++    "net9.0": {
++      "FluentValidation/11.5.1": {
++        "type": "package",
++        "compile": {
++          "lib/net7.0/FluentValidation.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net7.0/FluentValidation.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "FluentValidation.AspNetCore/11.3.0": {
++        "type": "package",
++        "dependencies": {
++          "FluentValidation": "11.5.1",
++          "FluentValidation.DependencyInjectionExtensions": "11.5.1"
++        },
++        "compile": {
++          "lib/net6.0/FluentValidation.AspNetCore.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net6.0/FluentValidation.AspNetCore.dll": {
++            "related": ".xml"
++          }
++        },
++        "frameworkReferences": [
++          "Microsoft.AspNetCore.App"
++        ]
++      },
++      "FluentValidation.DependencyInjectionExtensions/11.5.1": {
++        "type": "package",
++        "dependencies": {
++          "FluentValidation": "11.5.1",
++          "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
++        },
++        "compile": {
++          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "MediatR/12.5.0": {
++        "type": "package",
++        "dependencies": {
++          "MediatR.Contracts": "[2.0.1, 3.0.0)",
++          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
++        },
++        "compile": {
++          "lib/net6.0/MediatR.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net6.0/MediatR.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "MediatR.Contracts/2.0.1": {
++        "type": "package",
++        "compile": {
++          "lib/netstandard2.0/MediatR.Contracts.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/netstandard2.0/MediatR.Contracts.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.4": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1"
++        },
++        "compile": {
++          "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
++            "related": ".xml"
++          }
++        },
++        "frameworkReferences": [
++          "Microsoft.AspNetCore.App"
++        ]
++      },
++      "Microsoft.AspNetCore.OpenApi/9.0.3": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.OpenApi": "1.6.17"
++        },
++        "compile": {
++          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
++            "related": ".xml"
++          }
++        },
++        "frameworkReferences": [
++          "Microsoft.AspNetCore.App"
++        ]
++      },
++      "Microsoft.Extensions.DependencyInjection/2.1.0": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0"
++        },
++        "compile": {
++          "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
++        "type": "package",
++        "compile": {
++          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
++            "related": ".xml"
++          }
++        },
++        "build": {
++          "buildTransitive/net6.0/_._": {}
++        }
++      },
++      "Microsoft.Extensions.DependencyModel/3.1.6": {
++        "type": "package",
++        "dependencies": {
++          "System.Text.Json": "4.7.2"
++        },
++        "compile": {
++          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Abstractions/8.0.1": {
++        "type": "package",
++        "compile": {
++          "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.JsonWebTokens/8.0.1": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.IdentityModel.Tokens": "8.0.1"
++        },
++        "compile": {
++          "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Logging/8.0.1": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.IdentityModel.Abstractions": "8.0.1"
++        },
++        "compile": {
++          "lib/net9.0/Microsoft.IdentityModel.Logging.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Logging.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Protocols/8.0.1": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.IdentityModel.Tokens": "8.0.1"
++        },
++        "compile": {
++          "lib/net9.0/Microsoft.IdentityModel.Protocols.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Protocols.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.0.1": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.IdentityModel.Protocols": "8.0.1",
++          "System.IdentityModel.Tokens.Jwt": "8.0.1"
++        },
++        "compile": {
++          "lib/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Tokens/8.0.1": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.IdentityModel.Logging": "8.0.1"
++        },
++        "compile": {
++          "lib/net9.0/Microsoft.IdentityModel.Tokens.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Tokens.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "Microsoft.OpenApi/1.6.23": {
++        "type": "package",
++        "compile": {
++          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
++            "related": ".pdb;.xml"
++          }
++        },
++        "runtime": {
++          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
++            "related": ".pdb;.xml"
++          }
++        }
++      },
++      "Scrutor/3.3.0": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9",
++          "Microsoft.Extensions.DependencyModel": "3.1.6"
++        },
++        "compile": {
++          "lib/netcoreapp3.1/Scrutor.dll": {
++            "related": ".pdb;.xml"
++          }
++        },
++        "runtime": {
++          "lib/netcoreapp3.1/Scrutor.dll": {
++            "related": ".pdb;.xml"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.Annotations/8.1.1": {
++        "type": "package",
++        "dependencies": {
++          "Swashbuckle.AspNetCore.SwaggerGen": "8.1.1"
++        },
++        "compile": {
++          "lib/net9.0/Swashbuckle.AspNetCore.Annotations.dll": {
++            "related": ".pdb;.xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Swashbuckle.AspNetCore.Annotations.dll": {
++            "related": ".pdb;.xml"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.Filters/8.0.2": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.Extensions.DependencyInjection": "2.1.0",
++          "Microsoft.OpenApi": "1.3.1",
++          "Scrutor": "3.3.0",
++          "Swashbuckle.AspNetCore.Filters.Abstractions": "8.0.2",
++          "Swashbuckle.AspNetCore.SwaggerGen": "5.0.0"
++        },
++        "compile": {
++          "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll": {}
++        },
++        "runtime": {
++          "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll": {}
++        }
++      },
++      "Swashbuckle.AspNetCore.Filters.Abstractions/8.0.2": {
++        "type": "package",
++        "compile": {
++          "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll": {}
++        },
++        "runtime": {
++          "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll": {}
++        }
++      },
++      "Swashbuckle.AspNetCore.Swagger/8.1.1": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.OpenApi": "1.6.23"
++        },
++        "compile": {
++          "lib/net9.0/Swashbuckle.AspNetCore.Swagger.dll": {
++            "related": ".pdb;.xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Swashbuckle.AspNetCore.Swagger.dll": {
++            "related": ".pdb;.xml"
++          }
++        },
++        "frameworkReferences": [
++          "Microsoft.AspNetCore.App"
++        ]
++      },
++      "Swashbuckle.AspNetCore.SwaggerGen/8.1.1": {
++        "type": "package",
++        "dependencies": {
++          "Swashbuckle.AspNetCore.Swagger": "8.1.1"
++        },
++        "compile": {
++          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
++            "related": ".pdb;.xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
++            "related": ".pdb;.xml"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.SwaggerUI/8.1.1": {
++        "type": "package",
++        "compile": {
++          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
++            "related": ".pdb;.xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
++            "related": ".pdb;.xml"
++          }
++        },
++        "frameworkReferences": [
++          "Microsoft.AspNetCore.App"
++        ]
++      },
++      "System.IdentityModel.Tokens.Jwt/8.0.1": {
++        "type": "package",
++        "dependencies": {
++          "Microsoft.IdentityModel.JsonWebTokens": "8.0.1",
++          "Microsoft.IdentityModel.Tokens": "8.0.1"
++        },
++        "compile": {
++          "lib/net9.0/System.IdentityModel.Tokens.Jwt.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/net9.0/System.IdentityModel.Tokens.Jwt.dll": {
++            "related": ".xml"
++          }
++        }
++      },
++      "System.Text.Json/4.7.2": {
++        "type": "package",
++        "compile": {
++          "lib/netcoreapp3.0/System.Text.Json.dll": {
++            "related": ".xml"
++          }
++        },
++        "runtime": {
++          "lib/netcoreapp3.0/System.Text.Json.dll": {
++            "related": ".xml"
++          }
++        }
++      }
++    }
++  },
++  "libraries": {
++    "FluentValidation/11.5.1": {
++      "sha512": "0h1Q5lNOLLyYTWMJmyNoMqhY4CBRvvUWvJP1R4F2CnmmzuWwvB0A8aVmw5+lOuwYnwUwCRrdeMLbc81F38ahNQ==",
++      "type": "package",
++      "path": "fluentvalidation/11.5.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "README.md",
++        "fluent-validation-icon.png",
++        "fluentvalidation.11.5.1.nupkg.sha512",
++        "fluentvalidation.nuspec",
++        "lib/net5.0/FluentValidation.dll",
++        "lib/net5.0/FluentValidation.xml",
++        "lib/net6.0/FluentValidation.dll",
++        "lib/net6.0/FluentValidation.xml",
++        "lib/net7.0/FluentValidation.dll",
++        "lib/net7.0/FluentValidation.xml",
++        "lib/netstandard2.0/FluentValidation.dll",
++        "lib/netstandard2.0/FluentValidation.xml",
++        "lib/netstandard2.1/FluentValidation.dll",
++        "lib/netstandard2.1/FluentValidation.xml"
++      ]
++    },
++    "FluentValidation.AspNetCore/11.3.0": {
++      "sha512": "jtFVgKnDFySyBlPS8bZbTKEEwJZnn11rXXJ2SQnjDhZ56rQqybBg9Joq4crRLz3y0QR8WoOq4iE4piV81w/Djg==",
++      "type": "package",
++      "path": "fluentvalidation.aspnetcore/11.3.0",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "README.md",
++        "fluent-validation-icon.png",
++        "fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
++        "fluentvalidation.aspnetcore.nuspec",
++        "lib/net5.0/FluentValidation.AspNetCore.dll",
++        "lib/net5.0/FluentValidation.AspNetCore.xml",
++        "lib/net6.0/FluentValidation.AspNetCore.dll",
++        "lib/net6.0/FluentValidation.AspNetCore.xml",
++        "lib/netcoreapp3.1/FluentValidation.AspNetCore.dll",
++        "lib/netcoreapp3.1/FluentValidation.AspNetCore.xml"
++      ]
++    },
++    "FluentValidation.DependencyInjectionExtensions/11.5.1": {
++      "sha512": "iWM0LS1MDYX06pcjMEQKqHirl2zkjHlNV23mEJSoR1IZI7KQmTa0RcTtGEJpj5+iHvBCfrzP2mYKM4FtRKVb+A==",
++      "type": "package",
++      "path": "fluentvalidation.dependencyinjectionextensions/11.5.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "README.md",
++        "fluent-validation-icon.png",
++        "fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
++        "fluentvalidation.dependencyinjectionextensions.nuspec",
++        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
++        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
++        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll",
++        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
++      ]
++    },
++    "MediatR/12.5.0": {
++      "sha512": "vqm2H8/nqL5NAJHPhsG1JOPwfkmbVrPyh4svdoRzu+uZh6Ex7PRoHBGsLYC0/RWCEJFqD1ohHNpteQvql9OktA==",
++      "type": "package",
++      "path": "mediatr/12.5.0",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "README.md",
++        "gradient_128x128.png",
++        "lib/net6.0/MediatR.dll",
++        "lib/net6.0/MediatR.xml",
++        "lib/netstandard2.0/MediatR.dll",
++        "lib/netstandard2.0/MediatR.xml",
++        "mediatr.12.5.0.nupkg.sha512",
++        "mediatr.nuspec"
++      ]
++    },
++    "MediatR.Contracts/2.0.1": {
++      "sha512": "FYv95bNT4UwcNA+G/J1oX5OpRiSUxteXaUt2BJbRSdRNiIUNbggJF69wy6mnk2wYToaanpdXZdCwVylt96MpwQ==",
++      "type": "package",
++      "path": "mediatr.contracts/2.0.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "gradient_128x128.png",
++        "lib/netstandard2.0/MediatR.Contracts.dll",
++        "lib/netstandard2.0/MediatR.Contracts.xml",
++        "mediatr.contracts.2.0.1.nupkg.sha512",
++        "mediatr.contracts.nuspec"
++      ]
++    },
++    "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.4": {
++      "sha512": "0HgfWPfnjlzWFbW4pw6FYNuIMV8obVU+MUkiZ33g4UOpvZcmdWzdayfheKPZ5+EUly8SvfgW0dJwwIrW4IVLZQ==",
++      "type": "package",
++      "path": "microsoft.aspnetcore.authentication.jwtbearer/9.0.4",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "Icon.png",
++        "PACKAGE.md",
++        "THIRD-PARTY-NOTICES.TXT",
++        "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
++        "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
++        "microsoft.aspnetcore.authentication.jwtbearer.9.0.4.nupkg.sha512",
++        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
++      ]
++    },
++    "Microsoft.AspNetCore.OpenApi/9.0.3": {
++      "sha512": "fKh0UyGMUE+lhbovMhh3g88b9bT+y2jfZIuJ8ljY7rcCaSJ9m2Qqqbh66oULFfzWE2BUAmimzTGcPcq3jXi/Ew==",
++      "type": "package",
++      "path": "microsoft.aspnetcore.openapi/9.0.3",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "Icon.png",
++        "PACKAGE.md",
++        "THIRD-PARTY-NOTICES.TXT",
++        "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll",
++        "lib/net9.0/Microsoft.AspNetCore.OpenApi.xml",
++        "microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
++        "microsoft.aspnetcore.openapi.nuspec"
++      ]
++    },
++    "Microsoft.Extensions.DependencyInjection/2.1.0": {
++      "sha512": "gqQviLfuA31PheEGi+XJoZc1bc9H9RsPa9Gq9XuDct7XGWSR9eVXjK5Sg7CSUPhTFHSuxUFY12wcTYLZ4zM1hg==",
++      "type": "package",
++      "path": "microsoft.extensions.dependencyinjection/2.1.0",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net461/Microsoft.Extensions.DependencyInjection.dll",
++        "lib/net461/Microsoft.Extensions.DependencyInjection.xml",
++        "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.dll",
++        "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.xml",
++        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
++        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
++        "microsoft.extensions.dependencyinjection.2.1.0.nupkg.sha512",
++        "microsoft.extensions.dependencyinjection.nuspec"
++      ]
++    },
++    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
++      "sha512": "cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
++      "type": "package",
++      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "Icon.png",
++        "LICENSE.TXT",
++        "PACKAGE.md",
++        "THIRD-PARTY-NOTICES.TXT",
++        "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
++        "buildTransitive/net462/_._",
++        "buildTransitive/net6.0/_._",
++        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
++        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
++        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
++        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
++        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
++        "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
++        "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
++        "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
++        "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
++        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
++        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
++        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
++        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
++        "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
++        "microsoft.extensions.dependencyinjection.abstractions.nuspec",
++        "useSharedDesignerContext.txt"
++      ]
++    },
++    "Microsoft.Extensions.DependencyModel/3.1.6": {
++      "sha512": "/UlDKULIVkLQYn1BaHcy/rc91ApDxJb7T75HcCbGdqwvxhnRQRKM2di1E70iCPMF9zsr6f4EgQTotBGxFIfXmw==",
++      "type": "package",
++      "path": "microsoft.extensions.dependencymodel/3.1.6",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "Icon.png",
++        "LICENSE.TXT",
++        "THIRD-PARTY-NOTICES.TXT",
++        "lib/net451/Microsoft.Extensions.DependencyModel.dll",
++        "lib/net451/Microsoft.Extensions.DependencyModel.xml",
++        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.dll",
++        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.xml",
++        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll",
++        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.xml",
++        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll",
++        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.xml",
++        "microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512",
++        "microsoft.extensions.dependencymodel.nuspec"
++      ]
++    },
++    "Microsoft.IdentityModel.Abstractions/8.0.1": {
++      "sha512": "OtlIWcyX01olfdevPKZdIPfBEvbcioDyBiE/Z2lHsopsMD7twcKtlN9kMevHmI5IIPhFpfwCIiR6qHQz1WHUIw==",
++      "type": "package",
++      "path": "microsoft.identitymodel.abstractions/8.0.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net462/Microsoft.IdentityModel.Abstractions.dll",
++        "lib/net462/Microsoft.IdentityModel.Abstractions.xml",
++        "lib/net472/Microsoft.IdentityModel.Abstractions.dll",
++        "lib/net472/Microsoft.IdentityModel.Abstractions.xml",
++        "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
++        "lib/net6.0/Microsoft.IdentityModel.Abstractions.xml",
++        "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll",
++        "lib/net8.0/Microsoft.IdentityModel.Abstractions.xml",
++        "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll",
++        "lib/net9.0/Microsoft.IdentityModel.Abstractions.xml",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.dll",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.xml",
++        "microsoft.identitymodel.abstractions.8.0.1.nupkg.sha512",
++        "microsoft.identitymodel.abstractions.nuspec"
++      ]
++    },
++    "Microsoft.IdentityModel.JsonWebTokens/8.0.1": {
++      "sha512": "s6++gF9x0rQApQzOBbSyp4jUaAlwm+DroKfL8gdOHxs83k8SJfUXhuc46rDB3rNXBQ1MVRxqKUrqFhO/M0E97g==",
++      "type": "package",
++      "path": "microsoft.identitymodel.jsonwebtokens/8.0.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net462/Microsoft.IdentityModel.JsonWebTokens.dll",
++        "lib/net462/Microsoft.IdentityModel.JsonWebTokens.xml",
++        "lib/net472/Microsoft.IdentityModel.JsonWebTokens.dll",
++        "lib/net472/Microsoft.IdentityModel.JsonWebTokens.xml",
++        "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll",
++        "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.xml",
++        "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll",
++        "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.xml",
++        "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll",
++        "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.xml",
++        "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll",
++        "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml",
++        "microsoft.identitymodel.jsonwebtokens.8.0.1.nupkg.sha512",
++        "microsoft.identitymodel.jsonwebtokens.nuspec"
++      ]
++    },
++    "Microsoft.IdentityModel.Logging/8.0.1": {
++      "sha512": "UCPF2exZqBXe7v/6sGNiM6zCQOUXXQ9+v5VTb9gPB8ZSUPnX53BxlN78v2jsbIvK9Dq4GovQxo23x8JgWvm/Qg==",
++      "type": "package",
++      "path": "microsoft.identitymodel.logging/8.0.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net462/Microsoft.IdentityModel.Logging.dll",
++        "lib/net462/Microsoft.IdentityModel.Logging.xml",
++        "lib/net472/Microsoft.IdentityModel.Logging.dll",
++        "lib/net472/Microsoft.IdentityModel.Logging.xml",
++        "lib/net6.0/Microsoft.IdentityModel.Logging.dll",
++        "lib/net6.0/Microsoft.IdentityModel.Logging.xml",
++        "lib/net8.0/Microsoft.IdentityModel.Logging.dll",
++        "lib/net8.0/Microsoft.IdentityModel.Logging.xml",
++        "lib/net9.0/Microsoft.IdentityModel.Logging.dll",
++        "lib/net9.0/Microsoft.IdentityModel.Logging.xml",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
++        "microsoft.identitymodel.logging.8.0.1.nupkg.sha512",
++        "microsoft.identitymodel.logging.nuspec"
++      ]
++    },
++    "Microsoft.IdentityModel.Protocols/8.0.1": {
++      "sha512": "uA2vpKqU3I2mBBEaeJAWPTjT9v1TZrGWKdgK6G5qJd03CLx83kdiqO9cmiK8/n1erkHzFBwU/RphP83aAe3i3g==",
++      "type": "package",
++      "path": "microsoft.identitymodel.protocols/8.0.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net462/Microsoft.IdentityModel.Protocols.dll",
++        "lib/net462/Microsoft.IdentityModel.Protocols.xml",
++        "lib/net472/Microsoft.IdentityModel.Protocols.dll",
++        "lib/net472/Microsoft.IdentityModel.Protocols.xml",
++        "lib/net6.0/Microsoft.IdentityModel.Protocols.dll",
++        "lib/net6.0/Microsoft.IdentityModel.Protocols.xml",
++        "lib/net8.0/Microsoft.IdentityModel.Protocols.dll",
++        "lib/net8.0/Microsoft.IdentityModel.Protocols.xml",
++        "lib/net9.0/Microsoft.IdentityModel.Protocols.dll",
++        "lib/net9.0/Microsoft.IdentityModel.Protocols.xml",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.dll",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.xml",
++        "microsoft.identitymodel.protocols.8.0.1.nupkg.sha512",
++        "microsoft.identitymodel.protocols.nuspec"
++      ]
++    },
++    "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.0.1": {
++      "sha512": "AQDbfpL+yzuuGhO/mQhKNsp44pm5Jv8/BI4KiFXR7beVGZoSH35zMV3PrmcfvSTsyI6qrcR898NzUauD6SRigg==",
++      "type": "package",
++      "path": "microsoft.identitymodel.protocols.openidconnect/8.0.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net462/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
++        "lib/net462/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
++        "lib/net472/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
++        "lib/net472/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
++        "lib/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
++        "lib/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
++        "lib/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
++        "lib/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
++        "lib/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
++        "lib/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
++        "microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512",
++        "microsoft.identitymodel.protocols.openidconnect.nuspec"
++      ]
++    },
++    "Microsoft.IdentityModel.Tokens/8.0.1": {
++      "sha512": "kDimB6Dkd3nkW2oZPDkMkVHfQt3IDqO5gL0oa8WVy3OP4uE8Ij+8TXnqg9TOd9ufjsY3IDiGz7pCUbnfL18tjg==",
++      "type": "package",
++      "path": "microsoft.identitymodel.tokens/8.0.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net462/Microsoft.IdentityModel.Tokens.dll",
++        "lib/net462/Microsoft.IdentityModel.Tokens.xml",
++        "lib/net472/Microsoft.IdentityModel.Tokens.dll",
++        "lib/net472/Microsoft.IdentityModel.Tokens.xml",
++        "lib/net6.0/Microsoft.IdentityModel.Tokens.dll",
++        "lib/net6.0/Microsoft.IdentityModel.Tokens.xml",
++        "lib/net8.0/Microsoft.IdentityModel.Tokens.dll",
++        "lib/net8.0/Microsoft.IdentityModel.Tokens.xml",
++        "lib/net9.0/Microsoft.IdentityModel.Tokens.dll",
++        "lib/net9.0/Microsoft.IdentityModel.Tokens.xml",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
++        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
++        "microsoft.identitymodel.tokens.8.0.1.nupkg.sha512",
++        "microsoft.identitymodel.tokens.nuspec"
++      ]
++    },
++    "Microsoft.OpenApi/1.6.23": {
++      "sha512": "tZ1I0KXnn98CWuV8cpI247A17jaY+ILS9vvF7yhI0uPPEqF4P1d7BWL5Uwtel10w9NucllHB3nTkfYTAcHAh8g==",
++      "type": "package",
++      "path": "microsoft.openapi/1.6.23",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "README.md",
++        "lib/netstandard2.0/Microsoft.OpenApi.dll",
++        "lib/netstandard2.0/Microsoft.OpenApi.pdb",
++        "lib/netstandard2.0/Microsoft.OpenApi.xml",
++        "microsoft.openapi.1.6.23.nupkg.sha512",
++        "microsoft.openapi.nuspec"
++      ]
++    },
++    "Scrutor/3.3.0": {
++      "sha512": "BwqCnFzp2/Z+pq17iztxlIkR/ZANyPRR4PdE57WL1w/JW4AM/2imoxBWTL3+G+YXA46ce4s9OUgwWqTXYrtI8A==",
++      "type": "package",
++      "path": "scrutor/3.3.0",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net461/Scrutor.dll",
++        "lib/net461/Scrutor.pdb",
++        "lib/net461/Scrutor.xml",
++        "lib/netcoreapp3.1/Scrutor.dll",
++        "lib/netcoreapp3.1/Scrutor.pdb",
++        "lib/netcoreapp3.1/Scrutor.xml",
++        "lib/netstandard2.0/Scrutor.dll",
++        "lib/netstandard2.0/Scrutor.pdb",
++        "lib/netstandard2.0/Scrutor.xml",
++        "scrutor.3.3.0.nupkg.sha512",
++        "scrutor.nuspec"
++      ]
++    },
++    "Swashbuckle.AspNetCore.Annotations/8.1.1": {
++      "sha512": "7HPeJGAs2VikmUOUHjmXo657FhUEuwajjgUmLTVrzGHo4tS1Io29cyMMfMDp4eAnXnY88jMa4MwG00xhWRgIDg==",
++      "type": "package",
++      "path": "swashbuckle.aspnetcore.annotations/8.1.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.dll",
++        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.pdb",
++        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.xml",
++        "lib/net9.0/Swashbuckle.AspNetCore.Annotations.dll",
++        "lib/net9.0/Swashbuckle.AspNetCore.Annotations.pdb",
++        "lib/net9.0/Swashbuckle.AspNetCore.Annotations.xml",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.Annotations.dll",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.Annotations.pdb",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.Annotations.xml",
++        "package-readme.md",
++        "swashbuckle.aspnetcore.annotations.8.1.1.nupkg.sha512",
++        "swashbuckle.aspnetcore.annotations.nuspec"
++      ]
++    },
++    "Swashbuckle.AspNetCore.Filters/8.0.2": {
++      "sha512": "S4pR+265NwY9saAhK+3Jn2oL2Wfy0qvy9871b0KiEPW/iLPRgg2HrkrdMwC1wpjNkRXWGDFRRj+LkUD4lyuAaQ==",
++      "type": "package",
++      "path": "swashbuckle.aspnetcore.filters/8.0.2",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "README.md",
++        "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll",
++        "lib/netcoreapp3.1/Swashbuckle.AspNetCore.Filters.dll",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.Filters.dll",
++        "swashbuckle.aspnetcore.filters.8.0.2.nupkg.sha512",
++        "swashbuckle.aspnetcore.filters.nuspec"
++      ]
++    },
++    "Swashbuckle.AspNetCore.Filters.Abstractions/8.0.2": {
++      "sha512": "RgQ1RbxmofrkBSrLkA/34DWwzz4rKHRwC4vHOvevru2CNqymUPn3kRhbIX29g4yvj2sCff1glf19djnyM9kuUQ==",
++      "type": "package",
++      "path": "swashbuckle.aspnetcore.filters.abstractions/8.0.2",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "README.md",
++        "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll",
++        "lib/netcoreapp3.1/Swashbuckle.AspNetCore.Filters.Abstractions.dll",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll",
++        "swashbuckle.aspnetcore.filters.abstractions.8.0.2.nupkg.sha512",
++        "swashbuckle.aspnetcore.filters.abstractions.nuspec"
++      ]
++    },
++    "Swashbuckle.AspNetCore.Swagger/8.1.1": {
++      "sha512": "h+8D5jQtnl6X4f2hJQwf0Khj0SnCQANzirCELjXJ6quJ4C1aNNCvJrAsQ+4fOKAMqJkvW48cKj79ftG+YoGcRg==",
++      "type": "package",
++      "path": "swashbuckle.aspnetcore.swagger/8.1.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net8.0/Swashbuckle.AspNetCore.Swagger.dll",
++        "lib/net8.0/Swashbuckle.AspNetCore.Swagger.pdb",
++        "lib/net8.0/Swashbuckle.AspNetCore.Swagger.xml",
++        "lib/net9.0/Swashbuckle.AspNetCore.Swagger.dll",
++        "lib/net9.0/Swashbuckle.AspNetCore.Swagger.pdb",
++        "lib/net9.0/Swashbuckle.AspNetCore.Swagger.xml",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.dll",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.pdb",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.xml",
++        "package-readme.md",
++        "swashbuckle.aspnetcore.swagger.8.1.1.nupkg.sha512",
++        "swashbuckle.aspnetcore.swagger.nuspec"
++      ]
++    },
++    "Swashbuckle.AspNetCore.SwaggerGen/8.1.1": {
++      "sha512": "2EuPzXSNleOOzYvziERWRLnk1Oz9i0Z1PimaUFy1SasBqeV/rG+eMfwFAMtTaf4W6gvVOzRcUCNRHvpBIIzr+A==",
++      "type": "package",
++      "path": "swashbuckle.aspnetcore.swaggergen/8.1.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
++        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
++        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
++        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
++        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
++        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
++        "package-readme.md",
++        "swashbuckle.aspnetcore.swaggergen.8.1.1.nupkg.sha512",
++        "swashbuckle.aspnetcore.swaggergen.nuspec"
++      ]
++    },
++    "Swashbuckle.AspNetCore.SwaggerUI/8.1.1": {
++      "sha512": "GDLX/MpK4oa2nYC1N/zN2UidQTtVKLPF6gkdEmGb0RITEwpJG9Gu8olKqPYnKqVeFn44JZoCS0M2LGRKXP8B/A==",
++      "type": "package",
++      "path": "swashbuckle.aspnetcore.swaggerui/8.1.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
++        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
++        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
++        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
++        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
++        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
++        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
++        "package-readme.md",
++        "swashbuckle.aspnetcore.swaggerui.8.1.1.nupkg.sha512",
++        "swashbuckle.aspnetcore.swaggerui.nuspec"
++      ]
++    },
++    "System.IdentityModel.Tokens.Jwt/8.0.1": {
++      "sha512": "GJw3bYkWpOgvN3tJo5X4lYUeIFA2HD293FPUhKmp7qxS+g5ywAb34Dnd3cDAFLkcMohy5XTpoaZ4uAHuw0uSPQ==",
++      "type": "package",
++      "path": "system.identitymodel.tokens.jwt/8.0.1",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "lib/net462/System.IdentityModel.Tokens.Jwt.dll",
++        "lib/net462/System.IdentityModel.Tokens.Jwt.xml",
++        "lib/net472/System.IdentityModel.Tokens.Jwt.dll",
++        "lib/net472/System.IdentityModel.Tokens.Jwt.xml",
++        "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll",
++        "lib/net6.0/System.IdentityModel.Tokens.Jwt.xml",
++        "lib/net8.0/System.IdentityModel.Tokens.Jwt.dll",
++        "lib/net8.0/System.IdentityModel.Tokens.Jwt.xml",
++        "lib/net9.0/System.IdentityModel.Tokens.Jwt.dll",
++        "lib/net9.0/System.IdentityModel.Tokens.Jwt.xml",
++        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll",
++        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
++        "system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512",
++        "system.identitymodel.tokens.jwt.nuspec"
++      ]
++    },
++    "System.Text.Json/4.7.2": {
++      "sha512": "TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
++      "type": "package",
++      "path": "system.text.json/4.7.2",
++      "files": [
++        ".nupkg.metadata",
++        ".signature.p7s",
++        "Icon.png",
++        "LICENSE.TXT",
++        "THIRD-PARTY-NOTICES.TXT",
++        "lib/net461/System.Text.Json.dll",
++        "lib/net461/System.Text.Json.xml",
++        "lib/netcoreapp3.0/System.Text.Json.dll",
++        "lib/netcoreapp3.0/System.Text.Json.xml",
++        "lib/netstandard2.0/System.Text.Json.dll",
++        "lib/netstandard2.0/System.Text.Json.xml",
++        "system.text.json.4.7.2.nupkg.sha512",
++        "system.text.json.nuspec",
++        "useSharedDesignerContext.txt",
++        "version.txt"
++      ]
++    }
++  },
++  "projectFileDependencyGroups": {
++    "net9.0": [
++      "FluentValidation.AspNetCore >= 11.3.0",
++      "MediatR >= 12.5.0",
++      "Microsoft.AspNetCore.Authentication.JwtBearer >= 9.0.4",
++      "Microsoft.AspNetCore.OpenApi >= 9.0.3",
++      "Swashbuckle.AspNetCore.Annotations >= 8.1.1",
++      "Swashbuckle.AspNetCore.Filters >= 8.0.2",
++      "Swashbuckle.AspNetCore.Swagger >= 8.1.1",
++      "Swashbuckle.AspNetCore.SwaggerUI >= 8.1.1"
++    ]
++  },
++  "packageFolders": {
++    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\": {}
++  },
++  "project": {
++    "version": "1.0.0",
++    "restore": {
++      "projectUniqueName": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj",
++      "projectName": "API",
++      "projectPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj",
++      "packagesPath": "C:\\Users\\lucas.goncalves\\.nuget\\packages\\",
++      "outputPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\obj\\",
++      "projectStyle": "PackageReference",
++      "configFilePaths": [
++        "C:\\Users\\lucas.goncalves\\AppData\\Roaming\\NuGet\\NuGet.Config"
++      ],
++      "originalTargetFrameworks": [
++        "net9.0"
++      ],
++      "sources": {
++        "https://api.nuget.org/v3/index.json": {}
++      },
++      "frameworks": {
++        "net9.0": {
++          "targetAlias": "net9.0",
++          "projectReferences": {}
++        }
++      },
++      "warningProperties": {
++        "warnAsError": [
++          "NU1605"
++        ]
++      },
++      "restoreAuditProperties": {
++        "enableAudit": "true",
++        "auditLevel": "low",
++        "auditMode": "all"
++      },
++      "SdkAnalysisLevel": "9.0.200"
++    },
++    "frameworks": {
++      "net9.0": {
++        "targetAlias": "net9.0",
++        "dependencies": {
++          "FluentValidation.AspNetCore": {
++            "target": "Package",
++            "version": "[11.3.0, )"
++          },
++          "MediatR": {
++            "target": "Package",
++            "version": "[12.5.0, )"
++          },
++          "Microsoft.AspNetCore.Authentication.JwtBearer": {
++            "target": "Package",
++            "version": "[9.0.4, )"
++          },
++          "Microsoft.AspNetCore.OpenApi": {
++            "target": "Package",
++            "version": "[9.0.3, )"
++          },
++          "Swashbuckle.AspNetCore.Annotations": {
++            "target": "Package",
++            "version": "[8.1.1, )"
++          },
++          "Swashbuckle.AspNetCore.Filters": {
++            "target": "Package",
++            "version": "[8.0.2, )"
++          },
++          "Swashbuckle.AspNetCore.Swagger": {
++            "target": "Package",
++            "version": "[8.1.1, )"
++          },
++          "Swashbuckle.AspNetCore.SwaggerUI": {
++            "target": "Package",
++            "version": "[8.1.1, )"
++          }
++        },
++        "imports": [
++          "net461",
++          "net462",
++          "net47",
++          "net471",
++          "net472",
++          "net48",
++          "net481"
++        ],
++        "assetTargetFallback": true,
++        "warn": true,
++        "downloadDependencies": [
++          {
++            "name": "Microsoft.Net.Sdk.Compilers.Toolset",
++            "version": "[9.0.202, 9.0.202]"
++          }
++        ],
++        "frameworkReferences": {
++          "Microsoft.AspNetCore.App": {
++            "privateAssets": "none"
++          },
++          "Microsoft.NETCore.App": {
++            "privateAssets": "all"
++          }
++        },
++        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
++      }
++    }
++  }
++}
+\ No newline at end of file
+Index: API/obj/API.csproj.nuget.dgspec.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/API.csproj.nuget.dgspec.json b/API/obj/API.csproj.nuget.dgspec.json
+new file mode 100644
+--- /dev/null	(date 1744742251497)
++++ b/API/obj/API.csproj.nuget.dgspec.json	(date 1744742251497)
+@@ -0,0 +1,110 @@
++{
++  "format": 1,
++  "restore": {
++    "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj": {}
++  },
++  "projects": {
++    "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj": {
++      "version": "1.0.0",
++      "restore": {
++        "projectUniqueName": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj",
++        "projectName": "API",
++        "projectPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj",
++        "packagesPath": "C:\\Users\\lucas.goncalves\\.nuget\\packages\\",
++        "outputPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\obj\\",
++        "projectStyle": "PackageReference",
++        "configFilePaths": [
++          "C:\\Users\\lucas.goncalves\\AppData\\Roaming\\NuGet\\NuGet.Config"
++        ],
++        "originalTargetFrameworks": [
++          "net9.0"
++        ],
++        "sources": {
++          "https://api.nuget.org/v3/index.json": {}
++        },
++        "frameworks": {
++          "net9.0": {
++            "targetAlias": "net9.0",
++            "projectReferences": {}
++          }
++        },
++        "warningProperties": {
++          "warnAsError": [
++            "NU1605"
++          ]
++        },
++        "restoreAuditProperties": {
++          "enableAudit": "true",
++          "auditLevel": "low",
++          "auditMode": "all"
++        },
++        "SdkAnalysisLevel": "9.0.200"
++      },
++      "frameworks": {
++        "net9.0": {
++          "targetAlias": "net9.0",
++          "dependencies": {
++            "FluentValidation.AspNetCore": {
++              "target": "Package",
++              "version": "[11.3.0, )"
++            },
++            "MediatR": {
++              "target": "Package",
++              "version": "[12.5.0, )"
++            },
++            "Microsoft.AspNetCore.Authentication.JwtBearer": {
++              "target": "Package",
++              "version": "[9.0.4, )"
++            },
++            "Microsoft.AspNetCore.OpenApi": {
++              "target": "Package",
++              "version": "[9.0.3, )"
++            },
++            "Swashbuckle.AspNetCore.Annotations": {
++              "target": "Package",
++              "version": "[8.1.1, )"
++            },
++            "Swashbuckle.AspNetCore.Filters": {
++              "target": "Package",
++              "version": "[8.0.2, )"
++            },
++            "Swashbuckle.AspNetCore.Swagger": {
++              "target": "Package",
++              "version": "[8.1.1, )"
++            },
++            "Swashbuckle.AspNetCore.SwaggerUI": {
++              "target": "Package",
++              "version": "[8.1.1, )"
++            }
++          },
++          "imports": [
++            "net461",
++            "net462",
++            "net47",
++            "net471",
++            "net472",
++            "net48",
++            "net481"
++          ],
++          "assetTargetFallback": true,
++          "warn": true,
++          "downloadDependencies": [
++            {
++              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
++              "version": "[9.0.202, 9.0.202]"
++            }
++          ],
++          "frameworkReferences": {
++            "Microsoft.AspNetCore.App": {
++              "privateAssets": "none"
++            },
++            "Microsoft.NETCore.App": {
++              "privateAssets": "all"
++            }
++          },
++          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
++        }
++      }
++    }
++  }
++}
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/Papelaria.API.MvcApplicationPartsAssemblyInfo.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/Papelaria.API.MvcApplicationPartsAssemblyInfo.cs b/API/obj/Debug/net9.0/Papelaria.API.MvcApplicationPartsAssemblyInfo.cs
+new file mode 100644
+--- /dev/null	(date 1744740251184)
++++ b/API/obj/Debug/net9.0/Papelaria.API.MvcApplicationPartsAssemblyInfo.cs	(date 1744740251184)
+@@ -0,0 +1,20 @@
++//------------------------------------------------------------------------------
++// <auto-generated>
++//     This code was generated by a tool.
++//
++//     Changes to this file may cause incorrect behavior and will be lost if
++//     the code is regenerated.
++// </auto-generated>
++//------------------------------------------------------------------------------
++
++using System;
++using System.Reflection;
++
++[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("FluentValidation.AspNetCore")]
++[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Microsoft.AspNetCore.OpenApi")]
++[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Swashbuckle.AspNetCore.Annotations")]
++[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Swashbuckle.AspNetCore.Filters")]
++[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Swashbuckle.AspNetCore.SwaggerGen")]
++
++// Gerado pela classe WriteCodeFragment do MSBuild.
++
+Index: API/obj/API.csproj.nuget.g.props
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/API.csproj.nuget.g.props b/API/obj/API.csproj.nuget.g.props
+new file mode 100644
+--- /dev/null	(date 1744742069167)
++++ b/API/obj/API.csproj.nuget.g.props	(date 1744742069167)
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="utf-8" standalone="no"?>
++<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
++    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
++    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
++    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
++    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
++    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\lucas.goncalves\.nuget\packages\</NuGetPackageFolders>
++    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
++    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.12.2</NuGetToolVersion>
++  </PropertyGroup>
++  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
++    <SourceRoot Include="C:\Users\lucas.goncalves\.nuget\packages\" />
++  </ItemGroup>
++</Project>
+\ No newline at end of file
+Index: API/obj/API.csproj.nuget.g.targets
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/API.csproj.nuget.g.targets b/API/obj/API.csproj.nuget.g.targets
+new file mode 100644
+--- /dev/null	(date 1744742069171)
++++ b/API/obj/API.csproj.nuget.g.targets	(date 1744742069171)
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8" standalone="no"?>
++<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+\ No newline at end of file
+Index: API/bin/Debug/net9.0/appsettings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/bin/Debug/net9.0/appsettings.json b/API/bin/Debug/net9.0/appsettings.json
+new file mode 100644
+--- /dev/null	(date 1744738103977)
++++ b/API/bin/Debug/net9.0/appsettings.json	(date 1744738103977)
+@@ -0,0 +1,9 @@
++{
++  "Logging": {
++    "LogLevel": {
++      "Default": "Information",
++      "Microsoft.AspNetCore": "Warning"
++    }
++  },
++  "AllowedHosts": "*"
++}
+Index: API/bin/Debug/net9.0/Papelaria.API.staticwebassets.endpoints.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/bin/Debug/net9.0/Papelaria.API.staticwebassets.endpoints.json b/API/bin/Debug/net9.0/Papelaria.API.staticwebassets.endpoints.json
+new file mode 100644
+--- /dev/null	(date 1744740163546)
++++ b/API/bin/Debug/net9.0/Papelaria.API.staticwebassets.endpoints.json	(date 1744740163546)
+@@ -0,0 +1,5 @@
++{
++  "Version": 1,
++  "ManifestType": "Build",
++  "Endpoints": []
++}
+\ No newline at end of file
+Index: API/bin/Debug/net9.0/appsettings.Development.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/bin/Debug/net9.0/appsettings.Development.json b/API/bin/Debug/net9.0/appsettings.Development.json
+new file mode 100644
+--- /dev/null	(date 1744738103989)
++++ b/API/bin/Debug/net9.0/appsettings.Development.json	(date 1744738103989)
+@@ -0,0 +1,8 @@
++{
++  "Logging": {
++    "LogLevel": {
++      "Default": "Information",
++      "Microsoft.AspNetCore": "Warning"
++    }
++  }
++}
+Index: API/Provider.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/Provider.cs b/API/Provider.cs
+new file mode 100644
+--- /dev/null	(date 1744740158026)
++++ b/API/Provider.cs	(date 1744740158026)
+@@ -0,0 +1,25 @@
++using Microsoft.AspNetCore.Authentication.JwtBearer;
++using Papelaria.API.Setups;
++
++namespace Papelaria.API;
++
++public static class Provider
++{
++    public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
++    {
++        services
++            .AddValidatorsSetup();
++        
++        services.AddSwaggerGen(SwaggerSetup.ConfigureSwagger);
++
++        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
++            .AddJwtBearer(options =>
++            {
++                options.Authority = "http://localhost:5127";
++                options.Audience = "papelariaapi";
++                options.RequireHttpsMetadata = false;
++            });
++
++        services.AddAuthorization();
++    }
++}
+\ No newline at end of file
+Index: API/bin/Debug/net9.0/Papelaria.API.deps.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/bin/Debug/net9.0/Papelaria.API.deps.json b/API/bin/Debug/net9.0/Papelaria.API.deps.json
+new file mode 100644
+--- /dev/null	(date 1744740251779)
++++ b/API/bin/Debug/net9.0/Papelaria.API.deps.json	(date 1744740251779)
+@@ -0,0 +1,467 @@
++{
++  "runtimeTarget": {
++    "name": ".NETCoreApp,Version=v9.0",
++    "signature": ""
++  },
++  "compilationOptions": {},
++  "targets": {
++    ".NETCoreApp,Version=v9.0": {
++      "Papelaria.API/1.0.0": {
++        "dependencies": {
++          "FluentValidation.AspNetCore": "11.3.0",
++          "MediatR": "12.5.0",
++          "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.4",
++          "Microsoft.AspNetCore.OpenApi": "9.0.3",
++          "Swashbuckle.AspNetCore.Annotations": "8.1.1",
++          "Swashbuckle.AspNetCore.Filters": "8.0.2",
++          "Swashbuckle.AspNetCore.Swagger": "8.1.1",
++          "Swashbuckle.AspNetCore.SwaggerUI": "8.1.1"
++        },
++        "runtime": {
++          "Papelaria.API.dll": {}
++        }
++      },
++      "FluentValidation/11.5.1": {
++        "runtime": {
++          "lib/net7.0/FluentValidation.dll": {
++            "assemblyVersion": "11.0.0.0",
++            "fileVersion": "11.5.1.0"
++          }
++        }
++      },
++      "FluentValidation.AspNetCore/11.3.0": {
++        "dependencies": {
++          "FluentValidation": "11.5.1",
++          "FluentValidation.DependencyInjectionExtensions": "11.5.1"
++        },
++        "runtime": {
++          "lib/net6.0/FluentValidation.AspNetCore.dll": {
++            "assemblyVersion": "11.0.0.0",
++            "fileVersion": "11.3.0.0"
++          }
++        }
++      },
++      "FluentValidation.DependencyInjectionExtensions/11.5.1": {
++        "dependencies": {
++          "FluentValidation": "11.5.1",
++          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
++        },
++        "runtime": {
++          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
++            "assemblyVersion": "11.0.0.0",
++            "fileVersion": "11.5.1.0"
++          }
++        }
++      },
++      "MediatR/12.5.0": {
++        "dependencies": {
++          "MediatR.Contracts": "2.0.1",
++          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
++        },
++        "runtime": {
++          "lib/net6.0/MediatR.dll": {
++            "assemblyVersion": "12.0.0.0",
++            "fileVersion": "12.5.0.0"
++          }
++        }
++      },
++      "MediatR.Contracts/2.0.1": {
++        "runtime": {
++          "lib/netstandard2.0/MediatR.Contracts.dll": {
++            "assemblyVersion": "2.0.1.0",
++            "fileVersion": "2.0.1.0"
++          }
++        }
++      },
++      "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.4": {
++        "dependencies": {
++          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1"
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
++            "assemblyVersion": "9.0.4.0",
++            "fileVersion": "9.0.425.16403"
++          }
++        }
++      },
++      "Microsoft.AspNetCore.OpenApi/9.0.3": {
++        "dependencies": {
++          "Microsoft.OpenApi": "1.6.23"
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
++            "assemblyVersion": "9.0.3.0",
++            "fileVersion": "9.0.325.11220"
++          }
++        }
++      },
++      "Microsoft.Extensions.DependencyInjection/2.1.0": {
++        "dependencies": {
++          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
++        }
++      },
++      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {},
++      "Microsoft.Extensions.DependencyModel/3.1.6": {
++        "dependencies": {
++          "System.Text.Json": "4.7.2"
++        },
++        "runtime": {
++          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
++            "assemblyVersion": "3.1.6.0",
++            "fileVersion": "3.100.620.31604"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Abstractions/8.0.1": {
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll": {
++            "assemblyVersion": "8.0.1.0",
++            "fileVersion": "8.0.1.50722"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.JsonWebTokens/8.0.1": {
++        "dependencies": {
++          "Microsoft.IdentityModel.Tokens": "8.0.1"
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
++            "assemblyVersion": "8.0.1.0",
++            "fileVersion": "8.0.1.50722"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Logging/8.0.1": {
++        "dependencies": {
++          "Microsoft.IdentityModel.Abstractions": "8.0.1"
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Logging.dll": {
++            "assemblyVersion": "8.0.1.0",
++            "fileVersion": "8.0.1.50722"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Protocols/8.0.1": {
++        "dependencies": {
++          "Microsoft.IdentityModel.Tokens": "8.0.1"
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Protocols.dll": {
++            "assemblyVersion": "8.0.1.0",
++            "fileVersion": "8.0.1.50722"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.0.1": {
++        "dependencies": {
++          "Microsoft.IdentityModel.Protocols": "8.0.1",
++          "System.IdentityModel.Tokens.Jwt": "8.0.1"
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
++            "assemblyVersion": "8.0.1.0",
++            "fileVersion": "8.0.1.50722"
++          }
++        }
++      },
++      "Microsoft.IdentityModel.Tokens/8.0.1": {
++        "dependencies": {
++          "Microsoft.IdentityModel.Logging": "8.0.1"
++        },
++        "runtime": {
++          "lib/net9.0/Microsoft.IdentityModel.Tokens.dll": {
++            "assemblyVersion": "8.0.1.0",
++            "fileVersion": "8.0.1.50722"
++          }
++        }
++      },
++      "Microsoft.OpenApi/1.6.23": {
++        "runtime": {
++          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
++            "assemblyVersion": "1.6.23.0",
++            "fileVersion": "1.6.23.0"
++          }
++        }
++      },
++      "Scrutor/3.3.0": {
++        "dependencies": {
++          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
++          "Microsoft.Extensions.DependencyModel": "3.1.6"
++        },
++        "runtime": {
++          "lib/netcoreapp3.1/Scrutor.dll": {
++            "assemblyVersion": "3.0.2.0",
++            "fileVersion": "3.0.2.0"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.Annotations/8.1.1": {
++        "dependencies": {
++          "Swashbuckle.AspNetCore.SwaggerGen": "8.1.1"
++        },
++        "runtime": {
++          "lib/net9.0/Swashbuckle.AspNetCore.Annotations.dll": {
++            "assemblyVersion": "8.1.1.0",
++            "fileVersion": "8.1.1.1274"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.Filters/8.0.2": {
++        "dependencies": {
++          "Microsoft.Extensions.DependencyInjection": "2.1.0",
++          "Microsoft.OpenApi": "1.6.23",
++          "Scrutor": "3.3.0",
++          "Swashbuckle.AspNetCore.Filters.Abstractions": "8.0.2",
++          "Swashbuckle.AspNetCore.SwaggerGen": "8.1.1"
++        },
++        "runtime": {
++          "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll": {
++            "assemblyVersion": "8.0.2.0",
++            "fileVersion": "8.0.2.0"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.Filters.Abstractions/8.0.2": {
++        "runtime": {
++          "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll": {
++            "assemblyVersion": "8.0.2.0",
++            "fileVersion": "8.0.2.0"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.Swagger/8.1.1": {
++        "dependencies": {
++          "Microsoft.OpenApi": "1.6.23"
++        },
++        "runtime": {
++          "lib/net9.0/Swashbuckle.AspNetCore.Swagger.dll": {
++            "assemblyVersion": "8.1.1.0",
++            "fileVersion": "8.1.1.1274"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.SwaggerGen/8.1.1": {
++        "dependencies": {
++          "Swashbuckle.AspNetCore.Swagger": "8.1.1"
++        },
++        "runtime": {
++          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
++            "assemblyVersion": "8.1.1.0",
++            "fileVersion": "8.1.1.1274"
++          }
++        }
++      },
++      "Swashbuckle.AspNetCore.SwaggerUI/8.1.1": {
++        "runtime": {
++          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
++            "assemblyVersion": "8.1.1.0",
++            "fileVersion": "8.1.1.1274"
++          }
++        }
++      },
++      "System.IdentityModel.Tokens.Jwt/8.0.1": {
++        "dependencies": {
++          "Microsoft.IdentityModel.JsonWebTokens": "8.0.1",
++          "Microsoft.IdentityModel.Tokens": "8.0.1"
++        },
++        "runtime": {
++          "lib/net9.0/System.IdentityModel.Tokens.Jwt.dll": {
++            "assemblyVersion": "8.0.1.0",
++            "fileVersion": "8.0.1.50722"
++          }
++        }
++      },
++      "System.Text.Json/4.7.2": {}
++    }
++  },
++  "libraries": {
++    "Papelaria.API/1.0.0": {
++      "type": "project",
++      "serviceable": false,
++      "sha512": ""
++    },
++    "FluentValidation/11.5.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-0h1Q5lNOLLyYTWMJmyNoMqhY4CBRvvUWvJP1R4F2CnmmzuWwvB0A8aVmw5+lOuwYnwUwCRrdeMLbc81F38ahNQ==",
++      "path": "fluentvalidation/11.5.1",
++      "hashPath": "fluentvalidation.11.5.1.nupkg.sha512"
++    },
++    "FluentValidation.AspNetCore/11.3.0": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-jtFVgKnDFySyBlPS8bZbTKEEwJZnn11rXXJ2SQnjDhZ56rQqybBg9Joq4crRLz3y0QR8WoOq4iE4piV81w/Djg==",
++      "path": "fluentvalidation.aspnetcore/11.3.0",
++      "hashPath": "fluentvalidation.aspnetcore.11.3.0.nupkg.sha512"
++    },
++    "FluentValidation.DependencyInjectionExtensions/11.5.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-iWM0LS1MDYX06pcjMEQKqHirl2zkjHlNV23mEJSoR1IZI7KQmTa0RcTtGEJpj5+iHvBCfrzP2mYKM4FtRKVb+A==",
++      "path": "fluentvalidation.dependencyinjectionextensions/11.5.1",
++      "hashPath": "fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512"
++    },
++    "MediatR/12.5.0": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-vqm2H8/nqL5NAJHPhsG1JOPwfkmbVrPyh4svdoRzu+uZh6Ex7PRoHBGsLYC0/RWCEJFqD1ohHNpteQvql9OktA==",
++      "path": "mediatr/12.5.0",
++      "hashPath": "mediatr.12.5.0.nupkg.sha512"
++    },
++    "MediatR.Contracts/2.0.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-FYv95bNT4UwcNA+G/J1oX5OpRiSUxteXaUt2BJbRSdRNiIUNbggJF69wy6mnk2wYToaanpdXZdCwVylt96MpwQ==",
++      "path": "mediatr.contracts/2.0.1",
++      "hashPath": "mediatr.contracts.2.0.1.nupkg.sha512"
++    },
++    "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.4": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-0HgfWPfnjlzWFbW4pw6FYNuIMV8obVU+MUkiZ33g4UOpvZcmdWzdayfheKPZ5+EUly8SvfgW0dJwwIrW4IVLZQ==",
++      "path": "microsoft.aspnetcore.authentication.jwtbearer/9.0.4",
++      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.9.0.4.nupkg.sha512"
++    },
++    "Microsoft.AspNetCore.OpenApi/9.0.3": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-fKh0UyGMUE+lhbovMhh3g88b9bT+y2jfZIuJ8ljY7rcCaSJ9m2Qqqbh66oULFfzWE2BUAmimzTGcPcq3jXi/Ew==",
++      "path": "microsoft.aspnetcore.openapi/9.0.3",
++      "hashPath": "microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512"
++    },
++    "Microsoft.Extensions.DependencyInjection/2.1.0": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-gqQviLfuA31PheEGi+XJoZc1bc9H9RsPa9Gq9XuDct7XGWSR9eVXjK5Sg7CSUPhTFHSuxUFY12wcTYLZ4zM1hg==",
++      "path": "microsoft.extensions.dependencyinjection/2.1.0",
++      "hashPath": "microsoft.extensions.dependencyinjection.2.1.0.nupkg.sha512"
++    },
++    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
++      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
++      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
++    },
++    "Microsoft.Extensions.DependencyModel/3.1.6": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-/UlDKULIVkLQYn1BaHcy/rc91ApDxJb7T75HcCbGdqwvxhnRQRKM2di1E70iCPMF9zsr6f4EgQTotBGxFIfXmw==",
++      "path": "microsoft.extensions.dependencymodel/3.1.6",
++      "hashPath": "microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512"
++    },
++    "Microsoft.IdentityModel.Abstractions/8.0.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-OtlIWcyX01olfdevPKZdIPfBEvbcioDyBiE/Z2lHsopsMD7twcKtlN9kMevHmI5IIPhFpfwCIiR6qHQz1WHUIw==",
++      "path": "microsoft.identitymodel.abstractions/8.0.1",
++      "hashPath": "microsoft.identitymodel.abstractions.8.0.1.nupkg.sha512"
++    },
++    "Microsoft.IdentityModel.JsonWebTokens/8.0.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-s6++gF9x0rQApQzOBbSyp4jUaAlwm+DroKfL8gdOHxs83k8SJfUXhuc46rDB3rNXBQ1MVRxqKUrqFhO/M0E97g==",
++      "path": "microsoft.identitymodel.jsonwebtokens/8.0.1",
++      "hashPath": "microsoft.identitymodel.jsonwebtokens.8.0.1.nupkg.sha512"
++    },
++    "Microsoft.IdentityModel.Logging/8.0.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-UCPF2exZqBXe7v/6sGNiM6zCQOUXXQ9+v5VTb9gPB8ZSUPnX53BxlN78v2jsbIvK9Dq4GovQxo23x8JgWvm/Qg==",
++      "path": "microsoft.identitymodel.logging/8.0.1",
++      "hashPath": "microsoft.identitymodel.logging.8.0.1.nupkg.sha512"
++    },
++    "Microsoft.IdentityModel.Protocols/8.0.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-uA2vpKqU3I2mBBEaeJAWPTjT9v1TZrGWKdgK6G5qJd03CLx83kdiqO9cmiK8/n1erkHzFBwU/RphP83aAe3i3g==",
++      "path": "microsoft.identitymodel.protocols/8.0.1",
++      "hashPath": "microsoft.identitymodel.protocols.8.0.1.nupkg.sha512"
++    },
++    "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.0.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-AQDbfpL+yzuuGhO/mQhKNsp44pm5Jv8/BI4KiFXR7beVGZoSH35zMV3PrmcfvSTsyI6qrcR898NzUauD6SRigg==",
++      "path": "microsoft.identitymodel.protocols.openidconnect/8.0.1",
++      "hashPath": "microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512"
++    },
++    "Microsoft.IdentityModel.Tokens/8.0.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-kDimB6Dkd3nkW2oZPDkMkVHfQt3IDqO5gL0oa8WVy3OP4uE8Ij+8TXnqg9TOd9ufjsY3IDiGz7pCUbnfL18tjg==",
++      "path": "microsoft.identitymodel.tokens/8.0.1",
++      "hashPath": "microsoft.identitymodel.tokens.8.0.1.nupkg.sha512"
++    },
++    "Microsoft.OpenApi/1.6.23": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-tZ1I0KXnn98CWuV8cpI247A17jaY+ILS9vvF7yhI0uPPEqF4P1d7BWL5Uwtel10w9NucllHB3nTkfYTAcHAh8g==",
++      "path": "microsoft.openapi/1.6.23",
++      "hashPath": "microsoft.openapi.1.6.23.nupkg.sha512"
++    },
++    "Scrutor/3.3.0": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-BwqCnFzp2/Z+pq17iztxlIkR/ZANyPRR4PdE57WL1w/JW4AM/2imoxBWTL3+G+YXA46ce4s9OUgwWqTXYrtI8A==",
++      "path": "scrutor/3.3.0",
++      "hashPath": "scrutor.3.3.0.nupkg.sha512"
++    },
++    "Swashbuckle.AspNetCore.Annotations/8.1.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-7HPeJGAs2VikmUOUHjmXo657FhUEuwajjgUmLTVrzGHo4tS1Io29cyMMfMDp4eAnXnY88jMa4MwG00xhWRgIDg==",
++      "path": "swashbuckle.aspnetcore.annotations/8.1.1",
++      "hashPath": "swashbuckle.aspnetcore.annotations.8.1.1.nupkg.sha512"
++    },
++    "Swashbuckle.AspNetCore.Filters/8.0.2": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-S4pR+265NwY9saAhK+3Jn2oL2Wfy0qvy9871b0KiEPW/iLPRgg2HrkrdMwC1wpjNkRXWGDFRRj+LkUD4lyuAaQ==",
++      "path": "swashbuckle.aspnetcore.filters/8.0.2",
++      "hashPath": "swashbuckle.aspnetcore.filters.8.0.2.nupkg.sha512"
++    },
++    "Swashbuckle.AspNetCore.Filters.Abstractions/8.0.2": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-RgQ1RbxmofrkBSrLkA/34DWwzz4rKHRwC4vHOvevru2CNqymUPn3kRhbIX29g4yvj2sCff1glf19djnyM9kuUQ==",
++      "path": "swashbuckle.aspnetcore.filters.abstractions/8.0.2",
++      "hashPath": "swashbuckle.aspnetcore.filters.abstractions.8.0.2.nupkg.sha512"
++    },
++    "Swashbuckle.AspNetCore.Swagger/8.1.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-h+8D5jQtnl6X4f2hJQwf0Khj0SnCQANzirCELjXJ6quJ4C1aNNCvJrAsQ+4fOKAMqJkvW48cKj79ftG+YoGcRg==",
++      "path": "swashbuckle.aspnetcore.swagger/8.1.1",
++      "hashPath": "swashbuckle.aspnetcore.swagger.8.1.1.nupkg.sha512"
++    },
++    "Swashbuckle.AspNetCore.SwaggerGen/8.1.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-2EuPzXSNleOOzYvziERWRLnk1Oz9i0Z1PimaUFy1SasBqeV/rG+eMfwFAMtTaf4W6gvVOzRcUCNRHvpBIIzr+A==",
++      "path": "swashbuckle.aspnetcore.swaggergen/8.1.1",
++      "hashPath": "swashbuckle.aspnetcore.swaggergen.8.1.1.nupkg.sha512"
++    },
++    "Swashbuckle.AspNetCore.SwaggerUI/8.1.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-GDLX/MpK4oa2nYC1N/zN2UidQTtVKLPF6gkdEmGb0RITEwpJG9Gu8olKqPYnKqVeFn44JZoCS0M2LGRKXP8B/A==",
++      "path": "swashbuckle.aspnetcore.swaggerui/8.1.1",
++      "hashPath": "swashbuckle.aspnetcore.swaggerui.8.1.1.nupkg.sha512"
++    },
++    "System.IdentityModel.Tokens.Jwt/8.0.1": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-GJw3bYkWpOgvN3tJo5X4lYUeIFA2HD293FPUhKmp7qxS+g5ywAb34Dnd3cDAFLkcMohy5XTpoaZ4uAHuw0uSPQ==",
++      "path": "system.identitymodel.tokens.jwt/8.0.1",
++      "hashPath": "system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512"
++    },
++    "System.Text.Json/4.7.2": {
++      "type": "package",
++      "serviceable": true,
++      "sha512": "sha512-TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
++      "path": "system.text.json/4.7.2",
++      "hashPath": "system.text.json.4.7.2.nupkg.sha512"
++    }
++  }
++}
+\ No newline at end of file
+Index: API/obj/project.packagespec.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/project.packagespec.json b/API/obj/project.packagespec.json
+new file mode 100644
+--- /dev/null	(date 1744742068205)
++++ b/API/obj/project.packagespec.json	(date 1744742068205)
+@@ -0,0 +1,1 @@
++"restore":{"projectUniqueName":"C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj","projectName":"API","projectPath":"C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj","outputPath":"C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\obj\\","projectStyle":"PackageReference","originalTargetFrameworks":["net9.0"],"sources":{"https://api.nuget.org/v3/index.json":{}},"frameworks":{"net9.0":{"targetAlias":"net9.0","projectReferences":{}}},"warningProperties":{"warnAsError":["NU1605"]},"restoreAuditProperties":{"enableAudit":"true","auditLevel":"low","auditMode":"all"},"SdkAnalysisLevel":"9.0.200"}"frameworks":{"net9.0":{"targetAlias":"net9.0","dependencies":{"FluentValidation.AspNetCore":{"target":"Package","version":"[11.3.0, )"},"MediatR":{"target":"Package","version":"[12.5.0, )"},"Microsoft.AspNetCore.Authentication.JwtBearer":{"target":"Package","version":"[9.0.4, )"},"Microsoft.AspNetCore.OpenApi":{"target":"Package","version":"[9.0.3, )"},"Swashbuckle.AspNetCore.Annotations":{"target":"Package","version":"[8.1.1, )"},"Swashbuckle.AspNetCore.Filters":{"target":"Package","version":"[8.0.2, )"},"Swashbuckle.AspNetCore.Swagger":{"target":"Package","version":"[8.1.1, )"},"Swashbuckle.AspNetCore.SwaggerUI":{"target":"Package","version":"[8.1.1, )"}},"imports":["net461","net462","net47","net471","net472","net48","net481"],"assetTargetFallback":true,"warn":true,"downloadDependencies":[{"name":"Microsoft.Net.Sdk.Compilers.Toolset","version":"[9.0.202, 9.0.202]"}],"frameworkReferences":{"Microsoft.AspNetCore.App":{"privateAssets":"none"},"Microsoft.NETCore.App":{"privateAssets":"all"}},"runtimeIdentifierGraphPath":"C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"}}
+\ No newline at end of file
+Index: API/obj/Debug/net9.0/Papelaria.API.AssemblyInfo.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/Papelaria.API.AssemblyInfo.cs b/API/obj/Debug/net9.0/Papelaria.API.AssemblyInfo.cs
+new file mode 100644
+--- /dev/null	(date 1744742065006)
++++ b/API/obj/Debug/net9.0/Papelaria.API.AssemblyInfo.cs	(date 1744742065006)
+@@ -0,0 +1,22 @@
++//------------------------------------------------------------------------------
++// <auto-generated>
++//     This code was generated by a tool.
++//
++//     Changes to this file may cause incorrect behavior and will be lost if
++//     the code is regenerated.
++// </auto-generated>
++//------------------------------------------------------------------------------
++
++using System;
++using System.Reflection;
++
++[assembly: System.Reflection.AssemblyCompanyAttribute("Papelaria.API")]
++[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
++[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
++[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+800b8b2f35f42a5a2837867625f0370d9c1064df")]
++[assembly: System.Reflection.AssemblyProductAttribute("Papelaria.API")]
++[assembly: System.Reflection.AssemblyTitleAttribute("Papelaria.API")]
++[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
++
++// Gerado pela classe WriteCodeFragment do MSBuild.
++
+Index: API/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs b/API/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+new file mode 100644
+--- /dev/null	(date 1744738110356)
++++ b/API/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs	(date 1744738110356)
+@@ -0,0 +1,4 @@
++// <autogenerated />
++using System;
++using System.Reflection;
++[assembly: global::System.Runtime.Versioning.TargetFrameworkAttribute(".NETCoreApp,Version=v9.0", FrameworkDisplayName = ".NET 9.0")]
+Index: API/obj/Debug/net9.0/Papelaria.API.GeneratedMSBuildEditorConfig.editorconfig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/Papelaria.API.GeneratedMSBuildEditorConfig.editorconfig b/API/obj/Debug/net9.0/Papelaria.API.GeneratedMSBuildEditorConfig.editorconfig
+new file mode 100644
+--- /dev/null	(date 1744738110350)
++++ b/API/obj/Debug/net9.0/Papelaria.API.GeneratedMSBuildEditorConfig.editorconfig	(date 1744738110350)
+@@ -0,0 +1,21 @@
++is_global = true
++build_property.TargetFramework = net9.0
++build_property.TargetPlatformMinVersion = 
++build_property.UsingMicrosoftNETSdkWeb = true
++build_property.ProjectTypeGuids = 
++build_property.InvariantGlobalization = 
++build_property.PlatformNeutralAssembly = 
++build_property.EnforceExtendedAnalyzerRules = 
++build_property._SupportedPlatformList = Linux,macOS,Windows
++build_property.RootNamespace = Papelaria.API
++build_property.RootNamespace = Papelaria.API
++build_property.ProjectDir = C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API\
++build_property.EnableComHosting = 
++build_property.EnableGeneratedComInterfaceComImportInterop = 
++build_property.RazorLangVersion = 9.0
++build_property.SupportLocalizedComponentNames = 
++build_property.GenerateRazorMetadataSourceChecksumAttributes = 
++build_property.MSBuildProjectDirectory = C:\Users\lucas.goncalves\OneDrive - DB1 Group\Documentos\Papelaria-API\Papelaria.API
++build_property._RazorSourceGeneratorDebug = 
++build_property.EffectiveAnalysisLevelStyle = 9.0
++build_property.EnableCodeStyleSeverity = 
+Index: API/obj/Debug/net9.0/Papelaria.API.GlobalUsings.g.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/obj/Debug/net9.0/Papelaria.API.GlobalUsings.g.cs b/API/obj/Debug/net9.0/Papelaria.API.GlobalUsings.g.cs
+new file mode 100644
+--- /dev/null	(date 1744738109950)
++++ b/API/obj/Debug/net9.0/Papelaria.API.GlobalUsings.g.cs	(date 1744738109950)
+@@ -0,0 +1,17 @@
++// <auto-generated/>
++global using global::Microsoft.AspNetCore.Builder;
++global using global::Microsoft.AspNetCore.Hosting;
++global using global::Microsoft.AspNetCore.Http;
++global using global::Microsoft.AspNetCore.Routing;
++global using global::Microsoft.Extensions.Configuration;
++global using global::Microsoft.Extensions.DependencyInjection;
++global using global::Microsoft.Extensions.Hosting;
++global using global::Microsoft.Extensions.Logging;
++global using global::System;
++global using global::System.Collections.Generic;
++global using global::System.IO;
++global using global::System.Linq;
++global using global::System.Net.Http;
++global using global::System.Net.Http.Json;
++global using global::System.Threading;
++global using global::System.Threading.Tasks;
+Index: API/Middleware/ExceptionMiddleware.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/Middleware/ExceptionMiddleware.cs b/API/Middleware/ExceptionMiddleware.cs
+new file mode 100644
+--- /dev/null	(date 1744739066731)
++++ b/API/Middleware/ExceptionMiddleware.cs	(date 1744739066731)
+@@ -0,0 +1,38 @@
++using System.Net;
++using System.Text.Json;
++
++namespace Papelaria.API.Middleware;
++
++public class ExceptionMiddleware(RequestDelegate next)
++{
++    public async Task InvokeAsync(HttpContext context)
++    {
++        try
++        {
++            await next(context);
++        }
++        catch (Exception e)
++        {
++            await HandleExceptionAsync(context, e);
++        }
++    }
++
++    private static Task HandleExceptionAsync(HttpContext context, Exception exception)
++    {
++        var statusCode = exception switch
++        {
++            Exception => HttpStatusCode.BadRequest
++        };
++
++        var response = new
++        {
++            message = exception.Message,
++            status = (int)statusCode,
++            error = exception.GetType().Name
++        };
++        
++        context.Response.ContentType = "application/json";
++        context.Response.StatusCode = (int)statusCode;
++        return context.Response.WriteAsync(JsonSerializer.Serialize(response));
++    }
++}
+\ No newline at end of file
+Index: API/Setups/ValidatorsSetup.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API/Setups/ValidatorsSetup.cs b/API/Setups/ValidatorsSetup.cs
+new file mode 100644
+--- /dev/null	(date 1744739388899)
++++ b/API/Setups/ValidatorsSetup.cs	(date 1744739388899)
+@@ -0,0 +1,14 @@
++using FluentValidation.AspNetCore;
++
++namespace Papelaria.API.Setups;
++
++public static class ValidatorsSetup
++{
++    public static IServiceCollection AddValidatorsSetup(this IServiceCollection services)
++    {
++        services
++            .AddFluentValidationAutoValidation()
++            .AddFluentValidationClientsideAdapters();
++        return services;
++    }
++}
+\ No newline at end of file
+diff --git a/API/obj/Debug/net9.0/Papelari.2B47BEC5.Up2Date b/API/obj/Debug/net9.0/Papelari.2B47BEC5.Up2Date
+new file mode 100644
