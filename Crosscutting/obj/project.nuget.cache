@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "OYqL2jn00ec=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Crosscutting\\Crosscutting.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\fluentvalidation\\8.2.2\\fluentvalidation.8.2.2.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\2.1.0\\microsoft.extensions.dependencyinjection.2.1.0.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.9\\microsoft.extensions.dependencyinjection.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.6\\microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\microsoft.openapi\\1.3.1\\microsoft.openapi.1.3.1.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\scrutor\\3.3.0\\scrutor.3.3.0.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\swashbuckle.aspnetcore.filters\\8.0.2\\swashbuckle.aspnetcore.filters.8.0.2.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\swashbuckle.aspnetcore.filters.abstractions\\8.0.2\\swashbuckle.aspnetcore.filters.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.0.0\\swashbuckle.aspnetcore.swagger.5.0.0.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.0.0\\swashbuckle.aspnetcore.swaggergen.5.0.0.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\system.componentmodel.annotations\\4.4.1\\system.componentmodel.annotations.4.4.1.nupkg.sha512",
+    "C:\\Users\\lucas.goncalves\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}
