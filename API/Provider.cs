@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Papelaria.API.Setups;
 
-namespace Papelaria.API;
+namespace API;
 
 public static class Provider
 {

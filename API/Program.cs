@@ -1,6 +1,5 @@
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Builder;
-using Papelaria.API;
+using API;
 using Papelaria.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +23,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
