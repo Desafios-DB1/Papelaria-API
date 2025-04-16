@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\Papelaria.API.csproj": {}
+    "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\Papelaria.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\Papelaria.API.csproj": {
+    "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\Papelaria.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\Papelaria.API.csproj",
+        "projectUniqueName": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\Papelaria.API.csproj",
         "projectName": "Papelaria.API",
-        "projectPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\Papelaria.API.csproj",
+        "projectPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\Papelaria.API.csproj",
         "packagesPath": "C:\\Users\\lucas.goncalves\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\Papelaria.API\\obj\\",
+        "outputPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas.goncalves\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -36,7 +36,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.200"
       },
@@ -88,12 +88,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
-              "version": "[9.0.202, 9.0.202]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
