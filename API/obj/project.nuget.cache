@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N1Doei1Sj84=",
+  "dgSpecHash": "bAldFKqAUzA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\Papelaria.API.csproj",
+  "projectFilePath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas.goncalves\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
     "C:\\Users\\lucas.goncalves\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",

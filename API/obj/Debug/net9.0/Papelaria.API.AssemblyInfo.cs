@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Papelaria.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d19d9a67dbf85424d0d0ba623cccbf142c445e89")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e3c0bceeb20ae329caf2011274d444f179cb197")]
 [assembly: System.Reflection.AssemblyProductAttribute("Papelaria.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Papelaria.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

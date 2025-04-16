@@ -961,9 +961,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\Papelaria.API.csproj",
-      "projectName": "Papelaria.API",
-      "projectPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\Papelaria.API.csproj",
+      "projectUniqueName": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj",
+      "projectName": "API",
+      "projectPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\API.csproj",
       "packagesPath": "C:\\Users\\lucas.goncalves\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\lucas.goncalves\\OneDrive - DB1 Group\\Documentos\\Papelaria-API\\API\\obj\\",
       "projectStyle": "PackageReference",
