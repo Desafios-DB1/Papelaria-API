@@ -20,7 +20,7 @@ public class QuantidadeEstoque
         QuantidadeAtual = quantidadeAtual;
     }
 
-    public bool StatusCritico() => QuantidadeAtual <= QuantidadeMinima;
+    public bool EstoqueCritico { get; private set; }
 
     public void RetirarEstoque(int quantidade)
     {
@@ -30,6 +30,7 @@ public class QuantidadeEstoque
             throw new QuantidadeInsuficienteException(ValidationErrors.QuantidadeInsuficiente);
 
         QuantidadeAtual -= quantidade;
+        AtualizarStatus();
     }
 
     public void AdicionarEstoque(int quantidade)
@@ -38,5 +39,11 @@ public class QuantidadeEstoque
             throw new NumeroNaoNegativoException(ValidationErrors.ValorNaoNegativo("Quantidade a adicionar"));
 
         QuantidadeAtual += quantidade;
+        AtualizarStatus();
+    }
+
+    private void AtualizarStatus()
+    {
+        EstoqueCritico = QuantidadeAtual <= QuantidadeMinima;
     }
 }
