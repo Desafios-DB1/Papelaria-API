@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Papelaria.API.props" />
-</Project>
