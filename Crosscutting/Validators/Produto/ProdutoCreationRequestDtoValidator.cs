@@ -10,10 +10,10 @@ public class ProdutoCreationRequestDtoValidator : AbstractValidator<ProdutoCreat
     {
         RuleFor(x=>x.Nome)
         .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
-        .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo);
+        .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo(Valores.Duzentos));
 
         RuleFor(x=>x.Descricao)
-        .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo);
+        .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo(Valores.Trezentos));
 
         RuleFor(x=>x.QuantidadeMinima)
         .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo(0));
