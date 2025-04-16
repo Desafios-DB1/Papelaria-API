@@ -51,7 +51,7 @@ namespace API.Controllers
         {
             var authClaims = new List<Claim>
             {
-                new(ClaimTypes.Name, user.UserName),
+                new(ClaimTypes.Name, user.UserName ?? string.Empty),
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -61,7 +61,11 @@ namespace API.Controllers
                 authClaims.Add(new(ClaimTypes.Role, role));
             }
 
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]));
+            var jwtSecret = _configuration["Jwt:Secret"];
+            if (string.IsNullOrEmpty(jwtSecret))
+                throw new InvalidOperationException("JWT Secret is not configured.");
+
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:ValidIssuer"],
