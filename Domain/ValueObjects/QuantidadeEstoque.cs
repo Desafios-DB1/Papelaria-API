@@ -11,10 +11,10 @@ public class QuantidadeEstoque
     public QuantidadeEstoque(int quantidadeMinima, int quantidadeAtual)
     {
         if (quantidadeMinima < 0)
-            throw new NumeroNaoNegativoException(ValidationErrors.ValorNaoNegativo("Quantidade mínima"));
+            throw new NumeroNaoNegativoException(string.Format(ValidationErrors.ValorNaoNegativo, "Quantidade mínima"));
 
         if (quantidadeAtual < 0)
-            throw new NumeroNaoNegativoException(ValidationErrors.ValorNaoNegativo("Quantidade atual"));
+            throw new NumeroNaoNegativoException(string.Format(ValidationErrors.ValorNaoNegativo, "Quantidade atual"));
 
         QuantidadeMinima = quantidadeMinima;
         QuantidadeAtual = quantidadeAtual;
@@ -25,7 +25,7 @@ public class QuantidadeEstoque
     public void RetirarEstoque(int quantidade)
     {
         if (quantidade < 0)
-            throw new NumeroNaoNegativoException(ValidationErrors.ValorNaoNegativo("Quantidade a retirar"));
+            throw new NumeroNaoNegativoException(string.Format(ValidationErrors.ValorNaoNegativo, "Quantidade a retirar"));
         if (QuantidadeAtual < quantidade)
             throw new QuantidadeInsuficienteException(ValidationErrors.QuantidadeInsuficiente);
 
@@ -36,7 +36,7 @@ public class QuantidadeEstoque
     public void AdicionarEstoque(int quantidade)
     {
         if (quantidade < 0)
-            throw new NumeroNaoNegativoException(ValidationErrors.ValorNaoNegativo("Quantidade a adicionar"));
+            throw new NumeroNaoNegativoException(string.Format(ValidationErrors.ValorNaoNegativo, "Quantidade a adicionar"));
 
         QuantidadeAtual += quantidade;
         AtualizarStatus();

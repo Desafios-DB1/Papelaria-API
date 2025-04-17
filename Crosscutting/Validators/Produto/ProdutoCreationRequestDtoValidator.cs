@@ -10,21 +10,21 @@ public class ProdutoCreationRequestDtoValidator : AbstractValidator<ProdutoCreat
     {
         RuleFor(x=>x.Nome)
         .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
-        .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo(Valores.Duzentos));
+        .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo);
 
         RuleFor(x=>x.Descricao)
-        .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo(Valores.Trezentos));
+        .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo);
 
         RuleFor(x=>x.QuantidadeMinima)
-        .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo(0));
+        .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo);
 
         RuleFor(x=>x.QuantidadeAtual)
-        .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo(0));
+        .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo);
 
         RuleFor(x=>x.PrecoCompra)
-        .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo(0));
+        .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo);
 
         RuleFor(x=>x.PrecoVenda)
-        .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo(0));
+        .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo);
     }
 }
