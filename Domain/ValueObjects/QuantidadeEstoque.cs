@@ -20,6 +20,8 @@ public class QuantidadeEstoque
         QuantidadeAtual = quantidadeAtual;
     }
 
+    public QuantidadeEstoque() { }
+
     public bool EstoqueCritico { get; private set; }
 
     public void RetirarEstoque(int quantidade)
