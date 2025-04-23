@@ -38,7 +38,7 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
         {
-            var user = new Usuario { UserName = request.NomeUsuario, Email = request.Email, NomeCompleto = request.NomeCompleto, DataCriacao = DateTime.Now};
+            var user = new Usuario { UserName = request.NomeUsuario, NomeUsuario = request.NomeUsuario, Email = request.Email, NomeCompleto = request.NomeCompleto, DataCriacao = DateTime.Now};
 
             var result = await _userManager.CreateAsync(user, request.Senha);
 
