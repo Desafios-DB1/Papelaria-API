@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using API.Setups;
+using Domain.Entities;
 using Infra;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -39,7 +40,7 @@ public static class Provider
             };
         });
 
-        services.AddIdentityCore<IdentityUser>()
+        services.AddIdentityCore<Usuario>()
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();

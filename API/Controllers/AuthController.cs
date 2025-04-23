@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Crosscutting.Dtos.Login;
 using Crosscutting.Dtos.Register;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,7 @@ namespace API.Controllers
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
-            if (user == null || !await _userManager.CheckPasswordAsync(user, request.Password))
+            if (user == null || !await _userManager.CheckPasswordAsync(user, request.Senha))
                 return Unauthorized("Usuário ou senha inválidos.");
 
             var token = GenerateJwtToken(user);
@@ -37,9 +38,9 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
         {
-            var user = new IdentityUser { UserName = request.Email, Email = request.Email };
+            var user = new Usuario { UserName = request.NomeUsuario, Email = request.Email, NomeCompleto = request.NomeCompleto, DataCriacao = DateTime.Now};
 
-            var result = await _userManager.CreateAsync(user, request.Password);
+            var result = await _userManager.CreateAsync(user, request.Senha);
 
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
