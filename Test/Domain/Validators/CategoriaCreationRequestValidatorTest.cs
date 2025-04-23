@@ -10,7 +10,7 @@ public class CategoriaCreationRequestValidatorTest
     private readonly CategoriaCreationRequestDtoValidator _validator = new();
     
     [Fact]
-    public void CategoriaCreationRequestValidator_QuandoCategoriaValida_DeveRetornarSucesso()
+    public void CategoriaCreationRequestDtoValidator_QuandoCategoriaValida_DeveRetornarSucesso()
     {
         var categoria = CategoriaBuilder.Novo().Build();
 
@@ -44,7 +44,7 @@ public class CategoriaCreationRequestValidatorTest
     }
 
     [Fact]
-    public void CategoriaCreationDtoValidator_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
+    public void CategoriaCreationRequestDtoValidator_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
     {
         var categoria = CategoriaBuilder.Novo().ComDescricao(new string('a', 301)).Build();
         
