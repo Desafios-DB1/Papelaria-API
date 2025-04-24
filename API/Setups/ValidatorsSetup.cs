@@ -1,4 +1,6 @@
-﻿using FluentValidation.AspNetCore;
+﻿using Crosscutting.Validators.Auth.Register;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 namespace Papelaria.API.Setups;
 
@@ -8,7 +10,8 @@ public static class ValidatorsSetup
     {
         services
             .AddFluentValidationAutoValidation()
-            .AddFluentValidationClientsideAdapters();
+            .AddFluentValidationClientsideAdapters()
+            .AddValidatorsFromAssemblyContaining<RegisterRequestDtoValidator>();
         return services;
     }
 }
