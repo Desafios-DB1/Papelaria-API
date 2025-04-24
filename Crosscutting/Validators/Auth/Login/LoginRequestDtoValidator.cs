@@ -10,7 +10,8 @@ public class LoginRequestDtoValidator : AbstractValidator<LoginRequestDto>
     {
         RuleFor(x => x.Email)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
-            .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo);
+            .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo)
+            .EmailAddress().WithMessage(ValidationErrors.EmailInvalido);
         RuleFor(x => x.Senha)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
             .MaximumLength(Valores.Cinquenta).WithMessage(ValidationErrors.TamanhoMaximo);
