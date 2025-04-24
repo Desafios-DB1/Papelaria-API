@@ -1,6 +1,4 @@
-using System;
-
-namespace Crosscutting.Dtos.Login;
+namespace Crosscutting.Dtos.Auth.Login;
 
 public class LoginRequestDto
 {

@@ -1,8 +1,8 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Crosscutting.Dtos.Login;
-using Crosscutting.Dtos.Register;
+using Crosscutting.Dtos.Auth.Login;
+using Crosscutting.Dtos.Auth.Register;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

@@ -1,6 +1,4 @@
-using System;
-
-namespace Crosscutting.Dtos.Register;
+namespace Crosscutting.Dtos.Auth.Register;
 
 public class RegisterRequestDto
 {
