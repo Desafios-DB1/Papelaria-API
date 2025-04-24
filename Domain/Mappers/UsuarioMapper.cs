@@ -6,9 +6,9 @@ namespace Domain.Mappers;
 
 public static class UsuarioMapper
 {
-    public static RegisterRequestDto MapToRegisterRequestDto(Usuario usuario)
+    public static RegistroRequestDto MapToRegistroRequestDto(Usuario usuario)
     {
-        return new RegisterRequestDto
+        return new RegistroRequestDto
         {
             Email = usuario.Email,
             NomeCompleto = usuario.NomeCompleto,

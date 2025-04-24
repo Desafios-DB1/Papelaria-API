@@ -1,6 +1,6 @@
 namespace Crosscutting.Dtos.Auth.Register;
 
-public class RegisterRequestDto
+public class RegistroRequestDto
 {
     public string Email { get; set; }
     public string Senha { get; set; }

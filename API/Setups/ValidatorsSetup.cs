@@ -11,7 +11,7 @@ public static class ValidatorsSetup
         services
             .AddFluentValidationAutoValidation()
             .AddFluentValidationClientsideAdapters()
-            .AddValidatorsFromAssemblyContaining<RegisterRequestDtoValidator>();
+            .AddValidatorsFromAssemblyContaining<RegistroRequestDtoValidator>();
         return services;
     }
 }
