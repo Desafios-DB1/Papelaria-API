@@ -13,6 +13,7 @@ public class UsuarioBuilder
         {
             _faker = new Faker<Usuario>()
                 .RuleFor(u => u.NomeUsuario, f => f.Internet.UserName())
+                .RuleFor(u=>u.NomeCompleto, f => f.Name.FullName())
                 .RuleFor(u => u.Email, f => f.Internet.Email())
                 .RuleFor(u => u.DataCriacao, DateTime.Now)
                 .RuleFor(u =>u.UserName, f => f.Internet.UserName())
@@ -29,6 +30,18 @@ public class UsuarioBuilder
     public UsuarioBuilder ComSenha(string senha)
     {
         _faker.RuleFor(u => u.PasswordHash, senha);
+        return this;
+    }
+
+    public UsuarioBuilder ComNomeCompleto(string nomeCompleto)
+    {
+        _faker.RuleFor(u=>u.NomeCompleto, nomeCompleto);
+        return this;
+    }
+
+    public UsuarioBuilder ComNomeUsuario(string nomeUsuario)
+    {
+        _faker.RuleFor(u=>u.NomeUsuario, nomeUsuario);
         return this;
     }
     
