@@ -44,6 +44,18 @@ public class LoginRequestDtoValidatorTest
     }
     
     [Fact]
+    public void LoginRequestDtoValidator_QuandoEmailInvalido_DeveRetornarErro()
+    {
+        var usuario = UsuarioBuilder.Novo().ComEmail("emailinvalido").Build();
+
+        var resultado = _validator.Validate(UsuarioMapper.MapToLoginRequestDto(usuario));
+        
+        resultado.Errors.Should().Contain(e =>
+            e.PropertyName == "Email" &&
+            e.ErrorMessage == "'emailinvalido' não é um email válido.");
+    }
+    
+    [Fact]
     public void LoginRequestDtoValidator_QuandoSenhaVazia_DeveRetornarErro()
     {
         var usuario = UsuarioBuilder.Novo().ComSenha(string.Empty).Build();
