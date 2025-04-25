@@ -6,5 +6,7 @@ public class Categoria : Entidade<Categoria>
     public string Descricao { get; set; }
     public bool Ativo { get; set; } = true;
     
+    public ICollection<Produto> Produtos { get; set; } = [];
+    
     public Categoria() {}
 }
