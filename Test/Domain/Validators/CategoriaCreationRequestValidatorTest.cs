@@ -15,8 +15,8 @@ public class CategoriaCreationRequestValidatorTest
         var categoria = CategoriaBuilder.Novo().Build();
 
         var resultado = _validator.Validate(CategoriaMapper.MapToCreationDto(categoria));
-        
-        Assert.True(resultado.IsValid);
+
+        resultado.IsValid.Should().BeTrue();
     }
     
     [Fact]
