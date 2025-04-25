@@ -13,7 +13,7 @@ public class Produto : Entidade<Produto>
     public Guid CategoriaId { get; set; }
     public Categoria Categoria { get; set; }
     
-    public List<LogProduto> Logs { get; set; } = [];
+    public ICollection<LogProduto> Logs { get; set; } = new List<LogProduto>();
     
     public Produto() {}
 }
