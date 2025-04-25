@@ -16,8 +16,8 @@ public class RegistroRequestDtoValidatorTest
         var usuario = UsuarioBuilder.Novo().ComEmail("example@example.com").Build();
         
         var resultado = _validator.Validate(UsuarioMapper.MapToRegistroRequestDto(usuario));
-        
-        Assert.True(resultado.IsValid);
+
+        resultado.IsValid.Should().BeTrue();
     }
 
     [Fact]

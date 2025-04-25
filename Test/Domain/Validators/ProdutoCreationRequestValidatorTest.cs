@@ -16,8 +16,8 @@ public class ProdutoCreationRequestValidatorTest
         var produto = ProdutoBuilder.Novo().Build();
 
         var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
-        
-        Assert.True(resultado.IsValid);
+
+        resultado.IsValid.Should().BeTrue();
     }
     
     [Fact]

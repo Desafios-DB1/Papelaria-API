@@ -16,7 +16,7 @@ public class LoginRequestDtoValidatorTest
 
         var resultado = _validator.Validate(UsuarioMapper.MapToLoginRequestDto(usuario));
         
-        Assert.True(resultado.IsValid);
+        resultado.IsValid.Should().BeTrue();
     }
     
     [Fact]
