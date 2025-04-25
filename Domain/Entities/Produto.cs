@@ -6,9 +6,12 @@ public class Produto : Entidade<Produto>
 {
     public string Nome { get; set; }
     public string Descricao { get; set; }
-    public QuantidadeEstoque QuantidadeEstoque {get; private set; }
+    public QuantidadeEstoque QuantidadeEstoque {get; set; }
     public decimal PrecoCompra { get; set; }
     public decimal PrecoVenda { get; set; }
-
+    
+    public Guid CategoriaId { get; set; }
+    public Categoria Categoria { get; set; }
+    
     public Produto() {}
 }
