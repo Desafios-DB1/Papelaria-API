@@ -12,5 +12,8 @@ public class ApplicationDbContext : IdentityDbContext<Usuario>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        builder.Entity<Produto>()
+            .OwnsOne(p => p.QuantidadeEstoque);
     }
 }
