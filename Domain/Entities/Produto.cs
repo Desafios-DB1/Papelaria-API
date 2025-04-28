@@ -2,7 +2,7 @@ using Domain.ValueObjects;
 
 namespace Domain.Entities;
 
-public class Produto : Entidade<Produto>
+public class Produto : Entidade
 {
     public string Nome { get; set; }
     public string Descricao { get; set; }
@@ -12,6 +12,8 @@ public class Produto : Entidade<Produto>
     
     public Guid CategoriaId { get; set; }
     public Categoria Categoria { get; set; }
+    
+    public ICollection<LogProduto> Logs { get; set; } = new List<LogProduto>();
     
     public Produto() {}
 }
