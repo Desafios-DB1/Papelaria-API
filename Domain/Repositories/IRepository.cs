@@ -1,6 +1,8 @@
-﻿namespace Domain.Repositories;
+﻿using Domain.Entities;
 
-public interface IRepository<T> where T : class
+namespace Domain.Repositories;
+
+public interface IRepository<T> where T : Entidade
 {
     public Task SalvarAsync();
     public Task<Guid> AdicionarAsync(T entity);
