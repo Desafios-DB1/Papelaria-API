@@ -2,10 +2,8 @@
 
 namespace Domain.Entities;
 
-public class LogProduto
+public class LogProduto : Entidade
 {
-    public Guid Id { get; set; }
-    
     public Guid ProdutoId { get; set; }
     public Produto Produto { get; set; }
     
