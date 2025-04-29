@@ -22,6 +22,106 @@ namespace Infra.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Entities.Categoria", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categoria");
+                });
+
+            modelBuilder.Entity("Domain.Entities.LogProduto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DataAlteracao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ProdutoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("QuantidadeAnterior")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuantidadeAtual")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoOperacao")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UsuarioId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.HasIndex("UsuarioId1");
+
+                    b.ToTable("LogProduto");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Produto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CategoriaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)")
+                        .HasColumnName("Descricao");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)")
+                        .HasColumnName("Nome");
+
+                    b.Property<decimal>("PrecoCompra")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("PrecoCompra");
+
+                    b.Property<decimal>("PrecoVenda")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("PrecoVenda");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriaId");
+
+                    b.ToTable("Produtos", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.Usuario", b =>
                 {
                     b.Property<string>("Id")
@@ -229,6 +329,61 @@ namespace Infra.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.LogProduto", b =>
+                {
+                    b.HasOne("Domain.Entities.Produto", "Produto")
+                        .WithMany("Logs")
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Usuario", "Usuario")
+                        .WithMany("Logs")
+                        .HasForeignKey("UsuarioId1");
+
+                    b.Navigation("Produto");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Produto", b =>
+                {
+                    b.HasOne("Domain.Entities.Categoria", "Categoria")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.OwnsOne("Domain.ValueObjects.QuantidadeEstoque", "QuantidadeEstoque", b1 =>
+                        {
+                            b1.Property<Guid>("ProdutoId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<bool>("EstoqueCritico")
+                                .HasColumnType("bit")
+                                .HasColumnName("EstoqueCritico");
+
+                            b1.Property<int>("QuantidadeAtual")
+                                .HasColumnType("int")
+                                .HasColumnName("QuantidadeAtual");
+
+                            b1.Property<int>("QuantidadeMinima")
+                                .HasColumnType("int")
+                                .HasColumnName("QuantidadeMinima");
+
+                            b1.HasKey("ProdutoId");
+
+                            b1.ToTable("Produtos");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProdutoId");
+                        });
+
+                    b.Navigation("Categoria");
+
+                    b.Navigation("QuantidadeEstoque");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -278,6 +433,21 @@ namespace Infra.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.Categoria", b =>
+                {
+                    b.Navigation("Produtos");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Produto", b =>
+                {
+                    b.Navigation("Logs");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Usuario", b =>
+                {
+                    b.Navigation("Logs");
                 });
 #pragma warning restore 612, 618
         }
