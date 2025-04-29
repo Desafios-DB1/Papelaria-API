@@ -16,7 +16,8 @@ public static class Provider
         services.AddDbContextSetup(configuration);
         
         services
-            .AddValidatorsSetup();
+            .AddValidatorsSetup()
+            .AddRepositoriesSetup();
         
         services.AddSwaggerGen(SwaggerSetup.ConfigureSwagger);
 
