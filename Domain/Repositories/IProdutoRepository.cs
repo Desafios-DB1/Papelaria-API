@@ -7,5 +7,5 @@ public interface IProdutoRepository : IRepository<Produto>
 {
     Task <List<Produto>> ObterPorNomeAsync(string nome);
     Task <List<Produto>> ObterPorCategoriaAsync(Guid categoriaId);
-    Task <List<Produto>> ObterPorStatusEstoque(bool estoqueEstaCritico);
+    Task <List<Produto>> ObterPorStatusEstoque(StatusEstoque statusEstoque);
 }
