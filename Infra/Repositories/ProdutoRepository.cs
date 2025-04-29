@@ -27,11 +27,11 @@ public class ProdutoRepository(ApplicationDbContext context) : Repository<Produt
         return produtos;
     }
 
-    public async Task<List<Produto>> ObterPorStatusEstoque(bool estoqueEstaCritico)
+    public async Task<List<Produto>> ObterPorStatusEstoque(StatusEstoque statusEstoque)
     {
         var produtos = await Context.Produtos
             .AsNoTracking()
-            .Where(p => p.QuantidadeEstoque.EstoqueCritico == estoqueEstaCritico)
+            .Where(p => p.QuantidadeEstoque.StatusEstoque == statusEstoque)
             .ToListAsync();
 
         return produtos;
