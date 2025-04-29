@@ -39,15 +39,5 @@ public class ProdutoMapping : IEntityTypeConfiguration<Produto>
                 .HasColumnName(nameof(Produto.QuantidadeEstoque.QuantidadeMinima))
                 .IsRequired();
         });
-
-        /*builder.HasOne(p => p.Categoria)
-            .WithMany(c => c.Produtos)
-            .HasForeignKey(p => p.CategoriaId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        builder.HasMany(p => p.Logs)
-            .WithOne(l => l.Produto)
-            .HasForeignKey(l => l.ProdutoId)
-            .OnDelete(DeleteBehavior.Cascade);*/
     }
 }
