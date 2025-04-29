@@ -27,15 +27,13 @@ public class ProdutoRepository(ApplicationDbContext context) : Repository<Produt
         return produtos;
     }
 
-    public async Task<List<Produto>> ObterPorStatusEstoque(StatusEstoque status)
+    public async Task<List<Produto>> ObterPorStatusEstoque(bool estoqueEstaCritico)
     {
-        var query = Context.Produtos.AsNoTracking();
+        var produtos = await Context.Produtos
+            .AsNoTracking()
+            .Where(p => p.QuantidadeEstoque.EstoqueCritico == estoqueEstaCritico)
+            .ToListAsync();
 
-        if (status == StatusEstoque.OK)
-            query = query.Where(p => !p.QuantidadeEstoque.EstoqueCritico);
-        else if (status == StatusEstoque.CRITICO)
-            query = query.Where(p => p.QuantidadeEstoque.EstoqueCritico);
-
-        return await query.ToListAsync();
+        return produtos;
     }
 }
