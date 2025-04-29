@@ -40,7 +40,7 @@ public class ProdutoMapping : IEntityTypeConfiguration<Produto>
                 .IsRequired();
         });
 
-        builder.HasOne(p => p.Categoria)
+        /*builder.HasOne(p => p.Categoria)
             .WithMany(c => c.Produtos)
             .HasForeignKey(p => p.CategoriaId)
             .OnDelete(DeleteBehavior.Restrict);
@@ -48,6 +48,6 @@ public class ProdutoMapping : IEntityTypeConfiguration<Produto>
         builder.HasMany(p => p.Logs)
             .WithOne(l => l.Produto)
             .HasForeignKey(l => l.ProdutoId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Cascade);*/
     }
 }

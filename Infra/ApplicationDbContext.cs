@@ -16,5 +16,7 @@ public class ApplicationDbContext : IdentityDbContext<Usuario>
     {
         base.OnModelCreating(builder);
         builder.ApplyConfiguration(new ProdutoMapping());
+        builder.Ignore<Categoria>();
+        builder.Ignore<LogProduto>();
     }
 }
