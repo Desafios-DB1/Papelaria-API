@@ -7,11 +7,9 @@ namespace Infra.Repositories;
 
 public class ProdutoRepository(ApplicationDbContext context) : Repository<Produto>(context), IProdutoRepository
 {
-    private readonly ApplicationDbContext _context = context;
-
     public async Task<List<Produto>> ObterPorNomeAsync(string nome)
     {
-        var produtos = await _context.Produtos
+        var produtos = await Context.Produtos
             .AsNoTracking()
             .Where(p => p.Nome == nome)
             .ToListAsync();
@@ -21,7 +19,7 @@ public class ProdutoRepository(ApplicationDbContext context) : Repository<Produt
 
     public async Task<List<Produto>> ObterPorCategoriaAsync(Guid categoriaId)
     {
-        var produtos = await _context.Produtos
+        var produtos = await Context.Produtos
             .AsNoTracking()
             .Where(p => p.CategoriaId == categoriaId)
             .ToListAsync();
@@ -31,7 +29,7 @@ public class ProdutoRepository(ApplicationDbContext context) : Repository<Produt
 
     public async Task<List<Produto>> ObterPorStatusEstoque(StatusEstoque status)
     {
-        var query = _context.Produtos.AsNoTracking();
+        var query = Context.Produtos.AsNoTracking();
 
         if (status == StatusEstoque.OK)
             query = query.Where(p => !p.QuantidadeEstoque.EstoqueCritico);
