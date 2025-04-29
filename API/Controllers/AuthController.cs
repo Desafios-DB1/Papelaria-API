@@ -15,15 +15,16 @@ namespace API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Usuario> _userManager;
         private readonly IConfiguration _configuration;
 
-        public AuthController(UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public AuthController(UserManager<Usuario> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _configuration = configuration;
         }
         
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
@@ -35,6 +36,7 @@ namespace API.Controllers
             return Ok(new { token });
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistroRequestDto request)
         {
@@ -48,7 +50,7 @@ namespace API.Controllers
             return Ok("Usuário registrado com sucesso!");
         }
 
-        private async Task<string> GenerateJwtToken(IdentityUser user)
+        private async Task<string> GenerateJwtToken(Usuario user)
         {
             var authClaims = new List<Claim>
             {
