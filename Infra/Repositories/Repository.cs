@@ -6,12 +6,12 @@ namespace Infra.Repositories;
 
 public class Repository<T>(ApplicationDbContext context) : IRepository<T> where T : Entidade
 {
-    private readonly ApplicationDbContext _context = context;
+    protected readonly ApplicationDbContext Context = context;
     private readonly DbSet<T> _dbSet = context.Set<T>();
     
     public async Task SalvarAsync()
     {
-        await _context.SaveChangesAsync();
+        await Context.SaveChangesAsync();
     }
 
     public async Task<Guid> AdicionarAsync(T entity)

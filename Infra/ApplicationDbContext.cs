@@ -1,4 +1,5 @@
 using Domain.Entities;
+using Infra.Mappings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,13 @@ public class ApplicationDbContext : IdentityDbContext<Usuario>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
+    public DbSet<Produto> Produtos { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-
-        builder.Entity<Produto>()
-            .OwnsOne(p => p.QuantidadeEstoque);
+        builder.ApplyConfiguration(new ProdutoMapping());
+        builder.Ignore<Categoria>();
+        builder.Ignore<LogProduto>();
     }
 }

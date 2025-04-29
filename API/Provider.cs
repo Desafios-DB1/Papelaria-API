@@ -13,10 +13,12 @@ public static class Provider
 {
     public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services
+            .AddRepositoriesSetup()
+            .AddValidatorsSetup();
+        
         services.AddDbContextSetup(configuration);
         
-        services
-            .AddValidatorsSetup();
         
         services.AddSwaggerGen(SwaggerSetup.ConfigureSwagger);
 

@@ -1,5 +1,6 @@
 using Crosscutting.Constantes;
 using Crosscutting.Exceptions;
+using Domain.Enums;
 
 namespace Domain.ValueObjects;
 
@@ -22,7 +23,9 @@ public class QuantidadeEstoque
 
     public QuantidadeEstoque() { }
 
-    public bool EstoqueCritico { get; private set; }
+    public StatusEstoque StatusEstoque => QuantidadeAtual <= QuantidadeMinima
+        ? StatusEstoque.CRITICO
+        : StatusEstoque.OK;
 
     public void RetirarEstoque(int quantidade)
     {
@@ -32,7 +35,6 @@ public class QuantidadeEstoque
             throw new QuantidadeInsuficienteException(ValidationErrors.QuantidadeInsuficiente);
 
         QuantidadeAtual -= quantidade;
-        AtualizarStatus();
     }
 
     public void AdicionarEstoque(int quantidade)
@@ -41,11 +43,5 @@ public class QuantidadeEstoque
             throw new NumeroNaoNegativoException(string.Format(ValidationErrors.ValorNaoNegativo, "Quantidade a adicionar"));
 
         QuantidadeAtual += quantidade;
-        AtualizarStatus();
-    }
-
-    private void AtualizarStatus()
-    {
-        EstoqueCritico = QuantidadeAtual <= QuantidadeMinima;
     }
 }
