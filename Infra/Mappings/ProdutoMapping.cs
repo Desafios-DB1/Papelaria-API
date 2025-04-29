@@ -38,10 +38,6 @@ public class ProdutoMapping : IEntityTypeConfiguration<Produto>
             estoque.Property(e => e.QuantidadeMinima)
                 .HasColumnName(nameof(Produto.QuantidadeEstoque.QuantidadeMinima))
                 .IsRequired();
-
-            estoque.Property(e => e.EstoqueCritico)
-                .HasColumnName(nameof(Produto.QuantidadeEstoque.EstoqueCritico))
-                .IsRequired();
         });
 
         builder.HasOne(p => p.Categoria)
