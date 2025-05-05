@@ -10,7 +10,7 @@ public class LogProdutoMapping : IEntityTypeConfiguration<LogProduto>
     {
         builder.ToTable("LogsProduto");
         builder.HasKey(l => l.Id);
-        builder.Property(l => l.ProdutoId)
+        builder.Property(l => l.Id)
             .HasColumnName(nameof(LogProduto.Id))
             .ValueGeneratedNever();
 
