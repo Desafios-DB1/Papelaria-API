@@ -9,7 +9,8 @@ public static class RepositoriesSetup
     {
         services
             .AddScoped<IProdutoRepository, ProdutoRepository>()
-            .AddScoped<ICategoriaRepository, CategoriaRepository>();
+            .AddScoped<ICategoriaRepository, CategoriaRepository>()
+            .AddScoped<ILogProdutoRepository, LogProdutoRepository>();
         
         return services;
     }
