@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using Domain.ValueObjects;
 
 namespace Domain.Entities;
@@ -14,8 +13,6 @@ public class Produto : Entidade
     public Guid CategoriaId { get; set; }
     
     public Categoria Categoria { get; set; }
-    
-    [NotMapped]
     public ICollection<LogProduto> Logs { get; set; } = new List<LogProduto>();
     
     public Produto() {}

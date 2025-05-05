@@ -9,31 +9,25 @@ public class ProdutoRepository(ApplicationDbContext context) : Repository<Produt
 {
     public async Task<List<Produto>> ObterPorNomeAsync(string nome)
     {
-        var produtos = await Context.Produtos
+        return await Context.Produtos
             .AsNoTracking()
             .Where(p => p.Nome == nome)
             .ToListAsync();
-        
-        return produtos;
     }
 
     public async Task<List<Produto>> ObterPorCategoriaAsync(Guid categoriaId)
     {
-        var produtos = await Context.Produtos
+        return await Context.Produtos
             .AsNoTracking()
             .Where(p => p.CategoriaId == categoriaId)
             .ToListAsync();
-        
-        return produtos;
     }
 
     public async Task<List<Produto>> ObterPorStatusEstoque(StatusEstoque statusEstoque)
     {
-        var produtos = await Context.Produtos
+        return await Context.Produtos
             .AsNoTracking()
             .Where(p => p.QuantidadeEstoque.StatusEstoque == statusEstoque)
             .ToListAsync();
-
-        return produtos;
     }
 }

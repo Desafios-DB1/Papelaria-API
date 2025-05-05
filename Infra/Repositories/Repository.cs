@@ -29,14 +29,12 @@ public class Repository<T>(ApplicationDbContext context) : IRepository<T> where 
 
     public async Task<T> ObterPorIdAsync(Guid id)
     {
-        var entidade = await _dbSet.FindAsync(id);
-        return entidade;
+        return await _dbSet.FindAsync(id);
     }
 
     public async Task<List<T>> ObterTodosAsync()
     {
-        var entidades = await _dbSet.ToListAsync();
-        return entidades;
+        return await _dbSet.ToListAsync();
     }
 
     public Guid Atualizar(T entity)
