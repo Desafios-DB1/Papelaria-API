@@ -8,21 +8,17 @@ public class LogProdutoRepository(ApplicationDbContext context) : Repository<Log
 {
     public async Task<List<LogProduto>> ObterPorProdutoIdAsync(Guid produtoId)
     {
-        var logs = await Context.LogsProduto
+        return await Context.LogsProduto
             .AsNoTracking()
             .Where(l => l.ProdutoId == produtoId)
             .ToListAsync();
-
-        return logs;
     }
 
     public async Task<List<LogProduto>> ObterPorUsuarioIdAsync(Guid usuarioId)
     {
-        var logs = await Context.LogsProduto
+        return await Context.LogsProduto
             .AsNoTracking()
             .Where(l => l.UsuarioId == usuarioId)
             .ToListAsync();
-
-        return logs;
     }
 }
