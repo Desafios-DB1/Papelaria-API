@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Crosscutting.Constantes;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,12 +17,12 @@ public class ProdutoMapping : IEntityTypeConfiguration<Produto>
 
         builder.Property(p => p.Nome)
             .HasColumnName(nameof(Produto.Nome))
-            .HasMaxLength(200)
+            .HasMaxLength(Valores.Duzentos)
             .IsRequired();
 
         builder.Property(p => p.Descricao)
             .HasColumnName(nameof(Produto.Descricao))
-            .HasMaxLength(300);
+            .HasMaxLength(Valores.Trezentos);
 
         builder.Property(p => p.PrecoCompra)
             .HasColumnName(nameof(Produto.PrecoCompra));
@@ -39,5 +40,10 @@ public class ProdutoMapping : IEntityTypeConfiguration<Produto>
                 .HasColumnName(nameof(Produto.QuantidadeEstoque.QuantidadeMinima))
                 .IsRequired();
         });
+        
+        builder.HasOne(p => p.Categoria)
+            .WithMany(c => c.Produtos)
+            .HasForeignKey(p => p.CategoriaId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

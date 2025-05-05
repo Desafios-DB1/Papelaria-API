@@ -11,12 +11,13 @@ public class ApplicationDbContext : IdentityDbContext<Usuario>
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
     public DbSet<Produto> Produtos { get; set; }
+    public DbSet<Categoria> Categorias { get; set; }
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
         builder.ApplyConfiguration(new ProdutoMapping());
-        builder.Ignore<Categoria>();
+        builder.ApplyConfiguration(new CategoriaMapping());
         builder.Ignore<LogProduto>();
     }
 }

@@ -15,6 +15,9 @@ public class ProdutoCreationRequestDtoValidator : AbstractValidator<ProdutoCreat
         RuleFor(x=>x.Descricao)
         .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo);
 
+        RuleFor(x => x.CategoriaId)
+            .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio);
+
         RuleFor(x=>x.QuantidadeMinima)
         .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo);
 

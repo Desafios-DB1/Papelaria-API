@@ -1,0 +1,18 @@
+﻿using Domain.Entities;
+using Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+
+namespace Infra.Repositories;
+
+public class CategoriaRepository(ApplicationDbContext context) : Repository<Categoria>(context), ICategoriaRepository
+{
+    public Task<List<Categoria>> ObterPorNomeAsync(string nome)
+    {
+        var categorias = Context.Categorias
+            .AsNoTracking()
+            .Where(c => c.Nome == nome)
+            .ToListAsync();
+
+        return categorias;
+    }
+}

@@ -8,7 +8,8 @@ public static class RepositoriesSetup
     public static IServiceCollection AddRepositoriesSetup(this IServiceCollection services)
     {
         services
-            .AddScoped<IProdutoRepository, ProdutoRepository>();
+            .AddScoped<IProdutoRepository, ProdutoRepository>()
+            .AddScoped<ICategoriaRepository, CategoriaRepository>();
         
         return services;
     }
