@@ -36,7 +36,7 @@ public class CategoriaServiceTest
     }
 
     [Fact]
-    public async Task CriarAsync_QuandoDtoNulo_DeveLancarNullReferenceException()
+    public async Task CriarAsync_QuandoDtoNulo_DeveLancarRequisicaoInvalidaException()
     {
         Func<Task> act = async () => await _categoriaService.CriarAsync(null);
         
