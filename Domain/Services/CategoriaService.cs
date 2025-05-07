@@ -51,4 +51,15 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
 
         return await repository.AtualizarESalvarAsync(categoriaExistente);
     }
+
+    public async Task RemoverAsync(Guid id)
+    {
+        if (id == Guid.Empty)
+            throw new RequisicaoInvalidaException(ErrorMessages.IdNulo("categoria"));
+        
+        var categoria = await repository.ObterPorIdAsync(id)
+            ?? throw new RequisicaoInvalidaException(ErrorMessages.NaoExiste("categoria"));
+        
+        await repository.RemoverESalvarAsync(categoria);
+    }
 }

@@ -220,4 +220,22 @@ public class CategoriaServiceTest
             .WithMessage("Falha no banco.");
     }
     #endregion
+    
+    #region RemoverCategoria
+
+    [Fact]
+    public async Task RemoverAsync_QuandoIdValido_DeveRemoverCategoria()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        _categoriaRepositoryMock.Setup(r => r.RemoverESalvarAsync(It.IsAny<Categoria>()));
+        
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(categoria.Id))
+            .ReturnsAsync(categoria);
+        
+        await _categoriaService.RemoverAsync(categoria.Id);
+        
+        _categoriaRepositoryMock.Verify(r => r.RemoverESalvarAsync(It.IsAny<Categoria>()), Times.Once);
+    }
+    #endregion
 }
