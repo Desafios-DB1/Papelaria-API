@@ -23,4 +23,15 @@ public static class CategoriaMapper
             Ativo = true
         };
     }
+
+    public static CategoriaUpdateRequestDto MapToUpdateDto(this Categoria categoria)
+    {
+        return new CategoriaUpdateRequestDto
+        {
+            Id = categoria.Id,
+            Nome = categoria.Nome,
+            Descricao = categoria.Descricao,
+            Ativo = categoria.Ativo
+        };
+    }
 }

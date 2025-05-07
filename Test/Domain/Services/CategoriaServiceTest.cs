@@ -61,4 +61,21 @@ public class CategoriaServiceTest
 
     }
     #endregion
+    
+    #region AtualizarCategoria
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoDtoValido_DeveRetornarId()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        _categoriaRepositoryMock.Setup(r => r.AtualizarESalvarAsync(It.IsAny<Categoria>()))
+            .ReturnsAsync(categoria.Id);
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(categoria);
+        
+        var result = await _categoriaService.AtualizarAsync(categoria.MapToUpdateDto());
+        result.Should().Be(categoria.Id);
+    }
+    #endregion
 }
