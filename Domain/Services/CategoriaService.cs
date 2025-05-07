@@ -33,7 +33,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         if (string.IsNullOrEmpty(nome))
             throw new RequisicaoInvalidaException(ErrorMessages.NomeNulo);
         
-        var categoria = await repository.ObterPorNomeAsync(nome.ToUpper())
+        var categoria = await repository.ObterPorNomeAsync(nome)
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
 
         return categoria.MapToResponseDto();
