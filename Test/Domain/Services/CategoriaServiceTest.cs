@@ -68,8 +68,6 @@ public class CategoriaServiceTest
     public async Task RemoverAsync_QuandoIdValido_DeveRemoverCategoria()
     {
         var categoria = CategoriaBuilder.Novo().Build();
-
-        _categoriaRepositoryMock.Setup(r => r.RemoverESalvarAsync(It.IsAny<Categoria>()));
         
         _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(categoria.Id))
             .ReturnsAsync(categoria);
@@ -77,6 +75,46 @@ public class CategoriaServiceTest
         await _categoriaService.RemoverAsync(categoria.Id);
         
         _categoriaRepositoryMock.Verify(r => r.RemoverESalvarAsync(It.IsAny<Categoria>()), Times.Once);
+    }
+
+    [Fact]
+    public async Task RemoverAsync_QuandoIdNaoExiste_DeveRetornarNaoEncontradoException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        Func<Task> act = async () => await _categoriaService.RemoverAsync(categoria.Id);
+        
+        await act.Should()
+            .ThrowAsync<NaoEncontradoException>()
+            .WithMessage("Categoria não existe.");
+    }
+    
+    [Fact]
+    public async Task RemoverAsync_QuandoIdVazio_DeveLancarRequisicaoInvalidaException()
+    {
+        Func<Task> act = async () => await _categoriaService.RemoverAsync(Guid.Empty);
+
+        await act.Should()
+            .ThrowAsync<RequisicaoInvalidaException>()
+            .WithMessage("O ID de categoria não pode ser nulo.");
+    }
+    
+    [Fact]
+    public async Task RemoverAsync_QuandoErroNoBanco_DeveLancarException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+        
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(categoria.Id))
+            .ReturnsAsync(categoria);
+        
+        _categoriaRepositoryMock.Setup(r => r.RemoverESalvarAsync(It.IsAny<Categoria>()))
+            .ThrowsAsync(new Exception("Falha no banco."));
+        
+        Func<Task> act = async () => await _categoriaService.RemoverAsync(categoria.Id);
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
     }
     #endregion
 }

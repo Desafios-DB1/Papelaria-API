@@ -25,7 +25,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
             throw new RequisicaoInvalidaException(ErrorMessages.IdNulo("categoria"));
         
         var categoria = await repository.ObterPorIdAsync(id)
-            ?? throw new RequisicaoInvalidaException(ErrorMessages.NaoExiste("categoria"));
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("categoria"));
         
         await repository.RemoverESalvarAsync(categoria);
     }
