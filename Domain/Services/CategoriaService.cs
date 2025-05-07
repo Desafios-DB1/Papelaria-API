@@ -28,4 +28,15 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
         return categoria.MapToResponseDto();
     }
+
+    public async Task<List<CategoriaResponseDto>> ObterPorNome(string nome)
+    {
+        if (string.IsNullOrEmpty(nome))
+            throw new RequisicaoInvalidaException(ErrorMessages.NomeNulo);
+        
+        var categorias = await repository.ObterPorNomeAsync(nome.ToUpper())
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
+        
+        return categorias.Select(c => c.MapToResponseDto()).ToList();
+    }
 }

@@ -118,4 +118,51 @@ public class CategoriaServiceTest
             .WithMessage("Falha no banco.");
     }
     #endregion
+
+    #region ObterPorNome
+
+    [Fact]
+    public async Task ObterPorNome_QuandoNomeValido_DeveRetornarListaDeCategorias()
+    {
+        var categorias = new List<Categoria>
+        {
+            CategoriaBuilder.Novo().ComNome("teste").Build(),
+            CategoriaBuilder.Novo().ComNome("teste").Build(),
+            CategoriaBuilder.Novo().ComNome("teste2").Build()
+        };
+        
+        _categoriaRepositoryMock.Setup(r => r.ObterPorNomeAsync(It.IsAny<string>()))
+            .ReturnsAsync(categorias.Where(c => c.Nome == "teste").ToList());
+        
+        var result = await _categoriaService.ObterPorNome("teste");
+        result.Should().NotBeNull();
+        result.Should().BeOfType<List<CategoriaResponseDto>>();
+        result.Should().HaveCount(2);
+        result.Should().BeEquivalentTo(categorias.Where(c => c.Nome == "teste").Select(c => c.MapToResponseDto()));
+    }
+    
+    [Fact]
+    public async Task ObterPorNome_QuandoNomeInvalido_DeveLancarRequisicaoInvalidaException()
+    {
+        Func<Task> act = async () => await _categoriaService.ObterPorNome(string.Empty);
+        
+        await act.Should()
+            .ThrowAsync<RequisicaoInvalidaException>()
+            .WithMessage("O campo nome não pode ser nulo.");
+    }
+
+    
+    [Fact]
+    public async Task ObterPorNome_QuandoErroNoBanco_DeveLancarException()
+    {
+        _categoriaRepositoryMock.Setup(r => r.ObterPorNomeAsync(It.IsAny<string>()))
+            .ThrowsAsync(new Exception("Falha no banco."));
+        
+        Func<Task> act = async () => await _categoriaService.ObterPorNome("teste");
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
+    }
+    #endregion
 }

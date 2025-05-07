@@ -10,7 +10,7 @@ public class CategoriaRepository(ApplicationDbContext context) : Repository<Cate
     {
         return await Context.Categorias
             .AsNoTracking()
-            .Where(c => c.Nome == nome)
+            .Where(c => c.Nome.Equals(nome, StringComparison.CurrentCultureIgnoreCase))
             .ToListAsync();
     }
 }
