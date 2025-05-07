@@ -124,21 +124,15 @@ public class CategoriaServiceTest
     [Fact]
     public async Task ObterPorNome_QuandoNomeValido_DeveRetornarListaDeCategorias()
     {
-        var categorias = new List<Categoria>
-        {
-            CategoriaBuilder.Novo().ComNome("teste").Build(),
-            CategoriaBuilder.Novo().ComNome("teste").Build(),
-            CategoriaBuilder.Novo().ComNome("teste2").Build()
-        };
+        var categoria = CategoriaBuilder.Novo().ComNome("teste").Build();
         
         _categoriaRepositoryMock.Setup(r => r.ObterPorNomeAsync(It.IsAny<string>()))
-            .ReturnsAsync(categorias.Where(c => c.Nome == "teste").ToList());
+            .ReturnsAsync(categoria);
         
         var result = await _categoriaService.ObterPorNome("teste");
         result.Should().NotBeNull();
-        result.Should().BeOfType<List<CategoriaResponseDto>>();
-        result.Should().HaveCount(2);
-        result.Should().BeEquivalentTo(categorias.Where(c => c.Nome == "teste").Select(c => c.MapToResponseDto()));
+        result.Should().BeOfType<CategoriaResponseDto>();
+        result.Should().BeEquivalentTo(categoria.MapToResponseDto());
     }
     
     [Fact]
