@@ -31,18 +31,18 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Categoria>()))
             .ReturnsAsync(categoria.Id);
 
-        var result = await _categoriaService.CriarAsync(categoria.MapToCreationDto());
+        var result = await _categoriaService.CriarAsync(categoria.MapToCriarCategoriaCommand(), CancellationToken.None);
         result.Should().Be(categoria.Id);
     }
 
     [Fact]
     public async Task CriarAsync_QuandoDtoNulo_DeveLancarRequisicaoInvalidaException()
     {
-        Func<Task> act = async () => await _categoriaService.CriarAsync(null);
+        Func<Task> act = async () => await _categoriaService.CriarAsync(null, CancellationToken.None);
         
         await act.Should()
             .ThrowAsync<RequisicaoInvalidaException>()
-            .WithMessage("O DTO de categoria não pode ser nulo.");
+            .WithMessage("A requisição não pode ser nula.");
     }
     
     [Fact]
@@ -53,7 +53,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Categoria>()))
             .ThrowsAsync(new Exception("Falha no banco."));
         
-        Func<Task> act = async () => await _categoriaService.CriarAsync(categoria.MapToCreationDto());
+        Func<Task> act = async () => await _categoriaService.CriarAsync(categoria.MapToCriarCategoriaCommand(), CancellationToken.None);
 
         await act.Should()
             .ThrowAsync<Exception>()

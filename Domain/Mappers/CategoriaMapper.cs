@@ -1,4 +1,5 @@
 ﻿using Crosscutting.Dtos.Categoria;
+using Domain.Commands.Categoria;
 using Domain.Entities;
 
 namespace Domain.Mappers;
@@ -14,12 +15,21 @@ public static class CategoriaMapper
         };
     }
 
-    public static Categoria MapToEntity(this CategoriaCreationRequestDto categoriaDto)
+    public static CriarCategoriaCommand MapToCriarCategoriaCommand(this Categoria categoria)
+    {
+        return new CriarCategoriaCommand
+        {
+            Nome = categoria.Nome,
+            Descricao = categoria.Descricao
+        };
+    }
+
+    public static Categoria MapToCategoria(this CriarCategoriaCommand command)
     {
         return new Categoria
         {
-            Nome = categoriaDto.Nome,
-            Descricao = categoriaDto.Descricao,
+            Nome = command.Nome,
+            Descricao = command.Descricao,
             Ativo = true
         };
     }
