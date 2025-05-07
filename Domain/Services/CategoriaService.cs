@@ -26,7 +26,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         
         var categoriaAntiga = await repository.ObterPorIdAsync(categoriaDto.Id);
         if (categoriaAntiga is null)
-            throw new RequisicaoInvalidaException(ErrorMessages.NaoExiste("Categoria"));
+            throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
         
         categoriaAntiga.Nome = categoriaDto.Nome;
         categoriaAntiga.Descricao = categoriaDto.Descricao;
