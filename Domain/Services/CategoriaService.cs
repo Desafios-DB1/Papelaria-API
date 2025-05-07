@@ -4,7 +4,6 @@ using Crosscutting.Exceptions;
 using Domain.Interfaces;
 using Domain.Mappers;
 using Domain.Repositories;
-using FluentValidation;
 
 namespace Domain.Services;
 
@@ -17,5 +16,14 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         
         var categoria = categoriaDto.MapToEntity();
         return await repository.AdicionarESalvarAsync(categoria);
+    }
+
+    public async Task<CategoriaResponseDto> ObterPorIdAsync(Guid id)
+    {
+        if (id == Guid.Empty)
+            throw new RequisicaoInvalidaException(ErrorMessages.IdNulo("categoria"));
+
+        var categoria = await repository.ObterPorIdAsync(id);
+        return categoria.MapToResponseDto();
     }
 }
