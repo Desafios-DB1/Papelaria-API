@@ -5,8 +5,6 @@ using Domain.Mappers;
 using Domain.Repositories;
 using Domain.Services;
 using FluentAssertions;
-using FluentValidation;
-using FluentValidation.Results;
 using Moq;
 using Test.Domain.Builders;
 

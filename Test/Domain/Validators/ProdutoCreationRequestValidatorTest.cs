@@ -1,5 +1,4 @@
-﻿using Crosscutting.Constantes;
-using Crosscutting.Validators.Produto;
+﻿using Crosscutting.Validators.Produto;
 using Test.Domain.Builders;
 using Domain.Mappers;
 using FluentAssertions;

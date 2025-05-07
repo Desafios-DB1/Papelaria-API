@@ -1,5 +1,4 @@
 ﻿using Crosscutting.Validators.Auth.Register;
-using Domain.Entities;
 using Domain.Mappers;
 using FluentAssertions;
 using Test.Domain.Builders;

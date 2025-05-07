@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Crosscutting.Constantes;
+﻿using Crosscutting.Constantes;
 using Crosscutting.Dtos.Categoria;
 using Crosscutting.Exceptions;
 using Domain.Interfaces;
