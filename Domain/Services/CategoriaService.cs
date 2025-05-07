@@ -18,4 +18,15 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         var categoria = categoriaDto.MapToEntity();
         return await repository.AdicionarESalvarAsync(categoria);
     }
+
+    public async Task RemoverAsync(Guid id)
+    {
+        if (id == Guid.Empty)
+            throw new RequisicaoInvalidaException(ErrorMessages.IdNulo("categoria"));
+        
+        var categoria = await repository.ObterPorIdAsync(id)
+            ?? throw new RequisicaoInvalidaException(ErrorMessages.NaoExiste("categoria"));
+        
+        await repository.RemoverESalvarAsync(categoria);
+    }
 }
