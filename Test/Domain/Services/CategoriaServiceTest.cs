@@ -79,6 +79,21 @@ public class CategoriaServiceTest
     }
     
     [Fact]
+    public async Task ObterPorIdAsync_QuandoIdNaoExiste_DeveRetornarNaoEncontradoException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+        
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync((Categoria)null);
+        
+        Func<Task> act = async () => await _categoriaService.ObterPorIdAsync(categoria.Id);
+        
+        await act.Should()
+            .ThrowAsync<NaoEncontradoException>()
+            .WithMessage("Categoria não existe.");
+    }
+    
+    [Fact]
     public async Task ObterPorIdAsync_QuandoIdVazio_DeveLancarRequisicaoInvalidaException()
     {
         Func<Task> act = async () => await _categoriaService.ObterPorIdAsync(Guid.Empty);
