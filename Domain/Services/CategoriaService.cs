@@ -1,4 +1,5 @@
-﻿using Crosscutting.Constantes;
+﻿using System.Globalization;
+using Crosscutting.Constantes;
 using Crosscutting.Dtos.Categoria;
 using Crosscutting.Exceptions;
 using Domain.Interfaces;
@@ -23,7 +24,8 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         if (id == Guid.Empty)
             throw new RequisicaoInvalidaException(ErrorMessages.IdNulo("categoria"));
 
-        var categoria = await repository.ObterPorIdAsync(id);
+        var categoria = await repository.ObterPorIdAsync(id)
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
         return categoria.MapToResponseDto();
     }
 }
