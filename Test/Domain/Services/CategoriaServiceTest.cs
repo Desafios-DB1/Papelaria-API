@@ -51,7 +51,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Categoria>()))
             .ThrowsAsync(new Exception("Falha no banco."));
         
-        Func<Task> act = async () => await _categoriaService.CriarAsync(categoria.MapToCreationDto());
+        Func<Task> act = async () => await _categoriaService.CriarAsync(categoria.MapToCriarCategoriaCommand(), CancellationToken.None);
 
         await act.Should()
             .ThrowAsync<Exception>()

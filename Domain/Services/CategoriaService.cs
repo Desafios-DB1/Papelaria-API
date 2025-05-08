@@ -17,7 +17,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         if (request is null)
             throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("categoria"));
         
-        var categoria = request.MapToEntity();
+        var categoria = request.MapToCategoria();
         return await repository.AdicionarESalvarAsync(categoria);
     }
 

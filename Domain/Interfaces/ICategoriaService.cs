@@ -5,6 +5,6 @@ namespace Domain.Interfaces;
 
 public interface ICategoriaService
 {
-    Task<Guid> CriarAsync(CategoriaCreationRequestDto categoriaDto);
+    Task<Guid> CriarAsync(CriarCategoriaCommand request, CancellationToken cancellationToken);
     Task<CategoriaResponseDto> ObterPorIdAsync(Guid id);
 }
