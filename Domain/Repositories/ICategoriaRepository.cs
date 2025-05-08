@@ -4,5 +4,5 @@ namespace Domain.Repositories;
 
 public interface ICategoriaRepository : IRepository<Categoria>
 {
-    public Task<List<Categoria>> ObterPorNomeAsync(string nome);
+    public Task<Categoria> ObterPorNomeAsync(string nome);
 }

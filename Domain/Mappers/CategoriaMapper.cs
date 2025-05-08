@@ -34,4 +34,14 @@ public static class CategoriaMapper
             Ativo = categoria.Ativo
         };
     }
+
+    public static CategoriaResponseDto MapToResponseDto(this Categoria categoria)
+    {
+        return new CategoriaResponseDto
+        {
+            Nome = categoria.Nome,
+            Descricao = categoria.Descricao,
+            Ativo = categoria.Ativo,
+        };
+    }
 }

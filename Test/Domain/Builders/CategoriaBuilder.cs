@@ -14,6 +14,7 @@ public class CategoriaBuilder
             _faker = new Faker<Categoria>()
                 .RuleFor(c => c.Nome, f => f.Name.FirstName())
                 .RuleFor(c => c.Descricao, f => f.Lorem.Paragraph())
+                .RuleFor(c => c.Ativo, f => f.Random.Bool())
         };
     }
 
