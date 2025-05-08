@@ -140,7 +140,7 @@ public class CategoriaServiceTest
         
         await act.Should()
             .ThrowAsync<RequisicaoInvalidaException>()
-            .WithMessage("O objeto nome não pode ser nulo.");
+            .WithMessage("O campo nome não pode ser nulo.");
     }
 
     

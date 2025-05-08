@@ -31,7 +31,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
     public async Task<CategoriaResponseDto> ObterPorNome(string nome)
     {
         if (string.IsNullOrEmpty(nome))
-            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("nome"));
+            throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("nome"));
         
         var categoria = await repository.ObterPorNomeAsync(nome)
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
