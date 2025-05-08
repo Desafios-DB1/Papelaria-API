@@ -28,7 +28,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         return categoria.MapToResponseDto();
     }
 
-    public async Task<CategoriaResponseDto> ObterPorNome(string nome)
+    public async Task<CategoriaResponseDto> ObterPorNomeAsync(string nome)
     {
         if (string.IsNullOrEmpty(nome))
             throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("nome"));
@@ -37,5 +37,18 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
 
         return categoria.MapToResponseDto();
+    }
+
+    public async Task<Guid> AtualizarAsync(CategoriaUpdateRequestDto categoriaDto)
+    {
+        if (categoriaDto is null)
+            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("categoria"));
+        
+        var categoriaExistente = await repository.ObterPorIdAsync(categoriaDto.Id)
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
+        
+        categoriaExistente.Atualizar(categoriaDto);
+
+        return await repository.AtualizarESalvarAsync(categoriaExistente);
     }
 }
