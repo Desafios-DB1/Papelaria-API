@@ -44,15 +44,11 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         if (categoriaDto is null)
             throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("categoria"));
         
-        var categoriaExistente = await repository.ObterPorIdAsync(categoriaDto.Id);
-        if (categoriaExistente is null)
-            throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
+        var categoriaExistente = await repository.ObterPorIdAsync(categoriaDto.Id)
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
         
-        categoriaExistente.Nome = categoriaDto.Nome;
-        categoriaExistente.Descricao = categoriaDto.Descricao;
-        categoriaExistente.Ativo = categoriaDto.Ativo;
+        categoriaExistente.Atualizar(categoriaDto);
 
-        var categoriaId = await repository.AtualizarESalvarAsync(categoriaExistente);
-        return categoriaId;
+        return await repository.AtualizarESalvarAsync(categoriaExistente);
     }
 }
