@@ -1,5 +1,4 @@
-﻿using Crosscutting.Constantes;
-using Crosscutting.Validators.Produto;
+﻿using Crosscutting.Validators.Produto;
 using Test.Domain.Builders;
 using Domain.Mappers;
 using FluentAssertions;
@@ -15,7 +14,7 @@ public class ProdutoCreationRequestValidatorTest
     {
         var produto = ProdutoBuilder.Novo().Build();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
+        var resultado = _validator.Validate(produto.MapToCreationDto());
 
         resultado.IsValid.Should().BeTrue();
     }

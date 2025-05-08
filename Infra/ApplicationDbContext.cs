@@ -1,6 +1,5 @@
 using Domain.Entities;
 using Infra.Mappings;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
