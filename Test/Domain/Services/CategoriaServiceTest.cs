@@ -200,7 +200,7 @@ public class CategoriaServiceTest
         
         await act.Should()
             .ThrowAsync<RequisicaoInvalidaException>()
-            .WithMessage("O DTO de categoria não pode ser nulo.");
+            .WithMessage("O objeto categoria não pode ser nulo.");
     }
 
     [Fact]

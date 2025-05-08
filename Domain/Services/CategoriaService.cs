@@ -42,7 +42,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
     public async Task<Guid> AtualizarAsync(CategoriaUpdateRequestDto categoriaDto)
     {
         if (categoriaDto is null)
-            throw new RequisicaoInvalidaException(ErrorMessages.DtoNulo("categoria"));
+            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("categoria"));
         
         var categoriaAntiga = await repository.ObterPorIdAsync(categoriaDto.Id);
         if (categoriaAntiga is null)
