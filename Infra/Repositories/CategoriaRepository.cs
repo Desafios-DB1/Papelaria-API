@@ -6,11 +6,10 @@ namespace Infra.Repositories;
 
 public class CategoriaRepository(ApplicationDbContext context) : Repository<Categoria>(context), ICategoriaRepository
 {
-    public async Task<List<Categoria>> ObterPorNomeAsync(string nome)
+    public async Task<Categoria> ObterPorNomeAsync(string nome)
     {
         return await Context.Categorias
             .AsNoTracking()
-            .Where(c => c.Nome == nome)
-            .ToListAsync();
+            .FirstOrDefaultAsync(c => c.Nome.Equals(nome, StringComparison.CurrentCultureIgnoreCase));
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using Infra;
 using Microsoft.EntityFrameworkCore;
 
