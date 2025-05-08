@@ -28,7 +28,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         return categoria.MapToResponseDto();
     }
 
-    public async Task<CategoriaResponseDto> ObterPorNome(string nome)
+    public async Task<CategoriaResponseDto> ObterPorNomeAsync(string nome)
     {
         if (string.IsNullOrEmpty(nome))
             throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("nome"));
