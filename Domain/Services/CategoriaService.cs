@@ -12,7 +12,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
     public async Task<Guid> CriarAsync(CategoriaCreationRequestDto categoriaDto)
     {
         if (categoriaDto is null)
-            throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("dto", "categoria"));
+            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("categoria"));
         
         var categoria = categoriaDto.MapToEntity();
         return await repository.AdicionarESalvarAsync(categoria);
@@ -31,7 +31,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
     public async Task<CategoriaResponseDto> ObterPorNome(string nome)
     {
         if (string.IsNullOrEmpty(nome))
-            throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("nome"));
+            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("nome"));
         
         var categoria = await repository.ObterPorNomeAsync(nome)
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
