@@ -127,7 +127,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.ObterPorNomeAsync(It.IsAny<string>()))
             .ReturnsAsync(categoria);
         
-        var result = await _categoriaService.ObterPorNome("teste");
+        var result = await _categoriaService.ObterPorNomeAsync("teste");
         result.Should().NotBeNull();
         result.Should().BeOfType<CategoriaResponseDto>();
         result.Should().BeEquivalentTo(categoria.MapToResponseDto());
@@ -136,7 +136,7 @@ public class CategoriaServiceTest
     [Fact]
     public async Task ObterPorNome_QuandoNomeInvalido_DeveLancarRequisicaoInvalidaException()
     {
-        Func<Task> act = async () => await _categoriaService.ObterPorNome(string.Empty);
+        Func<Task> act = async () => await _categoriaService.ObterPorNomeAsync(string.Empty);
         
         await act.Should()
             .ThrowAsync<RequisicaoInvalidaException>()
@@ -150,7 +150,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.ObterPorNomeAsync(It.IsAny<string>()))
             .ThrowsAsync(new Exception("Falha no banco."));
         
-        Func<Task> act = async () => await _categoriaService.ObterPorNome("teste");
+        Func<Task> act = async () => await _categoriaService.ObterPorNomeAsync("teste");
 
         await act.Should()
             .ThrowAsync<Exception>()
