@@ -38,4 +38,10 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
 
         return categoria.MapToResponseDto();
     }
+    
+    public async Task<List<CategoriaResponseDto>> ObterTodosAsync()
+    {
+        var categorias = await repository.ObterTodosAsync();
+        return categorias.Select(c => c.MapToResponseDto()).ToList();
+    }
 }

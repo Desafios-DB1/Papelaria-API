@@ -157,4 +157,57 @@ public class CategoriaServiceTest
             .WithMessage("Falha no banco.");
     }
     #endregion
+
+    #region ObterTodos
+
+    #region ObterTodos
+    
+    [Fact]
+    public async Task ObterTodosAsync_QuandoExistemCategorias_DeveRetornarListaDeCategorias()
+    {
+        var categorias = new List<Categoria>
+        {
+            CategoriaBuilder.Novo().Build(),
+            CategoriaBuilder.Novo().Build()
+        };
+    
+        _categoriaRepositoryMock.Setup(r => r.ObterTodosAsync())
+            .ReturnsAsync(categorias);
+    
+        var result = await _categoriaService.ObterTodosAsync();
+    
+        result.Should().NotBeNull();
+        result.Should().HaveCount(categorias.Count);
+        result.Should().AllBeOfType<CategoriaResponseDto>();
+        result.Should().BeEquivalentTo(categorias.Select(c => c.MapToResponseDto()));
+    }
+    
+    [Fact]
+    public async Task ObterTodosAsync_QuandoNaoExistemCategorias_DeveRetornarListaVazia()
+    {
+        _categoriaRepositoryMock.Setup(r => r.ObterTodosAsync())
+            .ReturnsAsync(new List<Categoria>());
+    
+        var result = await _categoriaService.ObterTodosAsync();
+    
+        result.Should().NotBeNull();
+        result.Should().BeEmpty();
+    }
+    
+    [Fact]
+    public async Task ObterTodosAsync_QuandoErroNoBanco_DeveLancarException()
+    {
+        _categoriaRepositoryMock.Setup(r => r.ObterTodosAsync())
+            .ThrowsAsync(new Exception("Falha no banco."));
+    
+        Func<Task> act = async () => await _categoriaService.ObterTodosAsync();
+    
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
+    }
+    
+    #endregion
+
+    #endregion
 }
