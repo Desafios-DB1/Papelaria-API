@@ -8,4 +8,5 @@ public interface ICategoriaService
     Task<CategoriaResponseDto> ObterPorIdAsync(Guid id);
     Task<CategoriaResponseDto> ObterPorNomeAsync(string nome);
     Task<Guid> AtualizarAsync(CategoriaUpdateRequestDto categoriaDto);
+    Task RemoverAsync(Guid id);
 }
