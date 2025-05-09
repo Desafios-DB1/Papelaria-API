@@ -16,4 +16,8 @@ public class Produto : Entidade
     public ICollection<LogProduto> Logs { get; set; } = new List<LogProduto>();
     
     public Produto() {}
+    public override void Atualizar(object dto)
+    {
+        throw new NotImplementedException();
+    }
 }

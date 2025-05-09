@@ -15,4 +15,8 @@ public class LogProduto : Entidade
     public int QuantidadeAtual { get; set; }
     
     public DateTime DataAlteracao { get; set; } = DateTime.Now;
+    public override void Atualizar(object dto)
+    {
+        throw new NotImplementedException();
+    }
 }

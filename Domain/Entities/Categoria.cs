@@ -12,10 +12,15 @@ public class Categoria : Entidade
     
     public Categoria() {}
     
-    public void Atualizar(CategoriaUpdateRequestDto categoria)
+    public override void Atualizar(object dto)
     {
-        Nome = categoria.Nome;
-        Descricao = categoria.Descricao;
-        Ativo = categoria.Ativo;
+        if (dto is CategoriaDto categoria)
+        {
+            Nome = categoria.Nome;
+            Descricao = categoria.Descricao;
+            Ativo = categoria.Ativo;
+        }
+        else 
+            throw new ArgumentException("Tipo de DTO inválido", nameof(dto));
     }
 }
