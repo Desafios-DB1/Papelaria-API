@@ -12,7 +12,7 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
     public async Task<Guid> CriarAsync(CategoriaCreationRequestDto categoriaDto)
     {
         if (categoriaDto is null)
-            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("categoria"));
+            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo(Entidades.Categoria));
         
         var categoria = categoriaDto.MapToEntity();
         return await repository.AdicionarESalvarAsync(categoria);
@@ -21,10 +21,10 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
     public async Task<CategoriaResponseDto> ObterPorIdAsync(Guid id)
     {
         if (id == Guid.Empty)
-            throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("id", "categoria"));
+            throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("id", Entidades.Categoria));
 
         var categoria = await repository.ObterPorIdAsync(id)
-            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
         return categoria.MapToResponseDto();
     }
 
@@ -34,9 +34,33 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
             throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("nome"));
         
         var categoria = await repository.ObterPorNomeAsync(nome)
-            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
 
         return categoria.MapToResponseDto();
+    }
+
+    public async Task<Guid> AtualizarAsync(CategoriaUpdateRequestDto categoriaDto)
+    {
+        if (categoriaDto is null)
+            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("categoria"));
+        
+        var categoriaExistente = await repository.ObterPorIdAsync(categoriaDto.Id)
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
+        
+        categoriaExistente.Atualizar(categoriaDto);
+
+        return await repository.AtualizarESalvarAsync(categoriaExistente);
+    }
+
+    public async Task RemoverAsync(Guid id)
+    {
+        if (id == Guid.Empty)
+            throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("id", Entidades.Categoria));
+        
+        var categoria = await repository.ObterPorIdAsync(id)
+            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
+        
+        await repository.RemoverESalvarAsync(categoria);
     }
     
     public async Task<List<CategoriaResponseDto>> ObterTodosAsync()

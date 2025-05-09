@@ -14,6 +14,7 @@ public class CategoriaServiceTest
 {
     private readonly CategoriaService _categoriaService;
     private readonly Mock<ICategoriaRepository> _categoriaRepositoryMock = new();
+
     public CategoriaServiceTest()
     {
         _categoriaService = new CategoriaService(_categoriaRepositoryMock.Object);
@@ -156,9 +157,128 @@ public class CategoriaServiceTest
             .ThrowAsync<Exception>()
             .WithMessage("Falha no banco.");
     }
+
     #endregion
 
-    #region ObterTodos
+    #region AtualizarCategoria
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoDtoValido_DeveRetornarId()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        _categoriaRepositoryMock.Setup(r => r.AtualizarESalvarAsync(It.IsAny<Categoria>()))
+            .ReturnsAsync(categoria.Id);
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(categoria);
+
+        var result = await _categoriaService.AtualizarAsync(categoria.MapToUpdateDto());
+        result.Should().Be(categoria.Id);
+    }
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoIdNaoExiste_DeveRetornarNaoEncontradoException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync((Categoria)null);
+
+        Func<Task> act = async () => await _categoriaService.AtualizarAsync(categoria.MapToUpdateDto());
+
+        await act.Should()
+            .ThrowAsync<NaoEncontradoException>()
+            .WithMessage("Categoria não existe.");
+    }
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoDtoInvalido_DeveRetornarRequisicaoInvalidaException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(categoria);
+
+        Func<Task> act = async () => await _categoriaService.AtualizarAsync(null);
+
+        await act.Should()
+            .ThrowAsync<RequisicaoInvalidaException>()
+            .WithMessage("O objeto categoria não pode ser nulo.");
+    }
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoErroNoBanco_DeveLancarException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        _categoriaRepositoryMock.Setup(r => r.AtualizarESalvarAsync(It.IsAny<Categoria>()))
+            .ThrowsAsync(new Exception("Falha no banco."));
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(categoria);
+
+        Func<Task> act = async () => await _categoriaService.AtualizarAsync(categoria.MapToUpdateDto());
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
+    }
+
+    #endregion
+
+    #region RemoverCategoria
+
+    [Fact]
+    public async Task RemoverAsync_QuandoIdValido_DeveRemoverCategoria()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(categoria.Id))
+            .ReturnsAsync(categoria);
+
+        await _categoriaService.RemoverAsync(categoria.Id);
+
+        _categoriaRepositoryMock.Verify(r => r.RemoverESalvarAsync(It.IsAny<Categoria>()), Times.Once);
+    }
+
+    [Fact]
+    public async Task RemoverAsync_QuandoIdNaoExiste_DeveRetornarNaoEncontradoException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        Func<Task> act = async () => await _categoriaService.RemoverAsync(categoria.Id);
+
+        await act.Should()
+            .ThrowAsync<NaoEncontradoException>()
+            .WithMessage("Categoria não existe.");
+    }
+
+    [Fact]
+    public async Task RemoverAsync_QuandoIdVazio_DeveLancarRequisicaoInvalidaException()
+    {
+        Func<Task> act = async () => await _categoriaService.RemoverAsync(Guid.Empty);
+
+        await act.Should()
+            .ThrowAsync<RequisicaoInvalidaException>()
+            .WithMessage("O campo id do objeto Categoria não pode ser nulo.");
+    }
+
+    [Fact]
+    public async Task RemoverAsync_QuandoErroNoBanco_DeveLancarException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+
+        _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(categoria.Id))
+            .ReturnsAsync(categoria);
+
+        _categoriaRepositoryMock.Setup(r => r.RemoverESalvarAsync(It.IsAny<Categoria>()))
+            .ThrowsAsync(new Exception("Falha no banco."));
+
+        Func<Task> act = async () => await _categoriaService.RemoverAsync(categoria.Id);
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
+    }
+    #endregion
 
     #region ObterTodos
     
@@ -207,7 +327,5 @@ public class CategoriaServiceTest
             .WithMessage("Falha no banco.");
     }
     
-    #endregion
-
     #endregion
 }
