@@ -4,6 +4,7 @@ using Crosscutting.Exceptions;
 using Domain.Commands.Categoria;
 using Domain.Interfaces;
 using Domain.Mappers;
+using Domain.Querys;
 using Domain.Repositories;
 
 namespace Domain.Services;
@@ -29,12 +30,12 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         return categoria.MapToResponseDto();
     }
 
-    public async Task<CategoriaResponseDto> ObterPorNomeAsync(string nome)
+    public async Task<CategoriaResponseDto> ObterPorNomeAsync(ObterCategoriaPorNomeQuery request, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrEmpty(nome))
+        if (string.IsNullOrEmpty(request.Nome))
             throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("nome"));
         
-        var categoria = await repository.ObterPorNomeAsync(nome)
+        var categoria = await repository.ObterPorNomeAsync(request.Nome)
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
 
         return categoria.MapToResponseDto();

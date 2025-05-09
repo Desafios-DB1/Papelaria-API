@@ -1,6 +1,7 @@
 ﻿using Crosscutting.Dtos.Categoria;
 using Domain.Commands.Categoria;
 using Domain.Entities;
+using Domain.Querys;
 
 namespace Domain.Mappers;
 
@@ -22,6 +23,11 @@ public static class CategoriaMapper
             Nome = categoria.Nome,
             Descricao = categoria.Descricao
         };
+    }
+
+    public static ObterCategoriaPorNomeQuery MapToObterCategoriaPorNomeQuery(this Categoria categoria)
+    {
+        return new ObterCategoriaPorNomeQuery(categoria.Nome);
     }
 
     public static Categoria MapToCategoria(this CriarCategoriaCommand command)

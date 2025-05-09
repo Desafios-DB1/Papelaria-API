@@ -2,6 +2,7 @@
 using Crosscutting.Exceptions;
 using Domain.Entities;
 using Domain.Mappers;
+using Domain.Querys;
 using Domain.Repositories;
 using Domain.Services;
 using FluentAssertions;
@@ -128,7 +129,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.ObterPorNomeAsync(It.IsAny<string>()))
             .ReturnsAsync(categoria);
         
-        var result = await _categoriaService.ObterPorNomeAsync("teste");
+        var result = await _categoriaService.ObterPorNomeAsync(categoria.MapToObterCategoriaPorNomeQuery(), CancellationToken.None);
         result.Should().NotBeNull();
         result.Should().BeOfType<CategoriaResponseDto>();
         result.Should().BeEquivalentTo(categoria.MapToResponseDto());
@@ -137,7 +138,7 @@ public class CategoriaServiceTest
     [Fact]
     public async Task ObterPorNome_QuandoNomeInvalido_DeveLancarRequisicaoInvalidaException()
     {
-        Func<Task> act = async () => await _categoriaService.ObterPorNomeAsync(string.Empty);
+        Func<Task> act = async () => await _categoriaService.ObterPorNomeAsync(new ObterCategoriaPorNomeQuery(null!), CancellationToken.None);
         
         await act.Should()
             .ThrowAsync<RequisicaoInvalidaException>()
@@ -148,10 +149,12 @@ public class CategoriaServiceTest
     [Fact]
     public async Task ObterPorNome_QuandoErroNoBanco_DeveLancarException()
     {
+        var categoria = CategoriaBuilder.Novo().Build();
+        
         _categoriaRepositoryMock.Setup(r => r.ObterPorNomeAsync(It.IsAny<string>()))
             .ThrowsAsync(new Exception("Falha no banco."));
         
-        Func<Task> act = async () => await _categoriaService.ObterPorNomeAsync("teste");
+        Func<Task> act = async () => await _categoriaService.ObterPorNomeAsync(categoria.MapToObterCategoriaPorNomeQuery(), CancellationToken.None);
 
         await act.Should()
             .ThrowAsync<Exception>()
@@ -326,6 +329,5 @@ public class CategoriaServiceTest
             .ThrowAsync<Exception>()
             .WithMessage("Falha no banco.");
     }
-    
     #endregion
 }
