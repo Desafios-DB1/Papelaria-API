@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace Crosscutting.Validators.Categoria;
 
-public class CategoriaCreationRequestDtoValidator : AbstractValidator<CategoriaCreationRequestDto>
+public class CategoriaDtoValidator : AbstractValidator<CategoriaDto>
 {
-    public CategoriaCreationRequestDtoValidator()
+    public CategoriaDtoValidator()
     {
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
@@ -14,5 +14,8 @@ public class CategoriaCreationRequestDtoValidator : AbstractValidator<CategoriaC
 
         RuleFor(x => x.Descricao)
             .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo);
+        
+        RuleFor(x => x.Ativo)
+            .NotNull().WithMessage(ValidationErrors.CampoObrigatorio);
     }
 }

@@ -5,26 +5,26 @@ using Test.Domain.Builders;
 
 namespace Test.Domain.Validators;
 
-public class CategoriaCreationRequestValidatorTest
+public class CategoriaDtoValidatorTest
 {
-    private readonly CategoriaCreationRequestDtoValidator _validator = new();
+    private readonly CategoriaDtoValidator _validator = new();
     
     [Fact]
-    public void CategoriaCreationRequestDtoValidator_QuandoCategoriaValida_DeveRetornarSucesso()
+    public void CategoriaDtoValidator_QuandoCategoriaValida_DeveRetornarSucesso()
     {
         var categoria = CategoriaBuilder.Novo().Build();
 
-        var resultado = _validator.Validate(CategoriaMapper.MapToCreationDto(categoria));
+        var resultado = _validator.Validate(CategoriaMapper.MapToDto(categoria));
 
         resultado.IsValid.Should().BeTrue();
     }
     
     [Fact]
-    public void CategoriaCreationRequestDtoValidator_QuandoNomeVazio_DeveRetornarErro()
+    public void CategoriaDtoValidator_QuandoNomeVazio_DeveRetornarErro()
     {
         var categoria = CategoriaBuilder.Novo().ComNome(string.Empty).Build();
 
-        var resultado = _validator.Validate(CategoriaMapper.MapToCreationDto(categoria));
+        var resultado = _validator.Validate(CategoriaMapper.MapToDto(categoria));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Nome" &&
@@ -32,11 +32,11 @@ public class CategoriaCreationRequestValidatorTest
     }
     
     [Fact]
-    public void CategoriaCreationRequestDtoValidator_QuandoNomeMaiorQueDuzentos_DeveRetornarErro()
+    public void CategoriaDtoValidator_QuandoNomeMaiorQueDuzentos_DeveRetornarErro()
     {
         var categoria = CategoriaBuilder.Novo().ComNome(new string('a', 201)).Build();
 
-        var resultado = _validator.Validate(CategoriaMapper.MapToCreationDto(categoria));
+        var resultado = _validator.Validate(CategoriaMapper.MapToDto(categoria));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Nome" &&
@@ -44,11 +44,11 @@ public class CategoriaCreationRequestValidatorTest
     }
 
     [Fact]
-    public void CategoriaCreationRequestDtoValidator_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
+    public void CategoriaDtoValidator_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
     {
         var categoria = CategoriaBuilder.Novo().ComDescricao(new string('a', 301)).Build();
         
-        var resultado = _validator.Validate(CategoriaMapper.MapToCreationDto(categoria));
+        var resultado = _validator.Validate(CategoriaMapper.MapToDto(categoria));
         
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Descricao" &&
