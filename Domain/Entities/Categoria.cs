@@ -11,11 +11,18 @@ public class Categoria : Entidade
     public ICollection<Produto> Produtos { get; set; } = new List<Produto>();
     
     public Categoria() {}
-    
-    public void Atualizar(CategoriaUpdateRequestDto categoria)
+
+    public override void Atualizar<T> (T dto)
     {
-        Nome = categoria.Nome;
-        Descricao = categoria.Descricao;
-        Ativo = categoria.Ativo;
+        if (dto is CategoriaDto categoriaDto)
+        {
+            Nome = categoriaDto.Nome;
+            Descricao = categoriaDto.Descricao;
+            Ativo = categoriaDto.Ativo;
+        }
+        else
+        {
+            throw new ArgumentException("Tipo de DTO inválido para atualização.");
+        }
     }
 }

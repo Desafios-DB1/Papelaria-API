@@ -1,6 +1,6 @@
-﻿namespace Crosscutting.Dtos.Categoria;
+﻿namespace Crosscutting.Dtos;
 
-public class CategoriaCreationRequestDto
+public interface IBaseDto
 {
     public string Nome { get; set; }
     public string Descricao { get; set; }

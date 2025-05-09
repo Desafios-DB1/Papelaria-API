@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace Crosscutting.Validators.Produto;
 
-public class ProdutoCreationRequestDtoValidator : AbstractValidator<ProdutoCreationRequestDto>
+public class ProdutoDtoValidator : AbstractValidator<ProdutoDto>
 {
-    public ProdutoCreationRequestDtoValidator()
+    public ProdutoDtoValidator()
     {
         RuleFor(x=>x.Nome)
         .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)

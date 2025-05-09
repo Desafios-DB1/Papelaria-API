@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace Crosscutting.Validators.Categoria;
 
-public class CategoriaCreationRequestDtoValidator : AbstractValidator<CategoriaCreationRequestDto>
+public class CategoriaDtoValidator : AbstractValidator<CategoriaDto>
 {
-    public CategoriaCreationRequestDtoValidator()
+    public CategoriaDtoValidator()
     {
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)

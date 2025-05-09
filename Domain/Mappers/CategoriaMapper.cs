@@ -5,16 +5,7 @@ namespace Domain.Mappers;
 
 public static class CategoriaMapper
 {
-    public static CategoriaCreationRequestDto MapToCreationDto(this Categoria categoria)
-    {
-        return new CategoriaCreationRequestDto
-        {
-            Nome = categoria.Nome,
-            Descricao = categoria.Descricao
-        };
-    }
-
-    public static Categoria MapToEntity(this CategoriaCreationRequestDto categoriaDto)
+    public static Categoria MapToEntity(this CategoriaDto categoriaDto)
     {
         return new Categoria
         {
@@ -24,20 +15,9 @@ public static class CategoriaMapper
         };
     }
 
-    public static CategoriaUpdateRequestDto MapToUpdateDto(this Categoria categoria)
+    public static CategoriaDto MapToDto(this Categoria categoria)
     {
-        return new CategoriaUpdateRequestDto
-        {
-            Id = categoria.Id,
-            Nome = categoria.Nome,
-            Descricao = categoria.Descricao,
-            Ativo = categoria.Ativo
-        };
-    }
-
-    public static CategoriaResponseDto MapToResponseDto(this Categoria categoria)
-    {
-        return new CategoriaResponseDto
+        return new CategoriaDto
         {
             Nome = categoria.Nome,
             Descricao = categoria.Descricao,

@@ -5,26 +5,26 @@ using FluentAssertions;
 
 namespace Test.Domain.Validators;
 
-public class ProdutoCreationRequestValidatorTest
+public class ProdutoDtoValidatorTest
 {
-    private readonly ProdutoCreationRequestDtoValidator _validator = new();
+    private readonly ProdutoDtoValidator _validator = new();
 
     [Fact]
-    public void ProdutoCreationRequestValidator_QuandoProdutoValido_DeveRetornarSucesso()
+    public void ProdutoDtoValidator_QuandoProdutoValido_DeveRetornarSucesso()
     {
         var produto = ProdutoBuilder.Novo().Build();
 
-        var resultado = _validator.Validate(produto.MapToCreationDto());
+        var resultado = _validator.Validate(produto.MapToDto());
 
         resultado.IsValid.Should().BeTrue();
     }
     
     [Fact]
-    public void ProdutoCreationRequestValidator_QuandoNomeVazio_DeveRetornarErro()
+    public void ProdutoDtoValidator_QuandoNomeVazio_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComNome(string.Empty).Build();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
+        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Nome" &&
@@ -32,11 +32,11 @@ public class ProdutoCreationRequestValidatorTest
     }
     
     [Fact]
-    public void ProdutoCreationRequestValidator_QuandoNomeMaiorQueDuzentos_DeveRetornarErro()
+    public void ProdutoDtoValidator_QuandoNomeMaiorQueDuzentos_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComNome(new string('a', 201)).Build();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
+        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Nome" &&
@@ -44,11 +44,11 @@ public class ProdutoCreationRequestValidatorTest
     }
     
     [Fact]
-    public void ProdutoCreationRequestValidator_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
+    public void ProdutoDtoValidator_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComDescricao(new string('a', 301)).Build();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
+        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Descricao" &&
@@ -56,11 +56,11 @@ public class ProdutoCreationRequestValidatorTest
     }
     
     [Fact]
-    public void ProdutoCreationRequestValidator_QuandoQuantidadeMinimaMenorQueZero_DeveRetornarErro()
+    public void ProdutoDtoValidator_QuandoQuantidadeMinimaMenorQueZero_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComQuantidadeMinima(-1).Build();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
+        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "QuantidadeMinima" &&
@@ -68,11 +68,11 @@ public class ProdutoCreationRequestValidatorTest
     }
     
     [Fact]
-    public void ProdutoCreationRequestValidator_QuandoQuantidadeAtualMenorQueZero_DeveRetornarErro()
+    public void ProdutoDtoValidator_QuandoQuantidadeAtualMenorQueZero_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComQuantidadeAtual(-1).Build();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
+        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "QuantidadeAtual" &&
@@ -80,11 +80,11 @@ public class ProdutoCreationRequestValidatorTest
     }
     
     [Fact]
-    public void ProdutoCreationRequestValidator_QuandoPrecoCompraMenorQueZero_DeveRetornarErro()
+    public void ProdutoDtoValidator_QuandoPrecoCompraMenorQueZero_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComPrecoCompra(-1).Build();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
+        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "PrecoCompra" &&
@@ -92,11 +92,11 @@ public class ProdutoCreationRequestValidatorTest
     }
     
     [Fact]
-    public void ProdutoCreationRequestValidator_QuandoPrecoVendaMenorQueZero_DeveRetornarErro()
+    public void ProdutoDtoValidator_QuandoPrecoVendaMenorQueZero_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComPrecoVenda(-1).Build();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToCreationDto(produto));
+        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "PrecoVenda" &&
