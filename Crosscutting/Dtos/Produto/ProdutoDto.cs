@@ -8,4 +8,8 @@ public class ProdutoDto : IBaseDto
     public string Descricao { get; set; }
     public bool Ativo { get; set; }
     public decimal PrecoCompra { get; set; }
+    public decimal PrecoVenda { get; set; }
+    public Guid CategoriaId { get; set; }
+    public int QuantidadeMinima { get; set; }
+    public int QuantidadeAtual { get; set; }
 }

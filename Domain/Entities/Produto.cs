@@ -26,6 +26,9 @@ public class Produto : Entidade
             Descricao = produtoDto.Descricao;
             Ativo = produtoDto.Ativo;
             PrecoCompra = produtoDto.PrecoCompra;
+            PrecoVenda = produtoDto.PrecoVenda;
+            CategoriaId = produtoDto.CategoriaId;
+            QuantidadeEstoque = new QuantidadeEstoque(produtoDto.QuantidadeAtual, produtoDto.QuantidadeMinima);
         }
         else 
             throw new ArgumentException("Tipo de DTO inválido para atualização.");
