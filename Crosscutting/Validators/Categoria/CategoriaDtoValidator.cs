@@ -14,8 +14,5 @@ public class CategoriaDtoValidator : AbstractValidator<CategoriaDto>
 
         RuleFor(x => x.Descricao)
             .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo);
-        
-        RuleFor(x => x.Ativo)
-            .NotNull().WithMessage(ValidationErrors.CampoObrigatorio);
     }
 }
