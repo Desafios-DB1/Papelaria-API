@@ -15,8 +15,8 @@ public class LogProduto : Entidade
     public int QuantidadeAtual { get; set; }
     
     public DateTime DataAlteracao { get; set; } = DateTime.Now;
-    public override void Atualizar(object dto)
+    public override void Atualizar<T>(T dto)
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException("Atualização não é suportado para LogProduto.");
     }
 }

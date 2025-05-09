@@ -1,4 +1,5 @@
 ﻿using Crosscutting.Constantes;
+using Crosscutting.Dtos;
 using Crosscutting.Exceptions;
 using Domain.Entities;
 using Domain.Interfaces;
@@ -9,7 +10,7 @@ namespace Domain.Services;
 public abstract class CrudServiceBase<TEntity, TDto>(IRepository<TEntity> repository)
     : ICrudService<TDto>
     where TEntity : Entidade, new()
-    where TDto : class
+    where TDto : IBaseDto
 {
     public virtual async Task<Guid> CriarAsync(TDto dto)
     {
