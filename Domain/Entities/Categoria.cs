@@ -14,11 +14,11 @@ public class Categoria : Entidade
     
     public override void Atualizar(object dto)
     {
-        if (dto is CategoriaDto categoria)
+        if (dto is CategoriaDto categoriaDto)
         {
-            Nome = categoria.Nome;
-            Descricao = categoria.Descricao;
-            Ativo = categoria.Ativo;
+            Nome = categoriaDto.Nome;
+            Descricao = categoriaDto.Descricao;
+            Ativo = categoriaDto.Ativo;
         }
         else 
             throw new ArgumentException("Tipo de DTO inválido", nameof(dto));
