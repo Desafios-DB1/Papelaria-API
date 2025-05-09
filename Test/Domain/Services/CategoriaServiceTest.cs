@@ -30,7 +30,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Categoria>()))
             .ReturnsAsync(categoria.Id);
 
-        var result = await _categoriaService.CriarAsync(categoria.MapToCreationDto());
+        var result = await _categoriaService.CriarAsync(categoria.MapToDto());
         result.Should().Be(categoria.Id);
     }
 
@@ -52,7 +52,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Categoria>()))
             .ThrowsAsync(new Exception("Falha no banco."));
         
-        Func<Task> act = async () => await _categoriaService.CriarAsync(categoria.MapToCreationDto());
+        Func<Task> act = async () => await _categoriaService.CriarAsync(categoria.MapToDto());
 
         await act.Should()
             .ThrowAsync<Exception>()
@@ -73,8 +73,8 @@ public class CategoriaServiceTest
         
         var result = await _categoriaService.ObterPorIdAsync(categoria.Id);
         result.Should().NotBeNull();
-        result.Should().BeOfType<CategoriaResponseDto>();
-        result.Should().BeEquivalentTo(categoria.MapToResponseDto());
+        result.Should().BeOfType<CategoriaDto>();
+        result.Should().BeEquivalentTo(categoria.MapToDto());
     }
     
     [Fact]
@@ -130,8 +130,8 @@ public class CategoriaServiceTest
         
         var result = await _categoriaService.ObterPorNomeAsync("teste");
         result.Should().NotBeNull();
-        result.Should().BeOfType<CategoriaResponseDto>();
-        result.Should().BeEquivalentTo(categoria.MapToResponseDto());
+        result.Should().BeOfType<CategoriaDto>();
+        result.Should().BeEquivalentTo(categoria.MapToDto());
     }
     
     [Fact]
@@ -172,7 +172,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync(categoria);
 
-        var result = await _categoriaService.AtualizarAsync(categoria.MapToUpdateDto());
+        var result = await _categoriaService.AtualizarAsync(categoria.Id, categoria.MapToDto());
         result.Should().Be(categoria.Id);
     }
 
@@ -183,7 +183,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync((Categoria)null);
 
-        Func<Task> act = async () => await _categoriaService.AtualizarAsync(categoria.MapToUpdateDto());
+        Func<Task> act = async () => await _categoriaService.AtualizarAsync(categoria.Id, categoria.MapToDto());
 
         await act.Should()
             .ThrowAsync<NaoEncontradoException>()
@@ -198,7 +198,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync(categoria);
 
-        Func<Task> act = async () => await _categoriaService.AtualizarAsync(null);
+        Func<Task> act = async () => await _categoriaService.AtualizarAsync(Guid.Empty, null);
 
         await act.Should()
             .ThrowAsync<RequisicaoInvalidaException>()
@@ -215,7 +215,7 @@ public class CategoriaServiceTest
         _categoriaRepositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync(categoria);
 
-        Func<Task> act = async () => await _categoriaService.AtualizarAsync(categoria.MapToUpdateDto());
+        Func<Task> act = async () => await _categoriaService.AtualizarAsync(categoria.Id, categoria.MapToDto());
 
         await act.Should()
             .ThrowAsync<Exception>()
@@ -298,8 +298,8 @@ public class CategoriaServiceTest
     
         result.Should().NotBeNull();
         result.Should().HaveCount(categorias.Count);
-        result.Should().AllBeOfType<CategoriaResponseDto>();
-        result.Should().BeEquivalentTo(categorias.Select(c => c.MapToResponseDto()));
+        result.Should().AllBeOfType<CategoriaDto>();
+        result.Should().BeEquivalentTo(categorias.Select(c => c.MapToDto()));
     }
     
     [Fact]

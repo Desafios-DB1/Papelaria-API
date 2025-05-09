@@ -1,34 +1,18 @@
 ﻿using Crosscutting.Constantes;
 using Crosscutting.Dtos.Categoria;
 using Crosscutting.Exceptions;
+using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Mappers;
 using Domain.Repositories;
 
 namespace Domain.Services;
 
-public class CategoriaService(ICategoriaRepository repository) : ICategoriaService
+public class CategoriaService(ICategoriaRepository repository) :
+    CrudServiceBase<Categoria, CategoriaDto>(repository),
+    ICategoriaService
 {
-    public async Task<Guid> CriarAsync(CategoriaCreationRequestDto categoriaDto)
-    {
-        if (categoriaDto is null)
-            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo(Entidades.Categoria));
-        
-        var categoria = categoriaDto.MapToEntity();
-        return await repository.AdicionarESalvarAsync(categoria);
-    }
-
-    public async Task<CategoriaResponseDto> ObterPorIdAsync(Guid id)
-    {
-        if (id == Guid.Empty)
-            throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("id", Entidades.Categoria));
-
-        var categoria = await repository.ObterPorIdAsync(id)
-            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
-        return categoria.MapToResponseDto();
-    }
-
-    public async Task<CategoriaResponseDto> ObterPorNomeAsync(string nome)
+    public async Task<CategoriaDto> ObterPorNomeAsync(string nome)
     {
         if (string.IsNullOrEmpty(nome))
             throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("nome"));
@@ -36,36 +20,16 @@ public class CategoriaService(ICategoriaRepository repository) : ICategoriaServi
         var categoria = await repository.ObterPorNomeAsync(nome)
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
 
-        return categoria.MapToResponseDto();
+        return categoria.MapToDto();
     }
 
-    public async Task<Guid> AtualizarAsync(CategoriaUpdateRequestDto categoriaDto)
+    protected override Categoria MapToEntity(CategoriaDto dto)
     {
-        if (categoriaDto is null)
-            throw new RequisicaoInvalidaException(ErrorMessages.ObjetoNulo("categoria"));
-        
-        var categoriaExistente = await repository.ObterPorIdAsync(categoriaDto.Id)
-            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));
-        
-        categoriaExistente.Atualizar(categoriaDto);
-
-        return await repository.AtualizarESalvarAsync(categoriaExistente);
+        return dto.MapToEntity();
     }
 
-    public async Task RemoverAsync(Guid id)
+    protected override CategoriaDto MapToResponseDto(Categoria entity)
     {
-        if (id == Guid.Empty)
-            throw new RequisicaoInvalidaException(ErrorMessages.CampoNulo("id", Entidades.Categoria));
-        
-        var categoria = await repository.ObterPorIdAsync(id)
-            ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
-        
-        await repository.RemoverESalvarAsync(categoria);
-    }
-    
-    public async Task<List<CategoriaResponseDto>> ObterTodosAsync()
-    {
-        var categorias = await repository.ObterTodosAsync();
-        return categorias.Select(c => c.MapToResponseDto()).ToList();
+        return entity.MapToDto();
     }
 }
