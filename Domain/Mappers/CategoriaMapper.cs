@@ -34,6 +34,17 @@ public static class CategoriaMapper
         };
     }
 
+    public static CategoriaUpdateRequestDto MapToUpdateDto(this Categoria categoria)
+    {
+        return new CategoriaUpdateRequestDto
+        {
+            Id = categoria.Id,
+            Nome = categoria.Nome,
+            Descricao = categoria.Descricao,
+            Ativo = categoria.Ativo
+        };
+    }
+
     public static CategoriaResponseDto MapToResponseDto(this Categoria categoria)
     {
         return new CategoriaResponseDto
