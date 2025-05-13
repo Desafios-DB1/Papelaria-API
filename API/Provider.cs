@@ -15,8 +15,7 @@ public static class Provider
     {
         services
             .AddRepositoriesSetup()
-            .AddValidatorsSetup()
-            .AddServicesSetup();
+            .AddValidatorsSetup();
         
         services.AddDbContextSetup(configuration);
         

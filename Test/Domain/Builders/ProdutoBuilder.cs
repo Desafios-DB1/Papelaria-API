@@ -12,6 +12,7 @@ public class ProdutoBuilder
         return new ProdutoBuilder
         {
             _faker = new Faker<Produto>()
+                .RuleFor(p => p.Id, f => f.Random.Guid())
                 .RuleFor(p => p.Nome, f => f.Name.FirstName())
                 .RuleFor(p => p.Descricao, f => f.Lorem.Paragraph())
                 .RuleFor(p => p.PrecoCompra, f => f.Random.Number(1, 100))

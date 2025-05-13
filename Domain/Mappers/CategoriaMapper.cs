@@ -1,5 +1,4 @@
 ﻿using Crosscutting.Dtos.Categoria;
-using Domain.Commands.Categoria;
 using Domain.Entities;
 
 namespace Domain.Mappers;
