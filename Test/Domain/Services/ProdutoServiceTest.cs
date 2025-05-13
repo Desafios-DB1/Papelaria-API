@@ -119,6 +119,55 @@ public class ProdutoServiceTest
     }
 
     #endregion
+    
+    #region ObterTodos
+    
+    [Fact]
+    public async Task ObterTodosAsync_QuandoExistemProdutos_DeveRetornarListaDeProdutos()
+    {
+        var produtos = new List<Produto>
+        {
+            ProdutoBuilder.Novo().Build(),
+            ProdutoBuilder.Novo().Build()
+        };
+    
+        _repositoryMock.Setup(r => r.ObterTodosAsync())
+            .ReturnsAsync(produtos);
+    
+        var result = await _service.ObterTodosAsync();
+    
+        result.Should().NotBeNull();
+        result.Should().HaveCount(produtos.Count);
+        result.Should().AllBeOfType<ProdutoDto>();
+        result.Should().BeEquivalentTo(produtos.Select(c => c.MapToDto()));
+    }
+    
+    [Fact]
+    public async Task ObterTodosAsync_QuandoNaoExistemProdutos_DeveRetornarListaVazia()
+    {
+        _repositoryMock.Setup(r => r.ObterTodosAsync())
+            .ReturnsAsync([]);
+    
+        var result = await _service.ObterTodosAsync();
+    
+        result.Should().NotBeNull();
+        result.Should().BeEmpty();
+    }
+    
+    [Fact]
+    public async Task ObterTodosAsync_QuandoErroNoBanco_DeveLancarException()
+    {
+        _repositoryMock.Setup(r => r.ObterTodosAsync())
+            .ThrowsAsync(new Exception("Falha no banco."));
+    
+        Func<Task> act = async () => await _service.ObterTodosAsync();
+    
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
+    }
+    
+    #endregion
 
     #region AtualizarProduto
 
@@ -181,6 +230,8 @@ public class ProdutoServiceTest
             .ThrowAsync<Exception>()
             .WithMessage("Falha no banco.");
     }
-
+    
     #endregion
+    
+    
 }
