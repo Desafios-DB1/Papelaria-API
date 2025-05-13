@@ -2,7 +2,7 @@
 
 namespace Domain.Interfaces;
 
-public interface ICategoriaService
+public interface ICategoriaService : ICrudService<CategoriaDto>
 {
     Task<CategoriaDto> ObterPorNomeAsync(string nome);
 }
