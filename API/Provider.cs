@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using API.Setups;
+using Domain.Commands.Produto;
 using Domain.Entities;
 using Infra;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -18,7 +20,9 @@ public static class Provider
             .AddValidatorsSetup();
         
         services.AddDbContextSetup(configuration);
-        
+
+        services.AddMediatR(cfg =>
+            cfg.RegisterServicesFromAssemblyContaining<CriarProdutoCommandHandler>());
         
         services.AddSwaggerGen(SwaggerSetup.ConfigureSwagger);
 
