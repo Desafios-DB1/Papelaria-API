@@ -1,4 +1,5 @@
-﻿using Crosscutting.Exceptions;
+﻿using Crosscutting.Dtos.Produto;
+using Crosscutting.Exceptions;
 using Domain.Entities;
 using Domain.Mappers;
 using Domain.Repositories;
@@ -57,6 +58,64 @@ public class ProdutoServiceTest
             .ThrowAsync<Exception>()
             .WithMessage("Falha no banco.");
 
+    }
+
+    #endregion
+
+    #region ObterPorId
+
+    [Fact]
+    public async Task ObterPorIdAsync_QuandoIdValido_DeveRetornarProduto()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+
+        _repositoryMock.Setup(r =>
+            r.ObterPorIdAsync(It.IsAny<Guid>())).ReturnsAsync(produto);
+        
+        var result = await _service.ObterPorIdAsync(produto.Id);
+        result.Should().NotBeNull();
+        result.Should().BeOfType<ProdutoDto>();
+        result.Should().BeEquivalentTo(produto.MapToDto());
+    }
+    
+    [Fact]
+    public async Task ObterPorIdAsync_QuandoIdNaoExiste_DeveRetornarNaoEncontradoException()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+        
+        _repositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync((Produto)null);
+        
+        Func<Task> act = async () => await _service.ObterPorIdAsync(produto.Id);
+        
+        await act.Should()
+            .ThrowAsync<NaoEncontradoException>()
+            .WithMessage("Produto não existe.");
+    }
+    
+    [Fact]
+    public async Task ObterPorIdAsync_QuandoIdVazio_DeveLancarRequisicaoInvalidaException()
+    {
+        Func<Task> act = async () => await _service.ObterPorIdAsync(Guid.Empty);
+        
+        await act.Should()
+            .ThrowAsync<RequisicaoInvalidaException>()
+            .WithMessage("O campo id do objeto produto não pode ser nulo.");
+    }
+    
+    [Fact]
+    public async Task ObterPorIdAsync_QuandoErroNoBanco_DeveLancarException()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+        
+        _repositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ThrowsAsync(new Exception("Falha no banco."));
+        
+        Func<Task> act = async () => await _service.ObterPorIdAsync(produto.Id);
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
     }
 
     #endregion
