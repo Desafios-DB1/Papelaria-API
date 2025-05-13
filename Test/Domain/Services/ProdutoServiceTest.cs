@@ -119,4 +119,68 @@ public class ProdutoServiceTest
     }
 
     #endregion
+
+    #region AtualizarProduto
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoDtoValido_DeveRetornarId()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+
+        _repositoryMock.Setup(r => r.AtualizarESalvarAsync(It.IsAny<Produto>()))
+            .ReturnsAsync(produto.Id);
+        _repositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(produto);
+
+        var result = await _service.AtualizarAsync(produto.Id, produto.MapToDto());
+        result.Should().Be(produto.Id);
+    }
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoIdNaoExiste_DeveRetornarNaoEncontradoException()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+        _repositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync((Produto)null);
+
+        Func<Task> act = async () => await _service.AtualizarAsync(produto.Id, produto.MapToDto());
+
+        await act.Should()
+            .ThrowAsync<NaoEncontradoException>()
+            .WithMessage("Produto não existe.");
+    }
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoDtoInvalido_DeveRetornarRequisicaoInvalidaException()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+
+        _repositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(produto);
+
+        Func<Task> act = async () => await _service.AtualizarAsync(Guid.Empty, null);
+
+        await act.Should()
+            .ThrowAsync<RequisicaoInvalidaException>()
+            .WithMessage("O objeto produto não pode ser nulo.");
+    }
+
+    [Fact]
+    public async Task AtualizarAsync_QuandoErroNoBanco_DeveLancarException()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+
+        _repositoryMock.Setup(r => r.AtualizarESalvarAsync(It.IsAny<Produto>()))
+            .ThrowsAsync(new Exception("Falha no banco."));
+        _repositoryMock.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(produto);
+
+        Func<Task> act = async () => await _service.AtualizarAsync(produto.Id, produto.MapToDto());
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
+    }
+
+    #endregion
 }
