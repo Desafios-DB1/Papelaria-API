@@ -233,5 +233,59 @@ public class ProdutoServiceTest
     
     #endregion
     
-    
+    #region RemoverProduto
+
+    [Fact]
+    public async Task RemoverAsync_QuandoIdValido_DeveRemoverProduto()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+
+        _repositoryMock.Setup(r => r.ObterPorIdAsync(produto.Id))
+            .ReturnsAsync(produto);
+
+        await _service.RemoverAsync(produto.Id);
+
+        _repositoryMock.Verify(r => r.RemoverESalvarAsync(It.IsAny<Produto>()), Times.Once);
+    }
+
+    [Fact]
+    public async Task RemoverAsync_QuandoIdNaoExiste_DeveRetornarNaoEncontradoException()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+
+        Func<Task> act = async () => await _service.RemoverAsync(produto.Id);
+
+        await act.Should()
+            .ThrowAsync<NaoEncontradoException>()
+            .WithMessage("Produto não existe.");
+    }
+
+    [Fact]
+    public async Task RemoverAsync_QuandoIdVazio_DeveLancarRequisicaoInvalidaException()
+    {
+        Func<Task> act = async () => await _service.RemoverAsync(Guid.Empty);
+
+        await act.Should()
+            .ThrowAsync<RequisicaoInvalidaException>()
+            .WithMessage("O campo id do objeto Produto não pode ser nulo.");
+    }
+
+    [Fact]
+    public async Task RemoverAsync_QuandoErroNoBanco_DeveLancarException()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+
+        _repositoryMock.Setup(r => r.ObterPorIdAsync(produto.Id))
+            .ReturnsAsync(produto);
+
+        _repositoryMock.Setup(r => r.RemoverESalvarAsync(It.IsAny<Produto>()))
+            .ThrowsAsync(new Exception("Falha no banco."));
+
+        Func<Task> act = async () => await _service.RemoverAsync(produto.Id);
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha no banco.");
+    }
+    #endregion
 }
