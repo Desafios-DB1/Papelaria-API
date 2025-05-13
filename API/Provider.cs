@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
 using API.Setups;
+using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Entities;
 using Infra;

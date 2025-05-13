@@ -1,4 +1,6 @@
 ﻿using Crosscutting.Dtos.Produto;
+using Domain.Commands;
+using Domain.Commands.Produto;
 using Domain.Factory;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -11,15 +13,8 @@ namespace API.Controllers;
 /// </summary>
 [Route("api/produto")]
 [ApiController]
-public class ProdutoController : ControllerBase
+public class ProdutoController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
-    
-    public ProdutoController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-    
     /// <summary>
     /// Criar um produto e salva no banco
     /// </summary>
@@ -27,11 +22,9 @@ public class ProdutoController : ControllerBase
     /// <response code="400">Erro ao criar produto</response>
     [AllowAnonymous]
     [HttpPost]
-    public async Task<IActionResult> CriarProduto(ProdutoDto dto, CancellationToken cancellationToken)
+    public async Task<IActionResult> CriarProduto(CriarProdutoCommand request, CancellationToken cancellationToken)
     {
-        var command = dto.CriarProdutoCommand();
-
-        var result = await _mediator.Send(command, cancellationToken);
+        var result = await mediator.Send(request, cancellationToken);
         
         if (result == Guid.Empty)
             return BadRequest();

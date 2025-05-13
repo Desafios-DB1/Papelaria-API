@@ -1,20 +1,22 @@
 ﻿using Crosscutting.Dtos.Produto;
+using Domain.Commands;
 using Domain.Commands.Produto;
+using Domain.Entities;
 
 namespace Domain.Factory;
 
 public static class CriarProdutoCommandFactory
 {
-    public static CriarProdutoCommand CriarProdutoCommand(this ProdutoDto dto)
+    public static CriarProdutoCommand CriarProdutoCommand(this Produto produto)
      => new ()
         {
-            Nome = dto.Nome,
-            Descricao = dto.Descricao,
-            CategoriaId = dto.CategoriaId,
-            QuantidadeMinima = dto.QuantidadeMinima,
-            QuantidadeAtual = dto.QuantidadeAtual,
-            PrecoCompra = dto.PrecoCompra,
-            PrecoVenda = dto.PrecoVenda
+            Nome = produto.Nome,
+            Descricao = produto.Descricao,
+            CategoriaId = produto.CategoriaId,
+            QuantidadeMinima = produto.QuantidadeEstoque.QuantidadeMinima,
+            QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual,
+            PrecoCompra = produto.PrecoCompra,
+            PrecoVenda = produto.PrecoVenda
         };
     
 }

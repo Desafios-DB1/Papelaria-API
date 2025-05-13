@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250513172220_AdicionaColunaAtivoEmProduto")]
+    [Migration("20250513185405_AdicionaColunaAtivoEmProduto")]
     partial class AdicionaColunaAtivoEmProduto
     {
         /// <inheritdoc />

@@ -1,5 +1,4 @@
-﻿using Crosscutting.Dtos.Produto;
-using Domain.Commands.Produto;
+﻿using Domain.Commands.Produto;
 using Domain.Entities;
 using Domain.ValueObjects;
 
@@ -7,33 +6,6 @@ namespace Domain.Mappers;
 
 public static class ProdutoMapper
 {
-    public static CriarProdutoCommand MapToCriarCommand(this Produto produto)
-    {
-        return new CriarProdutoCommand
-        {
-            Nome = produto.Nome,
-            Descricao = produto.Descricao,
-            CategoriaId = produto.CategoriaId,
-            QuantidadeMinima = produto.QuantidadeEstoque.QuantidadeMinima,
-            QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual,
-            PrecoCompra = produto.PrecoCompra,
-            PrecoVenda = produto.PrecoVenda
-        };
-    }
-    
-    public static ProdutoDto MapToDto(this Produto produto)
-    {
-        return new ProdutoDto
-        {
-            Nome = produto.Nome,
-            Descricao = produto.Descricao,
-            CategoriaId = produto.CategoriaId,
-            QuantidadeMinima = produto.QuantidadeEstoque.QuantidadeMinima,
-            QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual,
-            PrecoCompra = produto.PrecoCompra,
-            PrecoVenda = produto.PrecoVenda
-        };
-    }
     public static Produto MapToEntity(this CriarProdutoCommand command)
     {
         return new Produto

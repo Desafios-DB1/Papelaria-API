@@ -1,30 +1,32 @@
-﻿using Crosscutting.Validators.Produto;
+﻿using Domain.Factory;
 using Test.Domain.Builders;
-using Domain.Mappers;
+using Domain.Validadores;
 using FluentAssertions;
 
 namespace Test.Domain.Validators;
 
-public class ProdutoDtoValidatorTest
+public class CriarProdutoCommandValidatorTest
 {
-    private readonly ProdutoDtoValidator _validator = new();
+    private readonly CriarProdutoCommandValidator _validator = new();
 
     [Fact]
-    public void ProdutoDtoValidator_QuandoProdutoValido_DeveRetornarSucesso()
+    public void Validate_QuandoProdutoValido_DeveRetornarSucesso()
     {
         var produto = ProdutoBuilder.Novo().Build();
+        var command = produto.CriarProdutoCommand();
 
-        var resultado = _validator.Validate(produto.MapToDto());
+        var resultado = _validator.Validate(command);
 
         resultado.IsValid.Should().BeTrue();
     }
     
     [Fact]
-    public void ProdutoDtoValidator_QuandoNomeVazio_DeveRetornarErro()
+    public void Validate_QuandoNomeVazio_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComNome(string.Empty).Build();
+        var command = produto.CriarProdutoCommand();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
+        var resultado = _validator.Validate(command);
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Nome" &&
@@ -32,11 +34,12 @@ public class ProdutoDtoValidatorTest
     }
     
     [Fact]
-    public void ProdutoDtoValidator_QuandoNomeMaiorQueDuzentos_DeveRetornarErro()
+    public void Validate_QuandoNomeMaiorQueDuzentos_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComNome(new string('a', 201)).Build();
+        var command = produto.CriarProdutoCommand();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
+        var resultado = _validator.Validate(command);
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Nome" &&
@@ -44,11 +47,12 @@ public class ProdutoDtoValidatorTest
     }
     
     [Fact]
-    public void ProdutoDtoValidator_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
+    public void Validate_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComDescricao(new string('a', 301)).Build();
+        var command = produto.CriarProdutoCommand();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
+        var resultado = _validator.Validate(command);
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "Descricao" &&
@@ -56,11 +60,12 @@ public class ProdutoDtoValidatorTest
     }
     
     [Fact]
-    public void ProdutoDtoValidator_QuandoQuantidadeMinimaMenorQueZero_DeveRetornarErro()
+    public void Validate_QuandoQuantidadeMinimaMenorQueZero_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComQuantidadeMinima(-1).Build();
+        var command = produto.CriarProdutoCommand();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
+        var resultado = _validator.Validate(command);
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "QuantidadeMinima" &&
@@ -68,11 +73,12 @@ public class ProdutoDtoValidatorTest
     }
     
     [Fact]
-    public void ProdutoDtoValidator_QuandoQuantidadeAtualMenorQueZero_DeveRetornarErro()
+    public void Validate_QuandoQuantidadeAtualMenorQueZero_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComQuantidadeAtual(-1).Build();
+        var command = produto.CriarProdutoCommand();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
+        var resultado = _validator.Validate(command);
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "QuantidadeAtual" &&
@@ -80,11 +86,12 @@ public class ProdutoDtoValidatorTest
     }
     
     [Fact]
-    public void ProdutoDtoValidator_QuandoPrecoCompraMenorQueZero_DeveRetornarErro()
+    public void Validate_QuandoPrecoCompraMenorQueZero_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComPrecoCompra(-1).Build();
+        var command = produto.CriarProdutoCommand();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
+        var resultado = _validator.Validate(command);
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "PrecoCompra" &&
@@ -92,11 +99,12 @@ public class ProdutoDtoValidatorTest
     }
     
     [Fact]
-    public void ProdutoDtoValidator_QuandoPrecoVendaMenorQueZero_DeveRetornarErro()
+    public void Validate_QuandoPrecoVendaMenorQueZero_DeveRetornarErro()
     {
         var produto = ProdutoBuilder.Novo().ComPrecoVenda(-1).Build();
+        var command = produto.CriarProdutoCommand();
 
-        var resultado = _validator.Validate(ProdutoMapper.MapToDto(produto));
+        var resultado = _validator.Validate(command);
 
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "PrecoVenda" &&

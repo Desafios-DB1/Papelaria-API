@@ -1,22 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class AdicionaColunaAtivoEmProduto : Migration
+    public partial class AdicionaTabelaLogProduto : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-        migrationBuilder.AddColumn<bool>(
-                name: "Ativo",
-                table: "Produtos",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
-
             migrationBuilder.CreateTable(
                 name: "LogsProduto",
                 columns: table => new
@@ -63,10 +57,6 @@ namespace Infra.Migrations
         {
             migrationBuilder.DropTable(
                 name: "LogsProduto");
-
-            migrationBuilder.DropColumn(
-                name: "Ativo",
-                table: "Produtos");
         }
     }
 }
