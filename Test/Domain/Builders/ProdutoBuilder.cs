@@ -16,6 +16,7 @@ public class ProdutoBuilder
                 .RuleFor(p => p.Descricao, f => f.Lorem.Paragraph())
                 .RuleFor(p => p.PrecoCompra, f => f.Random.Number(1, 100))
                 .RuleFor(p => p.PrecoVenda, f => f.Random.Number(1, 100))
+                .RuleFor(p => p.Ativo, true)
                 .RuleFor(p => p.CategoriaId, f => CategoriaBuilder.Novo().Build().Id)
                 .RuleFor(p=>p.QuantidadeEstoque, QuantidadeEstoqueBuilder.Novo().Build)
         };
