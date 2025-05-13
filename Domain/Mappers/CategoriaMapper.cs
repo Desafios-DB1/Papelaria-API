@@ -1,4 +1,5 @@
 ﻿using Crosscutting.Dtos.Categoria;
+using Domain.Commands.Categoria;
 using Domain.Entities;
 
 namespace Domain.Mappers;
@@ -21,7 +22,7 @@ public static class CategoriaMapper
         {
             Nome = categoria.Nome,
             Descricao = categoria.Descricao,
-            Ativo = categoria.Ativo,
+            Ativo = categoria.Ativo
         };
     }
 }
