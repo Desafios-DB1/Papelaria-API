@@ -19,7 +19,8 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// </summary>
     /// <response code="201">Produto criado com sucesso</response>
     /// <response code="400">Erro ao criar produto</response>
-    [AllowAnonymous]
+    /// <response code="401">Sem autorização</response>
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CriarProduto(CriarProdutoCommand request, CancellationToken cancellationToken)
     {
@@ -35,7 +36,8 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// Obter todos os produtos cadastrados
     /// </summary>
     /// <response code="200">Lista de produtos</response>
-    [AllowAnonymous]
+    /// <response code="401">Sem autorização</response>
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> ObterProdutos(CancellationToken cancellationToken)
     {
