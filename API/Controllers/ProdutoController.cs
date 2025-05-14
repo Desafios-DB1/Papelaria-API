@@ -1,6 +1,6 @@
-﻿using Crosscutting.Dtos.Produto;
-using Domain.Commands;
+﻿using Domain.Commands;
 using Domain.Commands.Produto;
+using Domain.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +12,7 @@ namespace API.Controllers;
 /// </summary>
 [Route("api/produto")]
 [ApiController]
-public class ProdutoController(IMediator mediator) : ControllerBase
+public class ProdutoController(IMediator mediator, IProdutoQuery query) : ControllerBase
 {
     /// <summary>
     /// Criar um produto e salva no banco
@@ -29,5 +29,17 @@ public class ProdutoController(IMediator mediator) : ControllerBase
             return BadRequest();
         
         return CreatedAtAction(nameof(CriarProduto), new { id = result }, result);
+    }
+
+    /// <summary>
+    /// Obter todos os produtos cadastrados
+    /// </summary>
+    /// <response code="200">Lista de produtos</response>
+    [AllowAnonymous]
+    [HttpGet]
+    public async Task<IActionResult> ObterProdutos(CancellationToken cancellationToken)
+    {
+        var result = await query.ObterTodos();
+        return Ok(result);
     }
 }

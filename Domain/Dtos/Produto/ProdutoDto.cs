@@ -1,6 +1,7 @@
 ﻿using Crosscutting.Dtos;
+using Domain.Enums;
 
-namespace Crosscutting.Dtos.Produto;
+namespace Domain.Dtos.Produto;
 
 public class ProdutoDto : IBaseDto
 {
@@ -12,4 +13,5 @@ public class ProdutoDto : IBaseDto
     public Guid CategoriaId { get; set; }
     public int QuantidadeMinima { get; set; }
     public int QuantidadeAtual { get; set; }
+    public StatusEstoque StatusEstoque { get; set; }
 }

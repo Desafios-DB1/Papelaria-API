@@ -1,0 +1,17 @@
+﻿using Domain.Dtos.Produto;
+using Domain.Interfaces;
+using Domain.Mappers;
+using Microsoft.EntityFrameworkCore;
+
+namespace Infra.Queries;
+
+public class ProdutoQuery (ApplicationDbContext context)
+    : IProdutoQuery
+{
+    public async Task<List<ProdutoDto>> ObterTodos()
+        => await context.Produtos
+            .AsQueryable()
+            .Include(p => p.Categoria)
+            .Select(p => p.MapToDto())
+            .ToListAsync();
+}

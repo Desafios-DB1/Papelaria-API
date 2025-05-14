@@ -1,25 +1,32 @@
 ﻿using API.Controllers;
-using Crosscutting.Dtos.Produto;
 using Domain.Commands;
 using Domain.Commands.Produto;
+using Domain.Dtos.Produto;
+using Domain.Entities;
+using Domain.Interfaces;
+using Domain.Mappers;
 using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Test.Domain.Builders;
 
 namespace Test.API;
 
 public class ProdutoControllerTest
 {
     private readonly Mock<IMediator> _mediator;
+    private readonly Mock<IProdutoQuery> _query = new();
     private readonly ProdutoController _controller;
     
     public ProdutoControllerTest()
     {
         _mediator = new Mock<IMediator>();
-        _controller = new ProdutoController(_mediator.Object);
+        _controller = new ProdutoController(_mediator.Object, _query.Object);
     }
-    
+
+    #region CriarProduto
+
     [Fact]
     public async Task CriarProduto_QuandoProdutoCriadoComSucesso_DeveRetornarCreatedAtAction()
     {
@@ -37,7 +44,7 @@ public class ProdutoControllerTest
     }
 
     [Fact]
-    public async Task CriarProduto_DeveRetornarBadRequest_QuandoProdutoNaoForCriado()
+    public async Task CriarProduto_QuandoProdutoNaoForCriado_DeveRetornarBadRequest()
     {
         var command = new CriarProdutoCommand();
 
@@ -49,4 +56,42 @@ public class ProdutoControllerTest
 
         result.Should().BeOfType<BadRequestResult>();
     }
+
+    #endregion
+
+    #region ObterProdutos
+
+    [Fact]
+    public async Task ObterProdutos_QuandoHouverProdutos_DeveRetornarListaDeProdutos()
+    {
+        var produtos = new List<ProdutoDto>
+        {
+            ProdutoBuilder.Novo().Build().MapToDto(),
+            ProdutoBuilder.Novo().Build().MapToDto()
+        };
+        
+        _query
+            .Setup(m => m.ObterTodos())
+            .ReturnsAsync(produtos);
+        
+        var result = await _controller.ObterProdutos(CancellationToken.None);
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().Be(produtos);
+    }
+
+    [Fact]
+    public async Task ObterProdutos_QuandoNaoHouverProdutos_DeveRetornarListaVazia()
+    {
+        _query
+            .Setup(m => m.ObterTodos())
+            .ReturnsAsync([]);
+        
+        var result = await _controller.ObterProdutos(CancellationToken.None);
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.As<IEnumerable<object>>().Should().BeEmpty();
+    }
+
+    #endregion
 }

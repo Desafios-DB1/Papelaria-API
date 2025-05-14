@@ -1,4 +1,4 @@
-using Crosscutting.Dtos.Produto;
+using Domain.Dtos.Produto;
 using Domain.ValueObjects;
 
 namespace Domain.Entities;
