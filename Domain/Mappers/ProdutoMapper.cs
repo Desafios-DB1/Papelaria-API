@@ -32,7 +32,7 @@ public static class ProdutoMapper
             PrecoCompra = produto.PrecoCompra,
             PrecoVenda = produto.PrecoVenda,
             CategoriaId = produto.CategoriaId,
-            CategoriaNome = produto.Categoria.Nome,
+            CategoriaNome = produto.Categoria?.Nome,
             QuantidadeMinima = produto.QuantidadeEstoque.QuantidadeMinima,
             QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual,
             StatusEstoque = produto.QuantidadeEstoque.StatusEstoque
