@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Domain.Commands.Produto;
 using Domain.Entities;
 
 namespace Test.Domain.Builders;
@@ -12,13 +13,21 @@ public class ProdutoBuilder
         return new ProdutoBuilder
         {
             _faker = new Faker<Produto>()
+                .RuleFor(p => p.Id, f => f.Random.Guid())
                 .RuleFor(p => p.Nome, f => f.Name.FirstName())
                 .RuleFor(p => p.Descricao, f => f.Lorem.Paragraph())
                 .RuleFor(p => p.PrecoCompra, f => f.Random.Number(1, 100))
                 .RuleFor(p => p.PrecoVenda, f => f.Random.Number(1, 100))
+                .RuleFor(p => p.Ativo, true)
                 .RuleFor(p => p.CategoriaId, f => CategoriaBuilder.Novo().Build().Id)
                 .RuleFor(p=>p.QuantidadeEstoque, QuantidadeEstoqueBuilder.Novo().Build)
         };
+    }
+    
+    public ProdutoBuilder ComId(Guid id)
+    {
+        _faker.RuleFor(p => p.Id, id);
+        return this;
     }
     
     public ProdutoBuilder ComNome(string nome)
@@ -61,5 +70,22 @@ public class ProdutoBuilder
     public Produto Build()
     {
         return _faker.Generate();
+    }
+    
+    public CriarProdutoCommand CriarProdutoCommand()
+    {
+        var produto = _faker.Generate();
+        
+        return new CriarProdutoCommand
+        {
+            Nome = produto.Nome,
+            Descricao = produto.Descricao,
+            PrecoCompra = produto.PrecoCompra,
+            PrecoVenda = produto.PrecoVenda,
+            Ativo = produto.Ativo,
+            CategoriaId = produto.CategoriaId,
+            QuantidadeMinima = produto.QuantidadeEstoque.QuantidadeMinima,
+            QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual
+        };
     }
 }

@@ -14,7 +14,7 @@ public class LogProdutoRepository(ApplicationDbContext context) : Repository<Log
             .ToListAsync();
     }
 
-    public async Task<List<LogProduto>> ObterPorUsuarioIdAsync(Guid usuarioId)
+    public async Task<List<LogProduto>> ObterPorUsuarioIdAsync(string usuarioId)
     {
         return await Context.LogsProduto
             .AsNoTracking()

@@ -7,7 +7,7 @@ public class LogProduto : Entidade
     public Guid ProdutoId { get; set; }
     public Produto Produto { get; set; }
     
-    public Guid UsuarioId { get; set; }
+    public string UsuarioId { get; set; }
     public Usuario Usuario { get; set; }
     
     public TipoOperacao TipoOperacao { get; set; }

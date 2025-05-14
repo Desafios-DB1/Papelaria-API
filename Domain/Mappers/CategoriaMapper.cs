@@ -21,7 +21,7 @@ public static class CategoriaMapper
         {
             Nome = categoria.Nome,
             Descricao = categoria.Descricao,
-            Ativo = categoria.Ativo,
+            Ativo = categoria.Ativo
         };
     }
 }

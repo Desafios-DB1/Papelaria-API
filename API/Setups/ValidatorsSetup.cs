@@ -1,4 +1,5 @@
 ﻿using Crosscutting.Validators.Auth.Register;
+using Domain.Validadores;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 
@@ -11,7 +12,9 @@ public static class ValidatorsSetup
         services
             .AddFluentValidationAutoValidation()
             .AddFluentValidationClientsideAdapters()
-            .AddValidatorsFromAssemblyContaining<RegistroRequestDtoValidator>();
+            .AddValidatorsFromAssemblyContaining<RegistroRequestDtoValidator>()
+            .AddValidatorsFromAssemblyContaining<CriarProdutoCommandValidator>();
+        
         return services;
     }
 }
