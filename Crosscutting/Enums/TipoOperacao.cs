@@ -1,4 +1,4 @@
-﻿namespace Domain.Enums;
+﻿namespace Crosscutting.Enums;
 
 public enum TipoOperacao
 {
