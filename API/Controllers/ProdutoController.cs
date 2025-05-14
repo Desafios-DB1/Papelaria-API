@@ -39,9 +39,24 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="401">Sem autorização</response>
     [Authorize]
     [HttpGet]
-    public async Task<IActionResult> ObterProdutos(CancellationToken cancellationToken)
+    public async Task<IActionResult> ObterProdutos()
     {
         var result = await query.ObterTodos();
         return Ok(result);
+    }
+
+    /// <summary>
+    /// Obter produto por nome
+    /// </summary>
+    /// <param name="nome">Nome do produto a ser procurado</param>
+    /// <response code="200">Objeto produto</response>
+    /// <response code="404">Produto não encontrado</response>
+    /// <response code="401">Sem autorização</response>
+    [Authorize]
+    [HttpGet("/{nome}")]
+    public async Task<IActionResult> ObterProdutosPorNome([FromRoute] string nome)
+    {
+        var result = await query.ObterPorNome(nome);
+        return result is null ? NotFound() : Ok(result);
     }
 }

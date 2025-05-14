@@ -74,7 +74,7 @@ public class ProdutoControllerTest
             .Setup(m => m.ObterTodos())
             .ReturnsAsync(produtos);
         
-        var result = await _controller.ObterProdutos(CancellationToken.None);
+        var result = await _controller.ObterProdutos();
         
         var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
         okResult.Value.Should().Be(produtos);
@@ -87,10 +87,41 @@ public class ProdutoControllerTest
             .Setup(m => m.ObterTodos())
             .ReturnsAsync(new List<ProdutoDto>());
         
-        var result = await _controller.ObterProdutos(CancellationToken.None);
+        var result = await _controller.ObterProdutos();
         
         var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
         okResult.Value.As<IEnumerable<object>>().Should().BeEmpty();
+    }
+
+    #endregion
+    
+    #region ObterProdutosPorNome
+
+    [Fact]
+    public async Task ObterProdutosPorNome_QuandoHouverProduto_DeveRetornarProduto()
+    {
+        var produto = ProdutoBuilder.Novo().Build().MapToDto();
+
+        _query
+            .Setup(m => m.ObterPorNome(It.IsAny<string>()))
+            .ReturnsAsync(produto);
+        
+        var result = await _controller.ObterProdutosPorNome(produto.Nome);
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().Be(produto);
+    }
+    
+    [Fact]
+    public async Task ObterProdutosPorNome_QuandoNaoHouverProdutos_DeveRetornarNotFound()
+    {
+        _query
+            .Setup(m => m.ObterPorNome(It.IsAny<string>()))
+            .ReturnsAsync(null as ProdutoDto);
+        
+        var result = await _controller.ObterProdutosPorNome("Teste");
+        
+        result.Should().BeOfType<NotFoundResult>();
     }
 
     #endregion

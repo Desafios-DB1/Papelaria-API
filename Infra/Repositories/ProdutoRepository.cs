@@ -7,12 +7,17 @@ namespace Infra.Repositories;
 
 public class ProdutoRepository(ApplicationDbContext context) : Repository<Produto>(context), IProdutoRepository
 {
-    public async Task<List<Produto>> ObterPorNomeAsync(string nome)
+    public async Task<Produto> ObterPorNomeAsync(string nome)
     {
         return await Context.Produtos
             .AsNoTracking()
             .Where(p => p.Nome == nome)
-            .ToListAsync();
+            .FirstOrDefaultAsync();
+    }
+
+    public bool ExisteComNome(string nome)
+    {
+        return Context.Produtos.Any(p => p.Nome == nome);
     }
 
     public async Task<List<Produto>> ObterPorCategoriaAsync(Guid categoriaId)

@@ -14,4 +14,12 @@ public class ProdutoQuery (ApplicationDbContext context)
             .Include(p => p.Categoria)
             .Select(p => p.MapToDto())
             .ToListAsync();
+    
+    public async Task<ProdutoDto> ObterPorNome(string nome)
+        => await context.Produtos
+            .AsQueryable()
+            .Include(p => p.Categoria)
+            .Where(p => p.Nome == nome)
+            .Select(p => p.MapToDto())
+            .FirstOrDefaultAsync();
 }

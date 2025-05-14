@@ -12,9 +12,11 @@ public class CategoriaDtoValidatorTest
     [Fact]
     public void CategoriaDtoValidator_QuandoCategoriaValida_DeveRetornarSucesso()
     {
-        var categoria = CategoriaBuilder.Novo().Build();
+        var categoria = CategoriaBuilder.Novo()
+            .ComNome("Teste")
+            .ComDescricao("Teste").Build();
 
-        var resultado = _validator.Validate(CategoriaMapper.MapToDto(categoria));
+        var resultado = _validator.Validate(categoria.MapToDto());
 
         resultado.IsValid.Should().BeTrue();
     }

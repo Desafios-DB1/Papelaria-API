@@ -1,16 +1,21 @@
 ﻿using Crosscutting.Constantes;
 using Domain.Commands.Produto;
+using Domain.Repositories;
 using FluentValidation;
 
 namespace Domain.Validadores;
 
 public class CriarProdutoCommandValidator : AbstractValidator<CriarProdutoCommand>
 {
-    public CriarProdutoCommandValidator()
+    public CriarProdutoCommandValidator(IProdutoRepository repository)
     {
-        RuleFor(x=>x.Nome)
+        var produtoRepository = repository;
+
+        RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
-            .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo);
+            .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo)
+            .Must(nome => !produtoRepository.ExisteComNome(nome))
+            .WithMessage(ValidationErrors.JaExiste(Entidades.Produto));
 
         RuleFor(x=>x.Descricao)
             .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo);
