@@ -1,5 +1,5 @@
-﻿using Domain.Commands.Produto;
-using Domain.Dtos.Produto;
+﻿using Crosscutting.Dtos.Produto;
+using Domain.Commands.Produto;
 using Domain.Entities;
 using Domain.ValueObjects;
 

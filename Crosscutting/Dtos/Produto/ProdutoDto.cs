@@ -1,7 +1,6 @@
-﻿using Crosscutting.Dtos;
-using Domain.Enums;
+﻿using Crosscutting.Enums;
 
-namespace Domain.Dtos.Produto;
+namespace Crosscutting.Dtos.Produto;
 
 public class ProdutoDto : IBaseDto
 {

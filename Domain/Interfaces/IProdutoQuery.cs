@@ -1,4 +1,4 @@
-﻿using Domain.Dtos.Produto;
+﻿using Crosscutting.Dtos.Produto;
 
 namespace Domain.Interfaces;
 

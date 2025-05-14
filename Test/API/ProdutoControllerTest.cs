@@ -1,7 +1,7 @@
 ﻿using API.Controllers;
+using Crosscutting.Dtos.Produto;
 using Domain.Commands;
 using Domain.Commands.Produto;
-using Domain.Dtos.Produto;
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Mappers;

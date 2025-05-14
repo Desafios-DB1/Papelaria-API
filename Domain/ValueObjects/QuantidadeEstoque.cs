@@ -1,6 +1,6 @@
 using Crosscutting.Constantes;
+using Crosscutting.Enums;
 using Crosscutting.Exceptions;
-using Domain.Enums;
 
 namespace Domain.ValueObjects;
 

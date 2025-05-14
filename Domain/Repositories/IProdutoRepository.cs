@@ -1,5 +1,5 @@
-﻿using Domain.Entities;
-using Domain.Enums;
+﻿using Crosscutting.Enums;
+using Domain.Entities;
 
 namespace Domain.Repositories;
 

@@ -1,4 +1,4 @@
-﻿using Domain.Dtos.Produto;
+﻿using Crosscutting.Dtos.Produto;
 using Domain.Interfaces;
 using Domain.Mappers;
 using Microsoft.EntityFrameworkCore;
