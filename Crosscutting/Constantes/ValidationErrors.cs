@@ -8,4 +8,5 @@ public static class ValidationErrors
     public static string ValorNaoNegativo => "{0} não pode ser menor que zero!";
     public static string QuantidadeInsuficiente => "Quantidade insuficiente em estoque!";
     public static string EmailInvalido => "'{PropertyValue}' não é um email válido.";
+    public static string JaExiste(string objeto) => $"Já existe um(a) {objeto} com esse {{PropertyName}}.";
 }
