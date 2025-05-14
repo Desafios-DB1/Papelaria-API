@@ -24,6 +24,12 @@ public class ProdutoBuilder
         };
     }
     
+    public ProdutoBuilder ComId(Guid id)
+    {
+        _faker.RuleFor(p => p.Id, id);
+        return this;
+    }
+    
     public ProdutoBuilder ComNome(string nome)
     {
         _faker.RuleFor(p => p.Nome, nome);

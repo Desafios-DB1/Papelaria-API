@@ -21,15 +21,17 @@ public class CriarProdutoCommandHandlerTest
     [Fact]
     public async Task Handler_QuandoRequisicaoValida_DeveCriarProdutoERetornarId()
     {
-        var produto = ProdutoBuilder.Novo().Build();
-        var command = ProdutoBuilder.Novo().CriarProdutoCommand();
+        var idEsperado = Guid.NewGuid();
+        var command = ProdutoBuilder.Novo()
+            .ComId(idEsperado)
+            .CriarProdutoCommand();
 
         _repositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Produto>()))
-            .ReturnsAsync(produto.Id);
+            .ReturnsAsync(idEsperado);
         
         var result = await _commandHandler.Handle(command, CancellationToken.None);
 
-        result.Should().Be(produto.Id);
+        result.Should().Be(idEsperado);
     }
     
     [Fact]
