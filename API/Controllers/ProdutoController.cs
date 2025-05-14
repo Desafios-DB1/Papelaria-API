@@ -1,7 +1,6 @@
 ﻿using Crosscutting.Dtos.Produto;
 using Domain.Commands;
 using Domain.Commands.Produto;
-using Domain.Factory;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

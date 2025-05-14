@@ -1,9 +1,6 @@
 using Crosscutting.Exceptions;
-using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Entities;
-using Domain.Factory;
-using Domain.Mappers;
 using Domain.Repositories;
 using FluentAssertions;
 using Moq;
@@ -25,7 +22,7 @@ public class CriarProdutoCommandHandlerTest
     public async Task Handler_QuandoRequisicaoValida_DeveCriarProdutoERetornarId()
     {
         var produto = ProdutoBuilder.Novo().Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().CriarProdutoCommand();
 
         _repositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Produto>()))
             .ReturnsAsync(produto.Id);
@@ -47,8 +44,7 @@ public class CriarProdutoCommandHandlerTest
     [Fact]
     public async Task Handler_QuandoErroNoBanco_DeveLancarException()
     {
-        var produto = ProdutoBuilder.Novo().Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().CriarProdutoCommand();
         
         _repositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Produto>()))
             .ThrowsAsync(new Exception("Erro ao salvar no banco de dados."));

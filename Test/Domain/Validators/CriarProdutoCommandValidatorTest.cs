@@ -1,5 +1,4 @@
-﻿using Domain.Factory;
-using Test.Domain.Builders;
+﻿using Test.Domain.Builders;
 using Domain.Validadores;
 using FluentAssertions;
 
@@ -12,8 +11,7 @@ public class CriarProdutoCommandValidatorTest
     [Fact]
     public void Validate_QuandoProdutoValido_DeveRetornarSucesso()
     {
-        var produto = ProdutoBuilder.Novo().Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().CriarProdutoCommand();
 
         var resultado = _validator.Validate(command);
 
@@ -23,8 +21,7 @@ public class CriarProdutoCommandValidatorTest
     [Fact]
     public void Validate_QuandoNomeVazio_DeveRetornarErro()
     {
-        var produto = ProdutoBuilder.Novo().ComNome(string.Empty).Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().ComNome(string.Empty).CriarProdutoCommand();
 
         var resultado = _validator.Validate(command);
 
@@ -36,8 +33,7 @@ public class CriarProdutoCommandValidatorTest
     [Fact]
     public void Validate_QuandoNomeMaiorQueDuzentos_DeveRetornarErro()
     {
-        var produto = ProdutoBuilder.Novo().ComNome(new string('a', 201)).Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().ComNome(new string('a', 201)).CriarProdutoCommand();
 
         var resultado = _validator.Validate(command);
 
@@ -49,8 +45,7 @@ public class CriarProdutoCommandValidatorTest
     [Fact]
     public void Validate_QuandoDescricaoMaiorQueTrezentos_DeveRetornarErro()
     {
-        var produto = ProdutoBuilder.Novo().ComDescricao(new string('a', 301)).Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().ComDescricao(new string('a', 301)).CriarProdutoCommand();
 
         var resultado = _validator.Validate(command);
 
@@ -62,8 +57,7 @@ public class CriarProdutoCommandValidatorTest
     [Fact]
     public void Validate_QuandoQuantidadeMinimaMenorQueZero_DeveRetornarErro()
     {
-        var produto = ProdutoBuilder.Novo().ComQuantidadeMinima(-1).Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().ComQuantidadeMinima(-1).CriarProdutoCommand();
 
         var resultado = _validator.Validate(command);
 
@@ -75,8 +69,7 @@ public class CriarProdutoCommandValidatorTest
     [Fact]
     public void Validate_QuandoQuantidadeAtualMenorQueZero_DeveRetornarErro()
     {
-        var produto = ProdutoBuilder.Novo().ComQuantidadeAtual(-1).Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().ComQuantidadeAtual(-1).CriarProdutoCommand();
 
         var resultado = _validator.Validate(command);
 
@@ -88,8 +81,7 @@ public class CriarProdutoCommandValidatorTest
     [Fact]
     public void Validate_QuandoPrecoCompraMenorQueZero_DeveRetornarErro()
     {
-        var produto = ProdutoBuilder.Novo().ComPrecoCompra(-1).Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().ComPrecoCompra(-1).CriarProdutoCommand();
 
         var resultado = _validator.Validate(command);
 
@@ -101,8 +93,7 @@ public class CriarProdutoCommandValidatorTest
     [Fact]
     public void Validate_QuandoPrecoVendaMenorQueZero_DeveRetornarErro()
     {
-        var produto = ProdutoBuilder.Novo().ComPrecoVenda(-1).Build();
-        var command = produto.CriarProdutoCommand();
+        var command = ProdutoBuilder.Novo().ComPrecoVenda(-1).CriarProdutoCommand();
 
         var resultado = _validator.Validate(command);
 

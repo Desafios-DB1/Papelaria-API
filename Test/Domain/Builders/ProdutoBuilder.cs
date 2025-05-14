@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Domain.Commands.Produto;
 using Domain.Entities;
 
 namespace Test.Domain.Builders;
@@ -63,5 +64,22 @@ public class ProdutoBuilder
     public Produto Build()
     {
         return _faker.Generate();
+    }
+    
+    public CriarProdutoCommand CriarProdutoCommand()
+    {
+        var produto = _faker.Generate();
+        
+        return new CriarProdutoCommand
+        {
+            Nome = produto.Nome,
+            Descricao = produto.Descricao,
+            PrecoCompra = produto.PrecoCompra,
+            PrecoVenda = produto.PrecoVenda,
+            Ativo = produto.Ativo,
+            CategoriaId = produto.CategoriaId,
+            QuantidadeMinima = produto.QuantidadeEstoque.QuantidadeMinima,
+            QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual
+        };
     }
 }
