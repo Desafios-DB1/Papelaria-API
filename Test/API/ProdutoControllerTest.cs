@@ -85,7 +85,7 @@ public class ProdutoControllerTest
     {
         _query
             .Setup(m => m.ObterTodos())
-            .ReturnsAsync([]);
+            .ReturnsAsync(new List<ProdutoDto>());
         
         var result = await _controller.ObterProdutos(CancellationToken.None);
         
