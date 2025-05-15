@@ -6,5 +6,5 @@ public interface IProdutoQuery
 {
     Task<List<ProdutoDto>> ObterTodos();
     Task<ProdutoDto> ObterPorNome(string nome);
-    Task<List<ProdutoDto>> ObterPorCategoria(string nomeCategoria);
+    Task<List<ProdutoDto>> ObterPorNomeCategoria(string nomeCategoria);
 }

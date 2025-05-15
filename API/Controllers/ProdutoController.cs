@@ -80,9 +80,9 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     [HttpGet("categoria/{nomeCategoria}")]
     [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
     [ProducesResponseType(typeof(ErrorResponse),401)]
-    public async Task<IActionResult> ObterProdutosPorCategoria([FromRoute] string nomeCategoria)
+    public async Task<IActionResult> ObterProdutosPorNomeCategoria([FromRoute] string nomeCategoria)
     {
-        var result = await query.ObterPorCategoria(nomeCategoria);
+        var result = await query.ObterPorNomeCategoria(nomeCategoria);
         return Ok(result);
     }
 }
