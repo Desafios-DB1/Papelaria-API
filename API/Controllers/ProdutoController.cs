@@ -1,4 +1,6 @@
-﻿using Domain.Commands;
+﻿using Crosscutting.Dtos.Produto;
+using Crosscutting.Erros;
+using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Interfaces;
 using MediatR;
@@ -22,6 +24,9 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="401">Sem autorização</response>
     [Authorize]
     [HttpPost]
+    [ProducesResponseType(typeof(Guid), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> CriarProduto(CriarProdutoCommand request, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(request, cancellationToken);
@@ -35,10 +40,12 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <summary>
     /// Obter todos os produtos cadastrados
     /// </summary>
-    /// <response code="200">Lista de produtos</response>
+    /// <response code="200">Lista de produtos (pode ser vazia)</response>
     /// <response code="401">Sem autorização</response>
     [Authorize]
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> ObterProdutos()
     {
         var result = await query.ObterTodos();
@@ -54,6 +61,9 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="401">Sem autorização</response>
     [Authorize]
     [HttpGet("nome/{nome}")]
+    [ProducesResponseType(typeof(ProdutoDto), 200)]
+    [ProducesResponseType(typeof(ErrorResponse),404)]
+    [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> ObterProdutosPorNome([FromRoute] string nome)
     {
         var result = await query.ObterPorNome(nome);
@@ -64,10 +74,12 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// Obter todos os produtos de uma categoria
     /// </summary>
     /// <param name="nomeCategoria">Nome da categoria</param>
-    /// <response code="200">Lista de produtos dessa categoria</response>
+    /// <response code="200">Lista de produtos dessa categoria (pode estar vazia)</response>
     /// <response code="401">Sem autorização</response>
     [Authorize]
     [HttpGet("categoria/{nomeCategoria}")]
+    [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> ObterProdutosPorCategoria([FromRoute] string nomeCategoria)
     {
         var result = await query.ObterPorCategoria(nomeCategoria);
