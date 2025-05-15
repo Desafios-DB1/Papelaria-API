@@ -53,10 +53,24 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="404">Produto não encontrado</response>
     /// <response code="401">Sem autorização</response>
     [Authorize]
-    [HttpGet("/{nome}")]
+    [HttpGet("/nome/{nome}")]
     public async Task<IActionResult> ObterProdutosPorNome([FromRoute] string nome)
     {
         var result = await query.ObterPorNome(nome);
         return result is null ? NotFound() : Ok(result);
+    }
+
+    /// <summary>
+    /// Obter todos os produtos de uma categoria
+    /// </summary>
+    /// <param name="nomeCategoria">Nome da categoria</param>
+    /// <response code="200">Lista de produtos dessa categoria</response>
+    /// <response code="401">Sem autorização</response>
+    [Authorize]
+    [HttpGet("/categoria/{nomeCategoria}")]
+    public async Task<IActionResult> ObterProdutosPorCategoria([FromRoute] string nomeCategoria)
+    {
+        var result = await query.ObterPorCategoria(nomeCategoria);
+        return Ok(result);
     }
 }

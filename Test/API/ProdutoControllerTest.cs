@@ -125,4 +125,27 @@ public class ProdutoControllerTest
     }
 
     #endregion
+    
+    #region ObterProdutosPorCategoria
+
+    [Fact]
+    public async Task ObterProdutosPorCategoria_QuandoHouverProdutos_DeveRetornarListaDeProdutos()
+    {
+        var produtos = new List<ProdutoDto>
+        {
+            ProdutoBuilder.Novo().Build().MapToDto(),
+            ProdutoBuilder.Novo().Build().MapToDto()
+        };
+
+        _query
+            .Setup(m => m.ObterPorCategoria(It.IsAny<string>()))
+            .ReturnsAsync(produtos);
+        
+        var result = await _controller.ObterProdutosPorCategoria("Teste");
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().Be(produtos);
+    }
+
+    #endregion
 }
