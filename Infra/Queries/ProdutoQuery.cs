@@ -46,11 +46,11 @@ public class ProdutoQuery (ApplicationDbContext context)
         .AsQueryable()
         .AsNoTracking()
         .Include(p => p.Categoria)
+        .Select(p => p.MapToDto())
         .ToListAsync();
 
         return produtos
-            .Where(p => p.QuantidadeEstoque.StatusEstoque == statusEstoque)
-            .Select(p => p.MapToDto())
+            .Where(p => p.StatusEstoque == statusEstoque)
             .ToList();
     }
 }
