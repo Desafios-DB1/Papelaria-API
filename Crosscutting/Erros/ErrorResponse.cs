@@ -1,6 +1,6 @@
 ﻿namespace Crosscutting.Erros;
 
-public class ErrorResponse(string message)
+public class ErrorResponse
 {
-    public string Message { get; set; } = message;
+    public string Message { get; set; }
 }
