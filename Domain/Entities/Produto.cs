@@ -1,4 +1,5 @@
 using Crosscutting.Dtos.Produto;
+using Domain.Commands.Produto;
 using Domain.ValueObjects;
 
 namespace Domain.Entities;
@@ -18,19 +19,19 @@ public class Produto : Entidade
     public ICollection<LogProduto> Logs { get; set; } = new List<LogProduto>();
     
     public Produto() {}
-    public override void Atualizar<T>(T dto)
+    public override void Atualizar<T>(T request)
     {
-        if (dto is ProdutoDto produtoDto)
+        if (request is AtualizarProdutoCommand atualizarCommand)
         {
-            Nome = produtoDto.Nome;
-            Descricao = produtoDto.Descricao;
-            Ativo = produtoDto.Ativo;
-            PrecoCompra = produtoDto.PrecoCompra;
-            PrecoVenda = produtoDto.PrecoVenda;
-            CategoriaId = produtoDto.CategoriaId;
-            QuantidadeEstoque = new QuantidadeEstoque(produtoDto.QuantidadeAtual, produtoDto.QuantidadeMinima);
+            Nome = atualizarCommand.Nome;
+            Descricao = atualizarCommand.Descricao;
+            Ativo = atualizarCommand.Ativo;
+            PrecoCompra = atualizarCommand.PrecoCompra;
+            PrecoVenda = atualizarCommand.PrecoVenda;
+            CategoriaId = atualizarCommand.CategoriaId;
+            QuantidadeEstoque = new QuantidadeEstoque(atualizarCommand.QuantidadeAtual, atualizarCommand.QuantidadeMinima);
         }
         else 
-            throw new ArgumentException("Tipo de DTO inválido para atualização.");
+            throw new ArgumentException("Tipo de request inválido para atualização.");
     }
 }
