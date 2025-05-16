@@ -9,15 +9,13 @@ public class AtualizarProdutoCommandValidator : AbstractValidator<AtualizarProdu
 {
     public AtualizarProdutoCommandValidator(IProdutoRepository repository)
     {
-        var produtoRepository = repository;
-        
         RuleFor(x => x.Id)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio);
         
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
             .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo)
-            .Must(nome => !produtoRepository.ExisteComNome(nome))
+            .Must(nome => !repository.ExisteComNome(nome))
             .WithMessage(ValidationErrors.JaExiste(Entidades.Produto));
 
         RuleFor(x=>x.Descricao)
