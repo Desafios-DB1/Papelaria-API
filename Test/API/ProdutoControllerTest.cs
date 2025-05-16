@@ -1,5 +1,6 @@
 ﻿using API.Controllers;
 using Crosscutting.Dtos.Produto;
+using Crosscutting.Enums;
 using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Entities;
@@ -158,6 +159,55 @@ public class ProdutoControllerTest
         
         var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
         okResult.Value.As<IEnumerable<object>>().Should().BeEmpty();
+    }
+
+    #endregion
+    
+    #region ObterProdutosPorStatusEstoque
+
+    [Fact]
+    public async Task ObterProdutosPorStatusEstoque_QuandoHouverProdutos_DeveRetornarListaDeProdutos()
+    {
+        var produtos = new List<ProdutoDto>
+        {
+            ProdutoBuilder.Novo().Build().MapToDto(),
+            ProdutoBuilder.Novo().Build().MapToDto()
+        };
+
+        _query
+            .Setup(m => m.ObterPorStatusEstoque(It.IsAny<StatusEstoque>()))
+            .ReturnsAsync(produtos);
+        
+        var result = await _controller.ObterProdutosPorStatusEstoque(StatusEstoque.CRITICO);
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().Be(produtos);
+    }
+    
+    [Fact]
+    public async Task ObterProdutosPorStatusEstoque_QuandoNaoHouverProdutos_DeveRetornarListaVazia()
+    {
+        _query
+            .Setup(m => m.ObterPorStatusEstoque(It.IsAny<StatusEstoque>()))
+            .ReturnsAsync(new List<ProdutoDto>());
+        
+        var result = await _controller.ObterProdutosPorStatusEstoque(StatusEstoque.CRITICO);
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.As<IEnumerable<object>>().Should().BeEmpty();
+    }
+
+    [Fact]
+    public async Task ObterProdutosPorStatusEstoque_QuandoStatusInvalido_DeveLancarException()
+    {
+        _query
+            .Setup(m => m.ObterPorStatusEstoque(It.IsAny<StatusEstoque>()))
+            .ThrowsAsync(new ArgumentException("O status de estoque fornecido é inválido"));
+
+        Func<Task> act = async () => await _controller.ObterProdutosPorStatusEstoque((StatusEstoque)999);
+
+        await act.Should().ThrowAsync<ArgumentException>()
+            .WithMessage("O status de estoque fornecido é inválido");
     }
 
     #endregion
