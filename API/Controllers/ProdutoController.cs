@@ -103,4 +103,16 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
         var result = await query.ObterPorStatusEstoque(statusEstoque);
         return Ok(result);
     }
+    
+    [Authorize]
+    [HttpPatch("estoque")]
+    [ProducesResponseType(typeof(ProdutoDto), 200)]
+    [ProducesResponseType(typeof(ErrorResponse),404)]
+    [ProducesResponseType(typeof(ErrorResponse),401)]
+    public async Task<IActionResult> AlterarEstoque([FromBody] AlterarEstoqueCommand request, CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(request, cancellationToken);
+        
+        return result is null ? NotFound() : Ok(result);
+    }
 }
