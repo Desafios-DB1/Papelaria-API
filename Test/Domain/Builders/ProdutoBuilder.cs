@@ -88,4 +88,21 @@ public class ProdutoBuilder
             QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual
         };
     }
+    public AtualizarProdutoCommand AtualizarProdutoCommand()
+    {
+        var produto = _faker.Generate();
+
+        return new AtualizarProdutoCommand()
+        {
+            Id = produto.Id,
+            Nome = produto.Nome,
+            Descricao = produto.Descricao,
+            PrecoCompra = produto.PrecoCompra,
+            PrecoVenda = produto.PrecoVenda,
+            Ativo = produto.Ativo,
+            CategoriaId = produto.CategoriaId,
+            QuantidadeMinima = produto.QuantidadeEstoque.QuantidadeMinima,
+            QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual
+        };
+    }
 }

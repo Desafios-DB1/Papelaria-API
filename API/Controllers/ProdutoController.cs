@@ -87,6 +87,23 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     }
 
     /// <summary>
+    /// Obter todos os produtos com um determinado status de estoque
+    /// </summary>
+    /// <param name="statusEstoque">Status do estoque que ira filtrar os produtos</param>
+    /// <response code="200">Lista de produtos com esse status (pode estar vazia)</response>
+    /// <response code="401">Sem autorização</response>
+    /// <response code="404">Status enviado é inválido</response>
+    [Authorize]
+    [HttpGet("status")]
+    [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 401)]
+    public async Task<IActionResult> ObterProdutosPorStatusEstoque(StatusEstoque statusEstoque)
+    {
+        var result = await query.ObterPorStatusEstoque(statusEstoque);
+        return Ok(result);
+    }
+    
+    /// <summary>
     /// Atualizar um produto
     /// </summary>
     /// <response code="200">Produto atualizado com sucesso</response>
@@ -105,23 +122,6 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
         if (result == Guid.Empty)
             return BadRequest();
 
-        return Ok(result);
-    }
-
-    /// <summary>
-    /// Obter todos os produtos com um determinado status de estoque
-    /// </summary>
-    /// <param name="statusEstoque">Status do estoque que ira filtrar os produtos</param>
-    /// <response code="200">Lista de produtos com esse status (pode estar vazia)</response>
-    /// <response code="401">Sem autorização</response>
-    /// <response code="404">Status enviado é inválido</response>
-    [Authorize]
-    [HttpGet("status")]
-    [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
-    [ProducesResponseType(typeof(ErrorResponse), 401)]
-    public async Task<IActionResult> ObterProdutosPorStatusEstoque(StatusEstoque statusEstoque)
-    {
-        var result = await query.ObterPorStatusEstoque(statusEstoque);
         return Ok(result);
     }
 }
