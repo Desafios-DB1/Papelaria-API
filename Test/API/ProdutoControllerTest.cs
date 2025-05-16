@@ -1,6 +1,7 @@
 ﻿using API.Controllers;
 using Crosscutting.Dtos.Produto;
 using Crosscutting.Enums;
+using Crosscutting.Exceptions;
 using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Entities;
@@ -210,5 +211,41 @@ public class ProdutoControllerTest
             .WithMessage("O status de estoque fornecido é inválido");
     }
 
+    #endregion
+    
+    #region AtualizarProduto
+    
+    [Fact]
+    public async Task AtualizarProduto_QuandoProdutoAtualizado_DeveRetornarIdDoProduto()
+    {
+        var produto = ProdutoBuilder.Novo().Build();
+        var command = ProdutoBuilder.Novo()
+            .ComId(produto.Id)
+            .AtualizarProdutoCommand();
+
+        _mediator
+            .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(produto.Id);
+        
+        var result = await _controller.AtualizarProduto(command, CancellationToken.None);
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().Be(produto.Id);
+    }
+
+    [Fact]
+    public async Task AtualizarProduto_QuandoProdutoNaoAtualizado_DeveRetornarBadRequest()
+    {
+        var command = new AtualizarProdutoCommand();
+
+        _mediator
+            .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Guid.Empty);
+        
+        var result = await _controller.AtualizarProduto(command, CancellationToken.None);
+
+        result.Should().BeOfType<BadRequestResult>();
+    }
+    
     #endregion
 }
