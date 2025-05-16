@@ -12,9 +12,9 @@ public class Categoria : Entidade
     
     public Categoria() {}
 
-    public override void Atualizar<T> (T dto)
+    public override void Atualizar<T> (T request)
     {
-        if (dto is CategoriaDto categoriaDto)
+        if (request is CategoriaDto categoriaDto)
         {
             Nome = categoriaDto.Nome;
             Descricao = categoriaDto.Descricao;
