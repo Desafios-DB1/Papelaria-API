@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Domain.Commands.Produto;
 
-public class RemoverProdutoCommand : IRequest
+public class RemoverProdutoCommand
 {
     public Guid Id { get; set; }
 }
@@ -17,9 +17,9 @@ public class RemoverProdutoCommandHandler(IProdutoRepository repository) : IRequ
         if (request is null)
             throw new RequisicaoInvalidaException(ErrorMessages.RequisicaoInvalida);
         
-        var entity = await repository.ObterPorIdAsync(request.Id)
+        var produto = await repository.ObterPorIdAsync(request.Id)
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Produto"));
         
-        await repository.RemoverESalvarAsync(entity);
+        await repository.RemoverESalvarAsync(produto);
     }
 }
