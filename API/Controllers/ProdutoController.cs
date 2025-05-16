@@ -103,4 +103,20 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
         var result = await query.ObterPorStatusEstoque(statusEstoque);
         return Ok(result);
     }
+
+    /// <summary>
+    /// Remover um produto pelo id
+    /// </summary>
+    /// <response code="204">Produto excluido com sucesso</response>
+    /// <response code="401">Sem autorização</response>
+    /// <response code="404">Id enviado é inválido</response>
+    [Authorize]
+    [HttpDelete("remover")]
+    [ProducesResponseType( 204)]
+    [ProducesResponseType(typeof(ErrorResponse), 400)]
+    public async Task<IActionResult> RemoverProdutoPorId(RemoverProdutoCommand request, CancellationToken cancellationToken)
+    {
+       await mediator.Send(request, cancellationToken);
+       return NoContent();
+    }
 }
