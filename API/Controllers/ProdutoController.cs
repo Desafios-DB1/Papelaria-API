@@ -1,6 +1,7 @@
 ﻿using Crosscutting.Dtos.Produto;
 using Crosscutting.Enums;
 using Crosscutting.Erros;
+using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Interfaces;
 using MediatR;
@@ -123,5 +124,17 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
             return BadRequest();
 
         return Ok(result);
+    }
+    
+    [Authorize]
+    [HttpPatch("estoque")]
+    [ProducesResponseType(typeof(ProdutoDto), 200)]
+    [ProducesResponseType(typeof(ErrorResponse),404)]
+    [ProducesResponseType(typeof(ErrorResponse),401)]
+    public async Task<IActionResult> AlterarEstoque([FromBody] AlterarEstoqueCommand request, CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(request, cancellationToken);
+        
+        return result is null ? NotFound() : Ok(result);
     }
 }
