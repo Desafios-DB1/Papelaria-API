@@ -20,7 +20,7 @@ public class CategoriaController(IMediator mediator) : ControllerBase
     /// <response code="400">Erro ao criar categoria</response>
     /// <response code="401">Sem autorização</response>
     [Authorize]
-    [HttpGet]
+    [HttpPost]
     [ProducesResponseType(typeof(Guid), 201)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 401)]
