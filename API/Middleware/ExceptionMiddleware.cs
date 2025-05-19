@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
+using Crosscutting.Exceptions;
 
 namespace Papelaria.API.Middleware;
 
@@ -21,6 +22,7 @@ public class ExceptionMiddleware(RequestDelegate next)
     {
         var statusCode = exception switch
         {
+            NaoEncontradoException => HttpStatusCode.NotFound,
             Exception => HttpStatusCode.BadRequest
         };
 
