@@ -18,7 +18,7 @@ public class AtualizarCategoriaCommandHandler(ICategoriaRepository repository) :
     public async Task<Guid> Handle(AtualizarCategoriaCommand request, CancellationToken cancellationToken)
     {
         if (request is null)
-            throw new ArgumentNullException(ErrorMessages.RequisicaoInvalida);
+            throw new RequisicaoInvalidaException(ErrorMessages.RequisicaoInvalida);
         
         var categoriaAntiga = await repository.ObterPorIdAsync(request.Id)
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Categoria"));

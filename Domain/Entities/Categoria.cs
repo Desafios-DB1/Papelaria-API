@@ -1,4 +1,5 @@
 ﻿using Crosscutting.Dtos.Categoria;
+using Domain.Commands.Categoria;
 
 namespace Domain.Entities;
 
@@ -14,15 +15,15 @@ public class Categoria : Entidade
 
     public override void Atualizar<T> (T request)
     {
-        if (request is CategoriaDto categoriaDto)
+        if (request is AtualizarCategoriaCommand atualizarCommand)
         {
-            Nome = categoriaDto.Nome;
-            Descricao = categoriaDto.Descricao;
-            Ativo = categoriaDto.Ativo;
+            Nome = atualizarCommand.Nome;
+            Descricao = atualizarCommand.Descricao;
+            Ativo = atualizarCommand.Ativo;
         }
         else
         {
-            throw new ArgumentException("Tipo de DTO inválido para atualização.");
+            throw new ArgumentException("Tipo de request inválido para atualização.");
         }
     }
 }
