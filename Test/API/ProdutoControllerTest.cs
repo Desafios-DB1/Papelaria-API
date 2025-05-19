@@ -25,6 +25,7 @@ public class ProdutoControllerTest
     {
         _mediator = new Mock<IMediator>();
         _controller = new ProdutoController(_mediator.Object, _query.Object);
+        UsuarioBuilder.SimularUsuarioAutenticado(_controller);
     }
 
     #region CriarProduto
@@ -254,8 +255,6 @@ public class ProdutoControllerTest
     [Fact]
     public async Task AlterarEstoque_QuandoEstoqueAlteradoComSucesso_DeveRetornarProdutoAtualizado()
     {
-        UsuarioBuilder.SimularUsuarioAutenticado(_controller);
-        
         var idEsperado = Guid.NewGuid();
         var command = ProdutoBuilder.Novo()
             .ComId(idEsperado)
@@ -279,7 +278,6 @@ public class ProdutoControllerTest
     [Fact]
     public async Task AlterarEstoque_QuandoProdutoNaoEncontrado_DeveRetornarNotFound()
     {
-        UsuarioBuilder.SimularUsuarioAutenticado(_controller);
         var command = ProdutoBuilder.Novo()
             .AdicionarEstoqueCommand();
         
