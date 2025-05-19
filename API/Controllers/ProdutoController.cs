@@ -1,7 +1,6 @@
 ﻿using Crosscutting.Dtos.Produto;
 using Crosscutting.Enums;
 using Crosscutting.Erros;
-using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Interfaces;
 using MediatR;
@@ -58,7 +57,7 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// </summary>
     /// <param name="nome">Nome do produto a ser procurado</param>
     /// <response code="200">Objeto produto</response>
-    /// <response code="404">Produto não encontrado</response>
+    /// <response code="404">Produto não existe</response>
     /// <response code="401">Sem autorização</response>
     [Authorize]
     [HttpGet("nome/{nome}")]
@@ -101,6 +100,28 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     public async Task<IActionResult> ObterProdutosPorStatusEstoque(StatusEstoque statusEstoque)
     {
         var result = await query.ObterPorStatusEstoque(statusEstoque);
+        return Ok(result);
+    }
+    
+    /// <summary>
+    /// Atualizar um produto
+    /// </summary>
+    /// <response code="200">Produto atualizado com sucesso</response>
+    /// <response code="400">Erro ao atualizar produto</response>
+    /// <response code="401">Sem autorização</response>
+    [Authorize]
+    [HttpPut]
+    [ProducesResponseType(typeof(Guid), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse), 401)]
+    public async Task<IActionResult> AtualizarProduto(AtualizarProdutoCommand request,
+        CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(request, cancellationToken);
+        
+        if (result == Guid.Empty)
+            return BadRequest();
+
         return Ok(result);
     }
 }
