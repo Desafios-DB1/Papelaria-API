@@ -54,4 +54,26 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
 
         return Ok(result);
     }
+    
+    /// <summary>
+    /// Atualizar uma categoria
+    /// </summary>
+    /// <response code="200">Categoria atualizada com sucesso</response>
+    /// <response code="400">Erro ao atualizar categoria</response>
+    /// <response code="401">Sem autorização</response>
+    [Authorize]
+    [HttpPut]
+    [ProducesResponseType(typeof(Guid), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse), 401)]
+    public async Task<IActionResult> AtualizarCategoria(AtualizarCategoriaCommand request,
+        CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(request, cancellationToken);
+        
+        if (result == Guid.Empty)
+            return BadRequest();
+
+        return Ok(result);
+    }
 }

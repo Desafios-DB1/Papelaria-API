@@ -90,4 +90,40 @@ public class CategoriaControllerTest
     }
 
     #endregion
+    
+    #region AtualizarCategoria
+    
+    [Fact]
+    public async Task AtualizarCategoria_QuandoCategoriaAtualizar_DeveRetornarIdDaCategoria()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+        var command = CategoriaBuilder.Novo()
+            .ComId(categoria.Id)
+            .AtualizarCategoriaCommand();
+
+        _mediator
+            .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(categoria.Id);
+        
+        var result = await _controller.AtualizarCategoria(command, CancellationToken.None);
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().Be(categoria.Id);
+    }
+
+    [Fact]
+    public async Task AtualizarProduto_QuandoProdutoNaoAtualizado_DeveRetornarBadRequest()
+    {
+        var command = new AtualizarCategoriaCommand();
+
+        _mediator
+            .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Guid.Empty);
+        
+        var result = await _controller.AtualizarCategoria(command, CancellationToken.None);
+
+        result.Should().BeOfType<BadRequestResult>();
+    }
+    
+    #endregion
 }
