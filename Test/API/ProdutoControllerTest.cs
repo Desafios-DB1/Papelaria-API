@@ -2,9 +2,7 @@
 using Crosscutting.Dtos.Produto;
 using Crosscutting.Enums;
 using Crosscutting.Exceptions;
-using Domain.Commands;
 using Domain.Commands.Produto;
-using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Mappers;
 using FluentAssertions;

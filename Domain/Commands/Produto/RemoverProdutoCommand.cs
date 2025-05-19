@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Domain.Commands.Produto;
 
-public class RemoverProdutoCommand
+public class RemoverProdutoCommand : IRequest
 {
     public Guid Id { get; set; }
 }
