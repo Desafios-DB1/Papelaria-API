@@ -22,7 +22,7 @@ public class RemoverProdutoCommandHandlerTest
     public async Task Handler_QuandoRequisicaoValida_DeveRemoverProduto()
     {
         var produto = ProdutoBuilder.Novo().Build();
-        var command = new RemoverProdutoCommand { id = produto.Id };
+        var command = new RemoverProdutoCommand { Id = produto.Id };
         
         _repository.Setup(r => r.ObterPorIdAsync(produto.Id))
             .ReturnsAsync(produto);
@@ -47,7 +47,7 @@ public class RemoverProdutoCommandHandlerTest
     public async Task Handler_QuandoNaoExisteProduto_DeveLancarNaoEncontradoException()
     {
         var produtoId = Guid.NewGuid();
-        var command = new RemoverProdutoCommand { id = produtoId };
+        var command = new RemoverProdutoCommand { Id = produtoId };
         
         _repository.Setup(r => r.ObterPorIdAsync(produtoId))
             .ReturnsAsync((Produto)null);
@@ -63,7 +63,7 @@ public class RemoverProdutoCommandHandlerTest
     {
         var produtoId = Guid.NewGuid();
         var produto = ProdutoBuilder.Novo().ComId(produtoId).Build();
-        var command = new RemoverProdutoCommand { id = produtoId };
+        var command = new RemoverProdutoCommand { Id = produtoId };
         
         _repository.Setup(r => r.ObterPorIdAsync(produtoId))
             .ReturnsAsync(produto);

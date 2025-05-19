@@ -7,7 +7,7 @@ namespace Domain.Commands.Produto;
 
 public class RemoverProdutoCommand : IRequest
 {
-    public Guid id { get; set; }
+    public Guid Id { get; set; }
 }
 
 public class RemoverProdutoCommandHandler(IProdutoRepository repository) : IRequestHandler<RemoverProdutoCommand>
@@ -17,7 +17,7 @@ public class RemoverProdutoCommandHandler(IProdutoRepository repository) : IRequ
         if (request is null)
             throw new RequisicaoInvalidaException(ErrorMessages.RequisicaoInvalida);
         
-        var entity = await repository.ObterPorIdAsync(request.id)
+        var entity = await repository.ObterPorIdAsync(request.Id)
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste("Produto"));
         
         await repository.RemoverESalvarAsync(entity);
