@@ -252,14 +252,12 @@ public class ProdutoControllerTest
     [Fact]
     public async Task RemoverProdutoPorId_QuandoSucesso_DeveRetornarNoContent()
     {
-        var command = new RemoverProdutoCommand();
-        var produtoId = Guid.NewGuid();
-
-        _mediator
-            .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(produtoId);
+        var idEsperado = Guid.NewGuid();
         
-        var result = await _controller.RemoverProdutoPorId(command, CancellationToken.None);
+        var result = await _controller.RemoverProdutoPorId(idEsperado, CancellationToken.None);
+        
+        _mediator.Verify(x => x.Send(It.IsAny<RemoverProdutoCommand>(), 
+                    It.IsAny<CancellationToken>()), Times.Once);
         
         result.Should().BeOfType<NoContentResult>();
     }
@@ -267,13 +265,13 @@ public class ProdutoControllerTest
     [Fact]
     public async Task RemoverProdutoPorId_QuandoFalha_DeveLancarException()
     {
-        var command = new RemoverProdutoCommand();
+        var idEsperado = Guid.Empty;
 
         _mediator
-            .Setup(m => m.Send(It.IsAny<IRequest>(), It.IsAny<CancellationToken>()))
+            .Setup(m => m.Send(It.IsAny<RemoverProdutoCommand>(), It.IsAny<CancellationToken>()))
             .ThrowsAsync(new Exception("Falha ao remover produto"));
         
-        Func<Task> act = async () => await _controller.RemoverProdutoPorId(command, CancellationToken.None);
+        Func<Task> act = async () => await _controller.RemoverProdutoPorId(idEsperado, CancellationToken.None);
 
         await act.Should()
             .ThrowAsync<Exception>()
