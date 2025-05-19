@@ -248,4 +248,38 @@ public class ProdutoControllerTest
     }
     
     #endregion
+
+    #region RemoverProdutoPorId
+
+    [Fact]
+    public async Task RemoverProdutoPorId_QuandoSucesso_DeveRetornarNoContent()
+    {
+        var command = new RemoverProdutoCommand();
+        var produtoId = Guid.NewGuid();
+
+        _mediator
+            .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(produtoId);
+        
+        var result = await _controller.RemoverProdutoPorId(command, CancellationToken.None);
+        
+        result.Should().BeOfType<NoContentResult>();
+    }
+    
+    [Fact]
+    public async Task RemoverProdutoPorId_QuandoFalha_DeveLancarException()
+    {
+        var command = new RemoverProdutoCommand();
+
+        _mediator
+            .Setup(m => m.Send(It.IsAny<IRequest>(), It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new Exception("Falha ao remover produto"));
+        
+        Func<Task> act = async () => await _controller.RemoverProdutoPorId(command, CancellationToken.None);
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha ao remover produto");
+    }
+    #endregion
 }
