@@ -36,9 +36,5 @@ public class LogProdutoMapping : IEntityTypeConfiguration<LogProduto>
         builder.Property(l => l.QuantidadeAtual)
             .HasColumnName(nameof(LogProduto.QuantidadeAtual))
             .IsRequired();
-
-        builder.Property(l => l.DataAlteracao)
-            .HasColumnName(nameof(LogProduto.DataAlteracao))
-            .ValueGeneratedNever();
     }
 }
