@@ -1,5 +1,8 @@
-﻿using Bogus;
+﻿using System.Security.Claims;
+using Bogus;
 using Domain.Entities;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Test.Domain.Builders;
 
@@ -43,6 +46,18 @@ public class UsuarioBuilder
     {
         _faker.RuleFor(u=>u.NomeUsuario, nomeUsuario);
         return this;
+    }
+
+    public static void SimularUsuarioAutenticado(ControllerBase controller, string userId = "usuario123")
+    {
+        var user = new ClaimsPrincipal(new ClaimsIdentity([
+            new Claim(ClaimTypes.NameIdentifier, userId)
+        ], "mock"));
+
+        controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext { User = user }
+        };
     }
     
     public Usuario Build()
