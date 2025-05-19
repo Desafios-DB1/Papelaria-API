@@ -1,9 +1,11 @@
 ﻿using Crosscutting.Enums;
 using Crosscutting.Exceptions;
+using Domain.Commands.Log;
 using Domain.Commands.Produto;
 using Domain.Entities;
 using Domain.Repositories;
  using FluentAssertions;
+ using MediatR;
  using Moq;
  using Test.Domain.Builders;
  
@@ -12,11 +14,12 @@ using Domain.Repositories;
  public class AlterarEstoqueProdutoCommandHandlerTest
  {
      private readonly Mock<IProdutoRepository> _repository = new();
+     private readonly Mock<IMediator> _mediator = new();
      private readonly AlterarEstoqueCommandHandler _commandHandler;
  
      public AlterarEstoqueProdutoCommandHandlerTest()
      {
-         _commandHandler = new AlterarEstoqueCommandHandler(_repository.Object);
+         _commandHandler = new AlterarEstoqueCommandHandler(_repository.Object, _mediator.Object);
      }
 
      [Fact]
@@ -55,7 +58,7 @@ using Domain.Repositories;
          Func<Task> act = () => _commandHandler.Handle(command, CancellationToken.None);
 
          await act.Should().ThrowAsync<ArgumentException>()
-             .WithMessage("Tipo de operação inválido.");
+             .WithMessage("O objeto tipo de operação não é válido.");
      }
      
      [Fact]
@@ -157,4 +160,32 @@ using Domain.Repositories;
          await act.Should().ThrowAsync<QuantidadeInsuficienteException>()
              .WithMessage("Quantidade insuficiente no estoque.");
      }
+
+     [Fact]
+     public async Task Handler_QuandoAlterarEstoque_DeveChamarRegistrarLogDeProdutoCommand()
+     {
+         var produto = ProdutoBuilder.Novo().ComQuantidadeAtual(20).Build();
+         var command = new AlterarEstoqueCommand
+         {
+             ProdutoId = produto.Id,
+             TipoOperacao = TipoOperacao.Entrada,
+             Quantidade = 10
+         };
+    
+         _repository.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+             .ReturnsAsync(produto);
+    
+         _repository.Setup(r => r.AtualizarESalvarAsync(It.IsAny<Produto>()))
+             .ReturnsAsync(produto.Id);
+
+         await _commandHandler.Handle(command, CancellationToken.None);
+
+         _mediator.Verify(m => m.Send(It.Is<RegistrarLogDeProdutoCommand>(log =>
+             log.ProdutoId == produto.Id &&
+             log.TipoOperacao == TipoOperacao.Entrada &&
+             log.QuantidadeAnterior == 20 &&
+             log.QuantidadeAtual == 30
+         ), It.IsAny<CancellationToken>()), Times.Once);
+     }
+
  }
