@@ -1,6 +1,7 @@
 ﻿using Crosscutting.Dtos.Produto;
 using Crosscutting.Enums;
 using Crosscutting.Erros;
+using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Interfaces;
 using MediatR;
