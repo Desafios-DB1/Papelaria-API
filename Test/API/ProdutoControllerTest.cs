@@ -211,4 +211,46 @@ public class ProdutoControllerTest
     }
 
     #endregion
+
+    #region AlterarEstoque
+
+    [Fact]
+    public async Task AlterarEstoque_QuandoEstoqueAlteradoComSucesso_DeveRetornarProdutoAtualizado()
+    {
+        var idEsperado = Guid.NewGuid();
+        var command = ProdutoBuilder.Novo()
+            .ComId(idEsperado)
+            .AdicionarEstoqueCommand();
+
+        var produto = ProdutoBuilder.Novo()
+            .ComId(idEsperado)
+            .Build()
+            .MapToDto();
+
+        _mediator
+            .Setup(m => m.Send(It.IsAny<IRequest<ProdutoDto>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(produto);
+        
+        var result = await _controller.AlterarEstoque(command, CancellationToken.None);
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().Be(produto);
+    }
+
+    [Fact]
+    public async Task AlterarEstoque_QuandoProdutoNaoEncontrado_DeveRetornarNotFound()
+    {
+        var command = ProdutoBuilder.Novo()
+            .AdicionarEstoqueCommand();
+        
+        _mediator
+            .Setup(m => m.Send(It.IsAny<AlterarEstoqueCommand>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ProdutoDto)null);
+        
+        var result = await _controller.AlterarEstoque(command, CancellationToken.None);
+        
+        result.Should().BeOfType<NotFoundResult>();
+    }
+
+    #endregion
 }

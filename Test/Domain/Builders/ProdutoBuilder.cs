@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Crosscutting.Enums;
 using Domain.Commands.Produto;
 using Domain.Entities;
 
@@ -86,6 +87,17 @@ public class ProdutoBuilder
             CategoriaId = produto.CategoriaId,
             QuantidadeMinima = produto.QuantidadeEstoque.QuantidadeMinima,
             QuantidadeAtual = produto.QuantidadeEstoque.QuantidadeAtual
+        };
+    }
+
+    public AlterarEstoqueCommand AdicionarEstoqueCommand()
+    {
+        var produto = _faker.Generate();
+        return new AlterarEstoqueCommand
+        {
+            ProdutoId = produto.Id,
+            TipoOperacao = TipoOperacao.Entrada,
+            Quantidade = new Random().Next(1, 100)
         };
     }
 }
