@@ -36,9 +36,9 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     }
     
     /// <summary>
-    /// Obtem uma categoria pelo id
+    /// Obtém uma categoria pelo id
     /// </summary>
-    /// <response code="201">Categoria encontrada</response>
+    /// <response code="200">Categoria encontrada</response>
     /// <response code="404">Categoria não encontrada</response>
     /// <response code="401">Sem autorização</response>
     [Authorize]
