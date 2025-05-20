@@ -44,7 +44,6 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     [Authorize]
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(CategoriaDto), 200)]
-    [ProducesResponseType(typeof(ErrorResponse), 401)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
     public async Task<IActionResult> ObterCategoriaPorId([FromRoute] Guid id)
     {
