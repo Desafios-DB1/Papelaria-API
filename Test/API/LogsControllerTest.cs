@@ -113,4 +113,49 @@ public class LogsControllerTest
     }
 
     #endregion
+    
+    #region ObterTodos
+
+    [Fact]
+    public async Task ObterTodos_QuandoNaoExistirLogs_DeveRetornarOkComListaVazia()
+    {
+        var logs = new List<LogDto>();
+        
+        _query
+            .Setup(m => m.ObterTodos())
+            .ReturnsAsync(logs);
+        
+        var result = await _controller.ObterTodos();
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().BeEquivalentTo(logs);
+    }
+    
+    [Fact]
+    public async Task ObterTodos_QuandoLogExistir_DeveRetornarOkComListaDeLogs()
+    {
+        var logs = new List<LogDto>
+        {
+            new()
+            {
+                UsuarioId = "usuario123",
+                ProdutoId = Guid.NewGuid(),
+                TipoOperacao = TipoOperacao.Entrada,
+                QuantidadeAnterior = 10,
+                QuantidadeAtual = 20,
+                DataOperacao = DateTime.UtcNow,
+            }
+        };
+        
+        _query
+            .Setup(m => m.ObterTodos())
+            .ReturnsAsync(logs);
+        
+        var result = await _controller.ObterTodos();
+        
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().BeEquivalentTo(logs);
+    }
+
+    #endregion
 }
