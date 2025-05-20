@@ -16,4 +16,14 @@ public class LogQuery(ApplicationDbContext context) : ILogQuery
             .Where(l => l.ProdutoId == produtoId)
             .Select(l => l.MapToDto())
             .ToListAsync();
-}
+    
+    public async Task<IEnumerable<LogDto>> ObterPorUsuarioId(string usuarioId)
+        => await context.LogsProduto
+            .AsQueryable()
+            .AsNoTracking()
+            .Include(l => l.Produto)
+            .Include(l => l.Usuario)
+            .Where(l => l.UsuarioId == usuarioId)
+            .Select(l => l.MapToDto())
+            .ToListAsync();
+}  

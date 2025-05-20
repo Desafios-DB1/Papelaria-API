@@ -28,4 +28,20 @@ public class LogsController(ILogQuery query) : ControllerBase
         var result = await query.ObterPorProdutoId(produtoId);
         return Ok(result);
     }
+    
+    /// <summary>
+    /// Obtem os logs de um produto pelo id do usuario
+    /// </summary>
+    /// <response code="200">Lista de logs (pode ser vazia)</response>
+    /// <response code="400">Erro ao obter logs</response>
+    /// <response code="401">Sem autorização</response>
+    [Authorize]
+    [HttpGet("usuario/{usuarioId}")]
+    [ProducesResponseType(typeof(IEnumerable<LogDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 400)]
+    public async Task<IActionResult> ObterLogsPorUsuarioId(string usuarioId)
+    {
+        var result = await query.ObterPorUsuarioId(usuarioId);
+        return Ok(result);
+    }
 }
