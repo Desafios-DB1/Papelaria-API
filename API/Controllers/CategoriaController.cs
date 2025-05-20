@@ -23,7 +23,6 @@ public class CategoriaController(IMediator mediator) : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 201)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
-    [ProducesResponseType(typeof(ErrorResponse), 401)]
     public async Task<IActionResult> CriarCategoria(CriarCategoriaCommand request, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(request, cancellationToken);
