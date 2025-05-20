@@ -26,7 +26,6 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
-    [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> CriarProduto(CriarProdutoCommand request, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(request, cancellationToken);
@@ -45,7 +44,6 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     [Authorize]
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
-    [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> ObterProdutos()
     {
         var result = await query.ObterTodos();
@@ -57,14 +55,13 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// </summary>
     /// <param name="nome">Nome do produto a ser procurado</param>
     /// <response code="200">Objeto produto</response>
-    /// <response code="404">Produto não existe</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="404">Produto não existe</response>
     [Authorize]
     [HttpGet("nome/{nome}")]
     [ProducesResponseType(typeof(ProdutoDto), 200)]
     [ProducesResponseType(typeof(ErrorResponse),404)]
-    [ProducesResponseType(typeof(ErrorResponse),401)]
-    public async Task<IActionResult> ObterProdutosPorNome([FromRoute] string nome)
+    public async Task<IActionResult> ObterProdutoPorNome([FromRoute] string nome)
     {
         var result = await query.ObterPorNome(nome);
         return result is null ? NotFound() : Ok(result);
@@ -79,7 +76,6 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     [Authorize]
     [HttpGet("categoria/{nomeCategoria}")]
     [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
-    [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> ObterProdutosPorNomeCategoria([FromRoute] string nomeCategoria)
     {
         var result = await query.ObterPorNomeCategoria(nomeCategoria);
@@ -92,11 +88,9 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <param name="statusEstoque">Status do estoque que ira filtrar os produtos</param>
     /// <response code="200">Lista de produtos com esse status (pode estar vazia)</response>
     /// <response code="401">Sem autorização</response>
-    /// <response code="404">Status enviado é inválido</response>
     [Authorize]
     [HttpGet("status")]
     [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
-    [ProducesResponseType(typeof(ErrorResponse), 401)]
     public async Task<IActionResult> ObterProdutosPorStatusEstoque(StatusEstoque statusEstoque)
     {
         var result = await query.ObterPorStatusEstoque(statusEstoque);
@@ -109,11 +103,12 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="200">Produto atualizado com sucesso</response>
     /// <response code="400">Erro ao atualizar produto</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="404">Produto não encontrado</response>
     [Authorize]
     [HttpPut]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
-    [ProducesResponseType(typeof(ErrorResponse), 401)]
+    [ProducesResponseType(typeof(ErrorResponse), 404)]
     public async Task<IActionResult> AtualizarProduto(AtualizarProdutoCommand request,
         CancellationToken cancellationToken)
     {
@@ -123,5 +118,24 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
             return BadRequest();
 
         return Ok(result);
+    }
+
+    /// <summary>
+    /// Remover um produto pelo id
+    /// </summary>
+    /// <response code="204">Produto excluido com sucesso</response>
+    /// <response code="400">Erro ao excluir produto</response>
+    /// <response code="401">Sem autorização</response>
+    /// <response code="404">Produto não encontrado</response>
+    [Authorize]
+    [HttpDelete("{id:guid}")]
+    [ProducesResponseType( 204)]
+    [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse), 404)]
+    public async Task<IActionResult> RemoverProdutoPorId([FromRoute] Guid id, CancellationToken cancellationToken)
+    { 
+        var request = new RemoverProdutoCommand { Id = id};
+        await mediator.Send(request, cancellationToken);
+        return NoContent();
     }
 }

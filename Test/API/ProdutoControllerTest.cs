@@ -97,7 +97,7 @@ public class ProdutoControllerTest
 
     #endregion
     
-    #region ObterProdutosPorNome
+    #region ObterProdutoPorNome
 
     [Fact]
     public async Task ObterProdutosPorNome_QuandoHouverProduto_DeveRetornarProduto()
@@ -108,7 +108,7 @@ public class ProdutoControllerTest
             .Setup(m => m.ObterPorNome(It.IsAny<string>()))
             .ReturnsAsync(produto);
         
-        var result = await _controller.ObterProdutosPorNome(produto.Nome);
+        var result = await _controller.ObterProdutoPorNome(produto.Nome);
         
         var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
         okResult.Value.Should().Be(produto);
@@ -121,7 +121,7 @@ public class ProdutoControllerTest
             .Setup(m => m.ObterPorNome(It.IsAny<string>()))
             .ReturnsAsync(null as ProdutoDto);
         
-        var result = await _controller.ObterProdutosPorNome("Teste");
+        var result = await _controller.ObterProdutoPorNome("Teste");
         
         result.Should().BeOfType<NotFoundResult>();
     }
@@ -247,5 +247,37 @@ public class ProdutoControllerTest
         result.Should().BeOfType<BadRequestResult>();
     }
     
+    #endregion
+
+    #region RemoverProdutoPorId
+
+    [Fact]
+    public async Task RemoverProdutoPorId_QuandoSucesso_DeveRetornarNoContent()
+    {
+        var idEsperado = Guid.NewGuid();
+        
+        var result = await _controller.RemoverProdutoPorId(idEsperado, CancellationToken.None);
+        
+        _mediator.Verify(x => x.Send(It.IsAny<RemoverProdutoCommand>(), 
+                    It.IsAny<CancellationToken>()), Times.Once);
+        
+        result.Should().BeOfType<NoContentResult>();
+    }
+    
+    [Fact]
+    public async Task RemoverProdutoPorId_QuandoFalha_DeveLancarException()
+    {
+        var idEsperado = Guid.Empty;
+
+        _mediator
+            .Setup(m => m.Send(It.IsAny<RemoverProdutoCommand>(), It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new Exception("Falha ao remover produto"));
+        
+        Func<Task> act = async () => await _controller.RemoverProdutoPorId(idEsperado, CancellationToken.None);
+
+        await act.Should()
+            .ThrowAsync<Exception>()
+            .WithMessage("Falha ao remover produto");
+    }
     #endregion
 }
