@@ -14,7 +14,7 @@ public class AlterarEstoqueCommand : IRequest<ProdutoDto>
     public TipoOperacao TipoOperacao { get; set; }
     public int Quantidade { get; set; }
     
-    public Guid UsuarioId { get; private set; } // sera usado para o logger
+    public Guid UsuarioId { get; private set; } //TODO: utilizar no log
 }
 
 public class AlterarEstoqueCommandHandler(IProdutoRepository repository) : IRequestHandler<AlterarEstoqueCommand, ProdutoDto>
@@ -27,16 +27,16 @@ public class AlterarEstoqueCommandHandler(IProdutoRepository repository) : IRequ
         switch (request.TipoOperacao)
         {
             case TipoOperacao.Entrada:
-                // adicionar logger aqui
                 produto.QuantidadeEstoque.AdicionarEstoque(request.Quantidade);
                 break;
             case TipoOperacao.Saida:
-                // adicionar logger aqui
                 produto.QuantidadeEstoque.RetirarEstoque(request.Quantidade);
                 break;
             default:
                 throw new ArgumentException("Tipo de operação inválido.");
         }
+        
+        //TODO: Implementar log de alteração de estoque
 
         await repository.AtualizarESalvarAsync(produto);
 
