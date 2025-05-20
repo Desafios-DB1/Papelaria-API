@@ -23,7 +23,6 @@ public class CriarCategoriaCommandHandlerTest
     {
         var idEsperado = Guid.NewGuid();
         var command = CategoriaBuilder.Novo()
-            .ComId(idEsperado)
             .CriarCategoriaCommand();
 
         _repositoryMock.Setup(r => r.AdicionarESalvarAsync(It.IsAny<Categoria>()))

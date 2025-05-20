@@ -15,6 +15,6 @@ public class CategoriaRepository(ApplicationDbContext context) : Repository<Cate
 
     public bool ExisteComNome(string nome)
     {
-        return Context.Categorias.Any(c => c.Nome == nome);
+        return Context.Categorias.Any(c => c.Nome.Equals(nome, StringComparison.CurrentCultureIgnoreCase));
     }
 }
