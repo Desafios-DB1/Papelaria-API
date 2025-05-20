@@ -12,4 +12,9 @@ public class CategoriaRepository(ApplicationDbContext context) : Repository<Cate
             .AsNoTracking()
             .FirstOrDefaultAsync(c => c.Nome.Equals(nome, StringComparison.CurrentCultureIgnoreCase));
     }
+
+    public bool ExisteComNome(string nome)
+    {
+        return Context.Categorias.Any(c => c.Nome.Equals(nome, StringComparison.CurrentCultureIgnoreCase));
+    }
 }
