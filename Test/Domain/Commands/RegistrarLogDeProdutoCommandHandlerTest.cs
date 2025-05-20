@@ -1,4 +1,5 @@
 ﻿using Crosscutting.Enums;
+using Crosscutting.Exceptions;
 using Domain.Commands.Log;
 using Domain.Entities;
 using Domain.Repositories;
@@ -47,5 +48,36 @@ public class RegistrarLogDeProdutoCommandHandlerTest
         logCapturado.QuantidadeAnterior.Should().Be(command.QuantidadeAnterior);
         logCapturado.QuantidadeAtual.Should().Be(command.QuantidadeAtual);
         logCapturado.DataCriacao.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromSeconds(5));
+    }
+
+    [Fact]
+    public async Task Handler_QuandoRequisicaoNula_DeveLancarRequisicaoInvalidaException()
+    {
+        Func<Task> act = () => _commandHandler.Handle(null, CancellationToken.None);
+
+        await act.Should().ThrowAsync<RequisicaoInvalidaException>()
+            .WithMessage("A requisição é inválida.");
+    }
+
+    [Fact]
+    public async Task Handler_QuandoErroNoBanco_DeveLancarException()
+    {
+        var produtoId = Guid.NewGuid();
+        var command = new RegistrarLogDeProdutoCommand
+        {
+            ProdutoId = produtoId,
+            UsuarioId = "usuario123",
+            TipoOperacao = TipoOperacao.Entrada,
+            QuantidadeAnterior = 5,
+            QuantidadeAtual = 10
+        };
+        
+        _repository.Setup(r => r.AdicionarESalvarAsync(It.IsAny<LogProduto>()))
+            .ThrowsAsync(new Exception("Erro no banco de dados"));
+
+        Func<Task> act = () => _commandHandler.Handle(command, CancellationToken.None);
+        
+        await act.Should().ThrowAsync<Exception>()
+            .WithMessage("Erro no banco de dados");
     }
 }
