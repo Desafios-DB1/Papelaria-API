@@ -61,7 +61,7 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     [HttpGet("nome/{nome}")]
     [ProducesResponseType(typeof(ProdutoDto), 200)]
     [ProducesResponseType(typeof(ErrorResponse),404)]
-    public async Task<IActionResult> ObterProdutosPorNome([FromRoute] string nome)
+    public async Task<IActionResult> ObterProdutoPorNome([FromRoute] string nome)
     {
         var result = await query.ObterPorNome(nome);
         return result is null ? NotFound() : Ok(result);

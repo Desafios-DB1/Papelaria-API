@@ -97,7 +97,7 @@ public class ProdutoControllerTest
 
     #endregion
     
-    #region ObterProdutosPorNome
+    #region ObterProdutoPorNome
 
     [Fact]
     public async Task ObterProdutosPorNome_QuandoHouverProduto_DeveRetornarProduto()
@@ -108,7 +108,7 @@ public class ProdutoControllerTest
             .Setup(m => m.ObterPorNome(It.IsAny<string>()))
             .ReturnsAsync(produto);
         
-        var result = await _controller.ObterProdutosPorNome(produto.Nome);
+        var result = await _controller.ObterProdutoPorNome(produto.Nome);
         
         var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
         okResult.Value.Should().Be(produto);
@@ -121,7 +121,7 @@ public class ProdutoControllerTest
             .Setup(m => m.ObterPorNome(It.IsAny<string>()))
             .ReturnsAsync(null as ProdutoDto);
         
-        var result = await _controller.ObterProdutosPorNome("Teste");
+        var result = await _controller.ObterProdutoPorNome("Teste");
         
         result.Should().BeOfType<NotFoundResult>();
     }
