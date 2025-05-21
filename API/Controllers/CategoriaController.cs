@@ -61,10 +61,12 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     /// <response code="200">Categoria atualizada com sucesso</response>
     /// <response code="400">Erro ao atualizar categoria</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="404">Categoria não encontrada</response>
     [Authorize]
     [HttpPut]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse), 404)]
     public async Task<IActionResult> AtualizarCategoria(AtualizarCategoriaCommand request,
         CancellationToken cancellationToken)
     {
