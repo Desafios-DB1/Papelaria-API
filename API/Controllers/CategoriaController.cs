@@ -1,5 +1,7 @@
-﻿using Crosscutting.Erros;
+﻿using Crosscutting.Dtos.Categoria;
+using Crosscutting.Erros;
 using Domain.Commands.Categoria;
+using Domain.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +13,7 @@ namespace API.Controllers;
 /// </summary>
 [Route("api/categoria")]
 [ApiController]
-public class CategoriaController(IMediator mediator) : ControllerBase
+public class CategoriaController(IMediator mediator, ICategoriaQuery query) : ControllerBase
 {
     /// <summary>
     /// Cria uma categoria e salva no banco
@@ -31,5 +33,25 @@ public class CategoriaController(IMediator mediator) : ControllerBase
             return BadRequest();
 
         return CreatedAtAction(nameof(CriarCategoria), new { id = result }, result);
+    }
+    
+    /// <summary>
+    /// Obtém uma categoria pelo id
+    /// </summary>
+    /// <response code="200">Categoria encontrada</response>
+    /// <response code="404">Categoria não encontrada</response>
+    /// <response code="401">Sem autorização</response>
+    [Authorize]
+    [HttpGet("{id:guid}")]
+    [ProducesResponseType(typeof(CategoriaDto), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 404)]
+    public async Task<IActionResult> ObterCategoriaPorId([FromRoute] Guid id)
+    {
+        var result = await query.ObterPorId(id);
+
+        if (result == null)
+            return NotFound();
+
+        return Ok(result);
     }
 }

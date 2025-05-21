@@ -1,21 +1,26 @@
 ﻿using API.Controllers;
+using Crosscutting.Dtos.Categoria;
 using Domain.Commands.Categoria;
+using Domain.Interfaces;
+using Domain.Mappers;
 using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Test.Domain.Builders;
 
 namespace Test.API;
 
 public class CategoriaControllerTest
 {
     private readonly Mock<IMediator> _mediator;
+    private readonly Mock<ICategoriaQuery> _query = new();
     private readonly CategoriaController _controller;
 
     public CategoriaControllerTest()
     {
         _mediator = new Mock<IMediator>();
-        _controller = new CategoriaController(_mediator.Object);
+        _controller = new CategoriaController(_mediator.Object, _query.Object);
     }
 
     #region CriarCategoria
@@ -48,6 +53,40 @@ public class CategoriaControllerTest
         var result = await _controller.CriarCategoria(command, CancellationToken.None);
 
         result.Should().BeOfType<BadRequestResult>();
+    }
+
+    #endregion
+
+    #region ObterCategoriaPorId
+
+    [Fact]
+    public async Task ObterCategoriaPorId_QuandoCategoriaEncontrada_DeveRetornarOk()
+    {
+        var categoriaId = Guid.NewGuid();
+        var categoria = CategoriaBuilder.Novo()
+            .ComId(categoriaId)
+            .Build().MapToDto();
+
+        _query
+            .Setup(m => m.ObterPorId(categoriaId))
+            .ReturnsAsync(categoria);
+        
+        var result = await _controller.ObterCategoriaPorId(categoriaId);
+
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().Be(categoria);
+    }
+    
+    [Fact]
+    public async Task ObterCategoriaPorId_QuandoCategoriaNaoEncontrada_DeveRetornarNotFound()
+    { 
+        _query
+            .Setup(m => m.ObterPorId(It.IsAny<Guid>()))
+            .ReturnsAsync((CategoriaDto)null);
+        
+        var result = await _controller.ObterCategoriaPorId(Guid.NewGuid());
+
+        result.Should().BeOfType<NotFoundResult>();
     }
 
     #endregion

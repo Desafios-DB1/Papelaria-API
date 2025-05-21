@@ -20,14 +20,13 @@ public static class Provider
     {
         services
             .AddRepositoriesSetup()
+            .AddQueriesSetup()
             .AddValidatorsSetup();
         
         services.AddDbContextSetup(configuration);
 
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssemblyContaining<CriarProdutoCommandHandler>());
-
-        services.AddScoped<IProdutoQuery, ProdutoQuery>();
         
         services.AddSwaggerGen(SwaggerSetup.ConfigureSwagger);
 
