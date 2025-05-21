@@ -105,7 +105,7 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="401">Sem autorização</response>
     /// <response code="404">Produto não encontrado</response>
     [Authorize]
-    [HttpPut("{id:guid")]
+    [HttpPut("{id:guid}")]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
