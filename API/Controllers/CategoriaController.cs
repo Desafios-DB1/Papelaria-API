@@ -65,7 +65,6 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     [HttpPut]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
-    [ProducesResponseType(typeof(ErrorResponse), 401)]
     public async Task<IActionResult> AtualizarCategoria(AtualizarCategoriaCommand request,
         CancellationToken cancellationToken)
     {
