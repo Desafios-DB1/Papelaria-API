@@ -224,7 +224,7 @@ public class ProdutoControllerTest
             .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(produto.Id);
         
-        var result = await _controller.AtualizarProduto(command, CancellationToken.None);
+        var result = await _controller.AtualizarProduto(produto.Id, command, CancellationToken.None);
         
         var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
         okResult.Value.Should().Be(produto.Id);
@@ -239,7 +239,7 @@ public class ProdutoControllerTest
             .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(Guid.Empty);
         
-        var result = await _controller.AtualizarProduto(command, CancellationToken.None);
+        var result = await _controller.AtualizarProduto(Guid.NewGuid(), command, CancellationToken.None);
 
         result.Should().BeOfType<BadRequestResult>();
     }

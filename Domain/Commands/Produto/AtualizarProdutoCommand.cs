@@ -1,4 +1,5 @@
-﻿using Crosscutting.Constantes;
+﻿using System.Text.Json.Serialization;
+using Crosscutting.Constantes;
 using Crosscutting.Exceptions;
 using Domain.Repositories;
 using MediatR;
@@ -7,6 +8,7 @@ namespace Domain.Commands.Produto;
 
 public class AtualizarProdutoCommand : IRequest<Guid>, IAtualizarCommand
 {
+    [JsonIgnore]
     public Guid Id { get; set; }
     public string Nome { get; set; }
     public string Descricao { get; set; }

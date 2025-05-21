@@ -105,7 +105,7 @@ public class CategoriaControllerTest
             .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(categoria.Id);
         
-        var result = await _controller.AtualizarCategoria(command, CancellationToken.None);
+        var result = await _controller.AtualizarCategoria(categoria.Id, command, CancellationToken.None);
         
         var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
         okResult.Value.Should().Be(categoria.Id);
@@ -120,7 +120,7 @@ public class CategoriaControllerTest
             .Setup(m => m.Send(It.IsAny<IRequest<Guid>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(Guid.Empty);
         
-        var result = await _controller.AtualizarCategoria(command, CancellationToken.None);
+        var result = await _controller.AtualizarCategoria(Guid.NewGuid(), command, CancellationToken.None);
 
         result.Should().BeOfType<BadRequestResult>();
     }

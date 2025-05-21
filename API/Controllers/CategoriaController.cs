@@ -63,13 +63,14 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     /// <response code="401">Sem autorização</response>
     /// <response code="404">Categoria não encontrada</response>
     [Authorize]
-    [HttpPut]
+    [HttpPut("{id:guid}")]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
-    public async Task<IActionResult> AtualizarCategoria(AtualizarCategoriaCommand request,
+    public async Task<IActionResult> AtualizarCategoria([FromRoute] Guid id, AtualizarCategoriaCommand request,
         CancellationToken cancellationToken)
     {
+        request.Id = id;
         var result = await mediator.Send(request, cancellationToken);
         
         if (result == Guid.Empty)

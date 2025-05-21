@@ -105,13 +105,14 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="401">Sem autorização</response>
     /// <response code="404">Produto não encontrado</response>
     [Authorize]
-    [HttpPut]
+    [HttpPut("{id:guid")]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
-    public async Task<IActionResult> AtualizarProduto(AtualizarProdutoCommand request,
+    public async Task<IActionResult> AtualizarProduto([FromRoute] Guid id, AtualizarProdutoCommand request,
         CancellationToken cancellationToken)
     {
+        request.Id = id;
         var result = await mediator.Send(request, cancellationToken);
         
         if (result == Guid.Empty)
