@@ -87,7 +87,7 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     /// <response code="404">Categoria não encontrada</response>
     [Authorize]
     [HttpDelete("{id:guid}")]
-    [ProducesResponseType( 204)]
+    [ProducesResponseType(204)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
     public async Task<IActionResult> RemoverCategoriaPorId([FromRoute] Guid id, CancellationToken cancellationToken)
