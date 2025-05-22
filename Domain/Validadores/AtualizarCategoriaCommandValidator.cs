@@ -16,7 +16,7 @@ public class AtualizarCategoriaCommandValidator : AbstractValidator<AtualizarCat
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
             .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo)
             .Must(nome => !repository.ExisteComNome(nome))
-            .WithMessage(ValidationErrors.JaExiste(Entidades.Produto));
+            .WithMessage(ValidationErrors.JaExiste(Entidades.Categoria));
 
         RuleFor(x=>x.Descricao)
             .MaximumLength(Valores.Trezentos).WithMessage(ValidationErrors.TamanhoMaximo);

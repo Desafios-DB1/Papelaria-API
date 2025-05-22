@@ -62,7 +62,7 @@ public class AtualizarCategoriaCommandValidatorTest
     }
 
     [Fact]
-    public async Task Validate_QuandoExisteProdutoComMesmoNome_DeveRetornarErro()
+    public async Task Validate_QuandoExisteCategoriaComMesmoNome_DeveRetornarErro()
     {
         _categoriaRepository.Setup(x => x.ExisteComNome(It.IsAny<string>()))
             .Returns(true);
@@ -75,7 +75,7 @@ public class AtualizarCategoriaCommandValidatorTest
         
         validationResult.Errors.Should().Contain(e =>
             e.PropertyName == "Nome" &&
-            e.ErrorMessage == "Já existe um(a) Produto com esse Nome.");
+            e.ErrorMessage == "Já existe um(a) Categoria com esse Nome.");
     }
     
     [Fact]
