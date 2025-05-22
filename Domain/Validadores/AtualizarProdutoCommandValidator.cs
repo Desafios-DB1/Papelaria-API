@@ -9,9 +9,6 @@ public class AtualizarProdutoCommandValidator : AbstractValidator<AtualizarProdu
 {
     public AtualizarProdutoCommandValidator(IProdutoRepository repository)
     {
-        RuleFor(x => x.Id)
-            .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio);
-        
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
             .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo)
