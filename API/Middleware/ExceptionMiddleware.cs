@@ -23,6 +23,7 @@ public class ExceptionMiddleware(RequestDelegate next)
         var statusCode = exception switch
         {
             NaoEncontradoException => HttpStatusCode.NotFound,
+            RegraDeNegocioException => HttpStatusCode.UnprocessableEntity,
             Exception => HttpStatusCode.BadRequest
         };
 

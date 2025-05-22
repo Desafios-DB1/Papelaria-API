@@ -1,6 +1,7 @@
 ﻿using Crosscutting.Exceptions;
 using Domain.Commands.Categoria;
 using Domain.Entities;
+using Domain.Interfaces;
 using Domain.Repositories;
 using FluentAssertions;
 using Moq;
@@ -11,11 +12,12 @@ namespace Test.Domain.Commands;
 public class RemoverCategoriaCommandHandlerTest
 {
     private readonly Mock<ICategoriaRepository> _repository = new();
+    private readonly Mock<ICategoriaService> _service = new();
     private readonly RemoverCategoriaCommandHandler _commandHandler;
     
     public RemoverCategoriaCommandHandlerTest()
     {
-        _commandHandler = new RemoverCategoriaCommandHandler(_repository.Object);
+        _commandHandler = new RemoverCategoriaCommandHandler(_repository.Object, _service.Object);
     }
 
     [Fact]
@@ -24,6 +26,9 @@ public class RemoverCategoriaCommandHandlerTest
         var categoria = CategoriaBuilder.Novo().Build();
         var command = new RemoverCategoriaCommand { CategoriaId = categoria.Id };
 
+        _service.Setup(s => s.PodeRemoverCategoria(It.IsAny<Guid>()))
+            .ReturnsAsync(true);
+        
         _repository.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync(categoria);
 
@@ -56,6 +61,24 @@ public class RemoverCategoriaCommandHandlerTest
         
         await act.Should().ThrowAsync<NaoEncontradoException>()
             .WithMessage("Categoria não existe.");
+    }
+
+    [Fact]
+    public async Task Handler_QuandoCategoriaPossuiProdutos_DeveLancarRegraDeNegocioException()
+    {
+        var categoria = CategoriaBuilder.Novo().Build();
+        var command = new RemoverCategoriaCommand { CategoriaId = categoria.Id };
+
+        _service.Setup(s => s.PodeRemoverCategoria(It.IsAny<Guid>()))
+            .ReturnsAsync(false);
+
+        _repository.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(categoria);
+        
+        Func<Task> act = () => _commandHandler.Handle(command, CancellationToken.None);
+        
+        await act.Should().ThrowAsync<RegraDeNegocioException>()
+            .WithMessage("A categoria possui produtos associados e não pode ser removida.");
     }
 
     [Fact]

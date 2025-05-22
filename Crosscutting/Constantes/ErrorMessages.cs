@@ -11,4 +11,5 @@ public static class ErrorMessages
     public static string ObjetoInvalido(string objeto) =>
         $"O objeto {objeto} não é válido.";
     public static string NaoExiste(string item) => $"{item} não existe.";
+    public static string CategoriaPossuiProdutos => "A categoria possui produtos associados e não pode ser removida.";
 }

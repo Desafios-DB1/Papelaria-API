@@ -1,10 +1,9 @@
-﻿using System.Reflection;
-using System.Text;
+﻿using System.Text;
 using API.Setups;
-using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Entities;
 using Domain.Interfaces;
+using Domain.Services;
 using Infra;
 using Infra.Queries;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -22,6 +21,8 @@ public static class Provider
             .AddRepositoriesSetup()
             .AddQueriesSetup()
             .AddValidatorsSetup();
+
+        services.AddScoped<ICategoriaService, CategoriaService>();
         
         services.AddDbContextSetup(configuration);
 
