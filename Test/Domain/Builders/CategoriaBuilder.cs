@@ -53,4 +53,17 @@ public class CategoriaBuilder
             Ativo = categoria.Ativo
         };
     }
+
+    public AtualizarCategoriaCommand AtualizarCategoriaCommand()
+    {
+        var categoria = _faker.Generate();
+
+        return new AtualizarCategoriaCommand
+        {
+            Id = categoria.Id,
+            Nome = categoria.Nome,
+            Descricao = categoria.Descricao,
+            Ativo = categoria.Ativo
+        };
+    }
 }
