@@ -22,13 +22,13 @@ public class AtualizarCategoriaCommandHandlerTest
     public async Task Handler_QuandoRequisicaoValida_DeveAtualizarCategoriaERetornarId()
     {
        var idEsperado = Guid.NewGuid();
-       var produto = CategoriaBuilder.Novo().ComId(idEsperado).Build();
+       var categoria = CategoriaBuilder.Novo().ComId(idEsperado).Build();
        var command = CategoriaBuilder.Novo()
            .ComId(idEsperado)
            .AtualizarCategoriaCommand();
 
        _repository.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
-           .ReturnsAsync(produto);
+           .ReturnsAsync(categoria);
        _repository.Setup(r => r.AtualizarESalvarAsync(It.IsAny<Categoria>()))
               .ReturnsAsync(idEsperado);
        
@@ -62,11 +62,11 @@ public class AtualizarCategoriaCommandHandlerTest
     [Fact]
     public async Task Handler_QuandoErroNoBanco_DeveLancarException()
     {
-        var produto = CategoriaBuilder.Novo().Build();
+        var categoria = CategoriaBuilder.Novo().Build();
         var command = CategoriaBuilder.Novo().AtualizarCategoriaCommand();
         
         _repository.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(produto);
+            .ReturnsAsync(categoria);
         _repository.Setup(r => r.AtualizarESalvarAsync(It.IsAny<Categoria>()))
             .ThrowsAsync(new Exception("Erro ao salvar no banco de dados."));
         
