@@ -17,7 +17,7 @@ public class ProdutoRepository(ApplicationDbContext context) : Repository<Produt
 
     public bool ExisteComNome(string nome)
     {
-        return Context.Produtos.Any(p => EF.Functions.Like(p.Nome, nome));
+        return Context.Produtos.Any(p => p.Nome == nome);
     }
 
     public async Task<List<Produto>> ObterPorCategoriaAsync(Guid categoriaId)
