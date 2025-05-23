@@ -18,7 +18,7 @@ public class RemoverCategoriaCommandHandlerTest
     
     public RemoverCategoriaCommandHandlerTest()
     {
-        _commandHandler = new RemoverCategoriaCommandHandler(_repository.Object, _validator.Object);
+        _commandHandler = new RemoverCategoriaCommandHandler(_repository.Object);
     }
 
     [Fact]
