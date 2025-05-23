@@ -20,9 +20,9 @@ public class ProdutoRepository(ApplicationDbContext context) : Repository<Produt
         return Context.Produtos.Any(p => p.Nome == nome);
     }
 
-    public async Task<bool> ExisteComCategoriaId(Guid categoriaId)
+    public bool ExisteComCategoriaId(Guid categoriaId)
     {
-        return await Context.Produtos.AnyAsync(p => p.CategoriaId == categoriaId);
+        return Context.Produtos.Any(p => p.CategoriaId == categoriaId);
     }
 
     public async Task<List<Produto>> ObterPorCategoriaAsync(Guid categoriaId)

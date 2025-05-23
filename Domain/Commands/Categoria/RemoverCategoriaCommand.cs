@@ -1,7 +1,7 @@
 ﻿using Crosscutting.Constantes;
 using Crosscutting.Exceptions;
-using Domain.Interfaces;
 using Domain.Repositories;
+using FluentValidation;
 using MediatR;
 
 namespace Domain.Commands.Categoria;
@@ -11,7 +11,10 @@ public class RemoverCategoriaCommand : IRequest
     public Guid CategoriaId { get; set; }
 }
 
-public class RemoverCategoriaCommandHandler(ICategoriaRepository repository, ICategoriaService service) : IRequestHandler<RemoverCategoriaCommand>
+public class RemoverCategoriaCommandHandler(
+    ICategoriaRepository repository, 
+    IValidator<RemoverCategoriaCommand> validator) 
+    : IRequestHandler<RemoverCategoriaCommand>
 {
     public async Task Handle(RemoverCategoriaCommand request, CancellationToken cancellationToken)
     {
@@ -21,8 +24,11 @@ public class RemoverCategoriaCommandHandler(ICategoriaRepository repository, ICa
         var categoria = await repository.ObterPorIdAsync(request.CategoriaId) 
             ?? throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
         
-        if (!await service.PodeRemoverCategoria(request.CategoriaId))
-            throw new RegraDeNegocioException(ErrorMessages.CategoriaPossuiProdutos);
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
+        
+        if (!validationResult.IsValid)
+            throw new RegraDeNegocioException(validationResult.Errors.Select(e => e.ErrorMessage).ToList());
+        
         
         await repository.RemoverESalvarAsync(categoria);
     }

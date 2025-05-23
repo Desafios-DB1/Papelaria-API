@@ -2,10 +2,7 @@
 using API.Setups;
 using Domain.Commands.Produto;
 using Domain.Entities;
-using Domain.Interfaces;
-using Domain.Services;
 using Infra;
-using Infra.Queries;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -21,8 +18,6 @@ public static class Provider
             .AddRepositoriesSetup()
             .AddQueriesSetup()
             .AddValidatorsSetup();
-
-        services.AddScoped<ICategoriaService, CategoriaService>();
         
         services.AddDbContextSetup(configuration);
 
