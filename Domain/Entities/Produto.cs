@@ -29,7 +29,7 @@ public class Produto : Entidade
             PrecoCompra = atualizarCommand.PrecoCompra;
             PrecoVenda = atualizarCommand.PrecoVenda;
             CategoriaId = atualizarCommand.CategoriaId;
-            QuantidadeEstoque = new QuantidadeEstoque(atualizarCommand.QuantidadeAtual, atualizarCommand.QuantidadeMinima);
+            QuantidadeEstoque = new QuantidadeEstoque(atualizarCommand.QuantidadeMinima, atualizarCommand.QuantidadeAtual);
         }
         else 
             throw new ArgumentException("Tipo de request inválido para atualização.");

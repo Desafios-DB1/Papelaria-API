@@ -17,7 +17,12 @@ public class ProdutoRepository(ApplicationDbContext context) : Repository<Produt
 
     public bool ExisteComNome(string nome)
     {
-        return Context.Produtos.Any(p => p.Nome.Equals(nome, StringComparison.CurrentCultureIgnoreCase));
+        return Context.Produtos.Any(p => p.Nome == nome);
+    }
+
+    public bool ExisteComCategoriaId(Guid categoriaId)
+    {
+        return Context.Produtos.Any(p => p.CategoriaId == categoriaId);
     }
 
     public async Task<List<Produto>> ObterPorCategoriaAsync(Guid categoriaId)

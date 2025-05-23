@@ -16,7 +16,7 @@ namespace API.Controllers;
 public class CategoriaController(IMediator mediator, ICategoriaQuery query) : ControllerBase
 {
     /// <summary>
-    /// Cria uma categoria e salva no banco
+    /// Cria uma categoria
     /// </summary>
     /// <response code="201">Categoria criada com sucesso</response>
     /// <response code="400">Erro ao criar categoria</response>
@@ -77,5 +77,25 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
             return BadRequest();
 
         return Ok(result);
+    }
+
+    /// <summary>
+    /// Remover uma categoria
+    /// </summary>
+    /// <response code="204">Categoria removida com sucesso</response>
+    /// <response code="401">Sem autorização</response>
+    /// <response code="404">Categoria não encontrada</response>
+    /// <response code="422">Requisição não atende as regras de validação</response>
+    [Authorize]
+    [HttpDelete("{id:guid}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse), 404)]
+    [ProducesResponseType(typeof(ErrorResponse), 422)]
+    public async Task<IActionResult> RemoverCategoriaPorId([FromRoute] Guid id, CancellationToken cancellationToken)
+    {
+        var request = new RemoverCategoriaCommand { CategoriaId = id };
+        await mediator.Send(request, cancellationToken);
+        return NoContent();
     }
 }

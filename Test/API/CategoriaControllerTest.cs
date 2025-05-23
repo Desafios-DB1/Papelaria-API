@@ -126,4 +126,35 @@ public class CategoriaControllerTest
     }
     
     #endregion
+
+    #region RemoverCategoria
+
+    [Fact]
+    public async Task RemoverCategoria_QuandoCategoriaRemovida_DeveRetornarNoContent()
+    {
+        var categoriaId = Guid.NewGuid();
+        
+        var result = await _controller.RemoverCategoriaPorId(categoriaId, CancellationToken.None);
+        
+        _mediator.Verify(m => m.Send(It.IsAny<RemoverCategoriaCommand>(), It.IsAny<CancellationToken>()), Times.Once);
+
+        result.Should().BeOfType<NoContentResult>();
+    }
+
+    [Fact]
+    public async Task RemoverCategoria_QuandoFalha_DeveLancarException()
+    {
+        var categoriaId = Guid.NewGuid();
+        
+        _mediator
+            .Setup(m => m.Send(It.IsAny<RemoverCategoriaCommand>(), It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new Exception("Erro ao remover categoria"));
+        
+        Func<Task> act = async () => await _controller.RemoverCategoriaPorId(categoriaId, CancellationToken.None);
+        
+        await act.Should().ThrowAsync<Exception>()
+            .WithMessage("Erro ao remover categoria");
+    }
+
+    #endregion
 }

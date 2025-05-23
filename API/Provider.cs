@@ -1,12 +1,8 @@
-﻿using System.Reflection;
-using System.Text;
+﻿using System.Text;
 using API.Setups;
-using Domain.Commands;
 using Domain.Commands.Produto;
 using Domain.Entities;
-using Domain.Interfaces;
 using Infra;
-using Infra.Queries;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;

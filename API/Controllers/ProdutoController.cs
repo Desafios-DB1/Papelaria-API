@@ -101,7 +101,6 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// Atualizar um produto
     /// </summary>
     /// <response code="200">Produto atualizado com sucesso</response>
-    /// <response code="400">Erro ao atualizar produto</response>
     /// <response code="401">Sem autorização</response>
     /// <response code="404">Produto não encontrado</response>
     [Authorize]

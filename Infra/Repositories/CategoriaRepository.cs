@@ -10,11 +10,11 @@ public class CategoriaRepository(ApplicationDbContext context) : Repository<Cate
     {
         return await Context.Categorias
             .AsNoTracking()
-            .FirstOrDefaultAsync(c => c.Nome.Equals(nome, StringComparison.CurrentCultureIgnoreCase));
+            .FirstOrDefaultAsync(c => EF.Functions.Like(c.Nome, nome));
     }
 
     public bool ExisteComNome(string nome)
     {
-        return Context.Categorias.Any(c => c.Nome.Equals(nome, StringComparison.CurrentCultureIgnoreCase));
+        return Context.Categorias.Any(c => EF.Functions.Like(c.Nome, nome));
     }
 }

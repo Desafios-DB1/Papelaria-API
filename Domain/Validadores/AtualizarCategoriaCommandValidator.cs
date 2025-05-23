@@ -9,9 +9,6 @@ public class AtualizarCategoriaCommandValidator : AbstractValidator<AtualizarCat
 {
     public AtualizarCategoriaCommandValidator(ICategoriaRepository repository)
     {
-        RuleFor(x => x.Id)
-            .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio);
-        
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
             .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo)
