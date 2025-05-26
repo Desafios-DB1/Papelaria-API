@@ -1,6 +1,8 @@
-﻿namespace Domain.Interfaces;
+﻿using Crosscutting.Dtos.Log;
 
-public class ILogQuery
+namespace Domain.Interfaces;
+
+public interface ILogQuery
 {
-    
+    Task<IEnumerable<LogDto>> ObterPorProdutoIdAsync(Guid produtoId);
 }
