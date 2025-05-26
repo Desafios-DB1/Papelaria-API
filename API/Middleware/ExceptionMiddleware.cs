@@ -1,6 +1,8 @@
 ﻿using System.Net;
 using System.Text.Json;
+using Crosscutting.Erros;
 using Crosscutting.Exceptions;
+using Microsoft.Data.SqlClient;
 
 namespace Papelaria.API.Middleware;
 
@@ -24,14 +26,15 @@ public class ExceptionMiddleware(RequestDelegate next)
         {
             NaoEncontradoException => HttpStatusCode.NotFound,
             RegraDeNegocioException => HttpStatusCode.UnprocessableEntity,
+            SqlException => HttpStatusCode.InternalServerError,
             Exception => HttpStatusCode.BadRequest
         };
 
-        var response = new
+        var response = new ErrorResponse
         {
-            message = exception.Message,
-            status = (int)statusCode,
-            error = exception.GetType().Name
+            Message = exception.Message,
+            Status = (int)statusCode,
+            Error = exception.GetType().Name
         };
         
         context.Response.ContentType = "application/json";

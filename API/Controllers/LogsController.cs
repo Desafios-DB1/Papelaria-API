@@ -22,6 +22,7 @@ public class LogsController(ILogQuery query) : ControllerBase
     [Authorize]
     [HttpGet("{produtoId:guid}")]
     [ProducesResponseType(typeof(IEnumerable<LogDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse),500)]
     public async Task<IActionResult> ObterLogsPorProdutoId(Guid produtoId)
     {
         var result = await query.ObterPorProdutoIdAsync(produtoId);
