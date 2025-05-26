@@ -22,6 +22,7 @@ public class ProdutoControllerTest
     {
         _mediator = new Mock<IMediator>();
         _controller = new ProdutoController(_mediator.Object, _query.Object);
+        UsuarioBuilder.SimularUsuarioAutenticado(_controller);
     }
 
     #region CriarProduto

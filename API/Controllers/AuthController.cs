@@ -55,7 +55,8 @@ namespace API.Controllers
             var authClaims = new List<Claim>
             {
                 new(ClaimTypes.Name, user.UserName ?? string.Empty),
-                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new(ClaimTypes.NameIdentifier, user.Id)
             };
 
             var userRoles = await _userManager.GetRolesAsync(user);

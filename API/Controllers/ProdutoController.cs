@@ -1,4 +1,5 @@
-﻿using Crosscutting.Dtos.Produto;
+﻿using System.Security.Claims;
+using Crosscutting.Dtos.Produto;
 using Crosscutting.Enums;
 using Crosscutting.Erros;
 using Domain.Commands.Produto;
@@ -146,6 +147,12 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> AlterarEstoque([FromBody] AlterarEstoqueCommand request, CancellationToken cancellationToken)
     {
+        var usuarioId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(usuarioId))
+            return Unauthorized("Usuário não autenticado.");
+        
+        request.PreencherUsuarioId(usuarioId);
+        
         var result = await mediator.Send(request, cancellationToken);
         
         return result is null ? NotFound() : Ok(result);
