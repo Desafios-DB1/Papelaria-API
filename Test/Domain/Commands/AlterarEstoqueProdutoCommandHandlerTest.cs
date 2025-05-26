@@ -1,9 +1,11 @@
 ﻿using Crosscutting.Enums;
 using Crosscutting.Exceptions;
+using Domain.Commands.LogProduto;
 using Domain.Commands.Produto;
 using Domain.Entities;
 using Domain.Repositories;
  using FluentAssertions;
+ using MediatR;
  using Moq;
  using Test.Domain.Builders;
  
@@ -12,11 +14,12 @@ using Domain.Repositories;
  public class AlterarEstoqueProdutoCommandHandlerTest
  {
      private readonly Mock<IProdutoRepository> _repository = new();
+     private readonly Mock<IMediator> _mediatorMock = new();
      private readonly AlterarEstoqueCommandHandler _commandHandler;
  
      public AlterarEstoqueProdutoCommandHandlerTest()
      {
-         _commandHandler = new AlterarEstoqueCommandHandler(_repository.Object);
+         _commandHandler = new AlterarEstoqueCommandHandler(_repository.Object, _mediatorMock.Object);
      }
 
      [Fact]
@@ -156,5 +159,32 @@ using Domain.Repositories;
 
          await act.Should().ThrowAsync<QuantidadeInsuficienteException>()
              .WithMessage("Quantidade insuficiente no estoque.");
+     }
+     
+     [Fact]
+     public async Task Handler_QuandoAlteracaoDeEstoque_DeveChamarRegistrarLogProdutoCommand()
+     {
+         var produto = ProdutoBuilder.Novo().Build();
+         var quantidadeAnterior = produto.QuantidadeEstoque.QuantidadeAtual;
+         var command = new AlterarEstoqueCommand
+         {
+             ProdutoId = produto.Id,
+             TipoOperacao = TipoOperacao.Entrada,
+             Quantidade = 10
+         };
+         
+         _repository.Setup(r => r.ObterPorIdAsync(It.IsAny<Guid>()))
+             .ReturnsAsync(produto);
+         
+         await _commandHandler.Handle(command, CancellationToken.None);
+         
+         _repository.Verify(r => r.AtualizarESalvarAsync(It.Is<Produto>(p => p.Id == produto.Id)), Times.Once);
+
+         _mediatorMock.Verify(m => m.Send(It.Is<RegistrarLogProdutoCommand>(log =>
+             log.ProdutoId == produto.Id &&
+             log.TipoOperacao == command.TipoOperacao &&
+             log.QuantidadeAnterior == quantidadeAnterior &&
+             log.QuantidadeAtual == quantidadeAnterior + command.Quantidade
+         ), It.IsAny<CancellationToken>()), Times.Once);
      }
  }
