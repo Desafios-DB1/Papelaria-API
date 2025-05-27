@@ -19,13 +19,31 @@ public class LogsController(ILogQuery query) : ControllerBase
     /// <response code="200">Lista de logs (pode ser vazia)</response>
     /// <response code="400">Erro ao obter logs</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="500">Erro interno</response>
     [Authorize]
-    [HttpGet("{produtoId:guid}")]
+    [HttpGet("produto/{produtoId:guid}")]
     [ProducesResponseType(typeof(IEnumerable<LogDto>), 200)]
-    [ProducesResponseType(typeof(ErrorResponse),500)]
+    [ProducesResponseType(typeof(ErrorResponse), 500)]
     public async Task<IActionResult> ObterLogsPorProdutoId(Guid produtoId)
     {
         var result = await query.ObterPorProdutoIdAsync(produtoId);
+        return Ok(result);
+    }
+    
+    /// <summary>
+    /// Obtem os logs de alterações em produtos feitos por um usuário pelo id do usuário
+    /// </summary>
+    /// <response code="200">Lista de logs (pode ser vazia)</response>
+    /// <response code="400">Erro ao obter logs</response>
+    /// <response code="401">Sem autorização</response>
+    /// <response code="500">Erro interno</response>
+    [Authorize]
+    [HttpGet("usuario/{usuarioId}")]
+    [ProducesResponseType(typeof(IEnumerable<LogDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 500)]
+    public async Task<IActionResult> ObterLogsPorUsuarioId(string usuarioId)
+    {
+        var result = await query.ObterPorUsuarioIdAsync(usuarioId);
         return Ok(result);
     }
 }
