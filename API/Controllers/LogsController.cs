@@ -17,7 +17,6 @@ public class LogsController(ILogQuery query) : ControllerBase
     /// Obtem os logs de um produto pelo id do produto
     /// </summary>
     /// <response code="200">Lista de logs (pode ser vazia)</response>
-    /// <response code="400">Erro ao obter logs</response>
     /// <response code="401">Sem autorização</response>
     /// <response code="500">Erro interno</response>
     [Authorize]
@@ -34,7 +33,6 @@ public class LogsController(ILogQuery query) : ControllerBase
     /// Obtem os logs de alterações em produtos feitos por um usuário pelo id do usuário
     /// </summary>
     /// <response code="200">Lista de logs (pode ser vazia)</response>
-    /// <response code="400">Erro ao obter logs</response>
     /// <response code="401">Sem autorização</response>
     /// <response code="500">Erro interno</response>
     [Authorize]

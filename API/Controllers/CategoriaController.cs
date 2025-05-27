@@ -41,10 +41,12 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     /// <response code="200">Categoria encontrada</response>
     /// <response code="404">Categoria não encontrada</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="500">Erro interno</response>
     [Authorize]
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(CategoriaDto), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
+    [ProducesResponseType(typeof(ErrorResponse), 500)]
     public async Task<IActionResult> ObterCategoriaPorId([FromRoute] Guid id)
     {
         var result = await query.ObterPorId(id);
