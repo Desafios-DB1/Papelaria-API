@@ -42,9 +42,11 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// </summary>
     /// <response code="200">Lista de produtos (pode ser vazia)</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="500">Erro interno</response>
     [Authorize]
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 500)]
     public async Task<IActionResult> ObterProdutos()
     {
         var result = await query.ObterTodos();
@@ -58,10 +60,12 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="200">Objeto produto</response>
     /// <response code="401">Sem autorização</response>
     /// <response code="404">Produto não existe</response>
+    /// <response code="500">Erro interno</response>
     [Authorize]
     [HttpGet("nome/{nome}")]
     [ProducesResponseType(typeof(ProdutoDto), 200)]
     [ProducesResponseType(typeof(ErrorResponse),404)]
+    [ProducesResponseType(typeof(ErrorResponse),500)]
     public async Task<IActionResult> ObterProdutoPorNome([FromRoute] string nome)
     {
         var result = await query.ObterPorNome(nome);
@@ -74,9 +78,11 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <param name="nomeCategoria">Nome da categoria</param>
     /// <response code="200">Lista de produtos dessa categoria (pode estar vazia)</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="500">Erro interno</response>
     [Authorize]
     [HttpGet("categoria/{nomeCategoria}")]
     [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 500)]
     public async Task<IActionResult> ObterProdutosPorNomeCategoria([FromRoute] string nomeCategoria)
     {
         var result = await query.ObterPorNomeCategoria(nomeCategoria);
@@ -89,9 +95,11 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <param name="statusEstoque">Status do estoque que ira filtrar os produtos</param>
     /// <response code="200">Lista de produtos com esse status (pode estar vazia)</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="500">Erro interno</response>
     [Authorize]
     [HttpGet("status")]
     [ProducesResponseType(typeof(IEnumerable<ProdutoDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 500)]
     public async Task<IActionResult> ObterProdutosPorStatusEstoque(StatusEstoque statusEstoque)
     {
         var result = await query.ObterPorStatusEstoque(statusEstoque);
