@@ -79,7 +79,7 @@ public class LogsControllerTest
         {
             new()
             {
-                NomeProduto = "Prouduto1",
+                NomeProduto = "Produto1",
                 NomeUsuarioResponsavel = "Usuario1",
                 TipoOperacao = TipoOperacao.Entrada,
                 QuantidadeAnterior = 5,
