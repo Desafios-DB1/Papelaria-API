@@ -15,6 +15,11 @@ public class CategoriaRepository(ApplicationDbContext context) : Repository<Cate
 
     public bool ExisteComNome(string nome)
     {
-        return Context.Categorias.Any(c => EF.Functions.Like(c.Nome, nome));
+        return Context.Categorias.Any(c => c.Nome == nome);
+    }
+
+    public bool ExisteComId(Guid id)
+    {
+        return Context.Categorias.Any(c => c.Id == id);
     }
 }

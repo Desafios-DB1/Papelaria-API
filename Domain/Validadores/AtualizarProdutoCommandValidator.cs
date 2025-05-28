@@ -7,12 +7,12 @@ namespace Domain.Validadores;
 
 public class AtualizarProdutoCommandValidator : AbstractValidator<AtualizarProdutoCommand>
 {
-    public AtualizarProdutoCommandValidator(IProdutoRepository repository)
+    public AtualizarProdutoCommandValidator(IProdutoRepository produtoRepository, ICategoriaRepository categoriaRepository)
     {
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
             .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo)
-            .Must(nome => !repository.ExisteComNome(nome))
+            .Must(nome => !produtoRepository.ExisteComNome(nome))
             .WithMessage(ValidationErrors.JaExiste(Entidades.Produto));
 
         RuleFor(x=>x.Descricao)
@@ -29,8 +29,9 @@ public class AtualizarProdutoCommandValidator : AbstractValidator<AtualizarProdu
 
         RuleFor(x=>x.PrecoVenda)
             .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo);
-        
+
         RuleFor(x => x.CategoriaId)
-            .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio);
+            .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
+            .Must(categoriaRepository.ExisteComId).WithMessage(ValidationErrors.NaoExiste(Entidades.Categoria));
     }
 }

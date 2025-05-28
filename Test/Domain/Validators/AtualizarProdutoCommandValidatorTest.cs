@@ -9,11 +9,12 @@ namespace Test.Domain.Validators;
 public class AtualizarProdutoCommandValidatorTest
 {
     private readonly Mock<IProdutoRepository> _produtoRepository = new();
+    private readonly Mock<ICategoriaRepository> _categoriaRepository = new();
     private readonly AtualizarProdutoCommandValidator _validator;
 
     public AtualizarProdutoCommandValidatorTest()
     {
-        _validator = new AtualizarProdutoCommandValidator(_produtoRepository.Object);
+        _validator = new AtualizarProdutoCommandValidator(_produtoRepository.Object, _categoriaRepository.Object);
     }
     
     [Fact]
@@ -21,6 +22,8 @@ public class AtualizarProdutoCommandValidatorTest
     {
         _produtoRepository.Setup(x => x.ExisteComNome(It.IsAny<string>()))
             .Returns(false);
+        _categoriaRepository.Setup(x => x.ExisteComId(It.IsAny<Guid>()))
+            .Returns(true);
         
         var command = ProdutoBuilder.Novo()
             .ComNome("Teste")
@@ -129,5 +132,32 @@ public class AtualizarProdutoCommandValidatorTest
         resultado.Errors.Should().Contain(e =>
             e.PropertyName == "PrecoVenda" &&
             e.ErrorMessage == "Preco Venda deve ser no mínimo 0.");
+    }
+    
+    [Fact]
+    public async Task Validate_QuandoCategoriaIdVazio_DeveRetornarErro()
+    {
+        var command = ProdutoBuilder.Novo().ComCategoriaId(Guid.Empty).AtualizarProdutoCommand();
+
+        var resultado = await _validator.ValidateAsync(command);
+
+        resultado.Errors.Should().Contain(e =>
+            e.PropertyName == "CategoriaId" &&
+            e.ErrorMessage == "Categoria Id é obrigatório.");
+    }
+    
+    [Fact]
+    public async Task Validate_QuandoCategoriaNaoExiste_DeveRetornarErro()
+    {
+        _categoriaRepository.Setup(x => x.ExisteComId(It.IsAny<Guid>()))
+            .Returns(false);
+        
+        var command = ProdutoBuilder.Novo().ComCategoriaId(Guid.NewGuid()).AtualizarProdutoCommand();
+
+        var resultado = await _validator.ValidateAsync(command);
+
+        resultado.Errors.Should().Contain(e =>
+            e.PropertyName == "CategoriaId" &&
+            e.ErrorMessage == "Esse(a) Categoria não existe.");
     }
 }

@@ -7,10 +7,8 @@ namespace Domain.Validadores;
 
 public class CriarProdutoCommandValidator : AbstractValidator<CriarProdutoCommand>
 {
-    public CriarProdutoCommandValidator(IProdutoRepository repository)
+    public CriarProdutoCommandValidator(IProdutoRepository produtoRepository, ICategoriaRepository categoriaRepository)
     {
-        var produtoRepository = repository;
-
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
             .MaximumLength(Valores.Duzentos).WithMessage(ValidationErrors.TamanhoMaximo)
@@ -33,6 +31,7 @@ public class CriarProdutoCommandValidator : AbstractValidator<CriarProdutoComman
             .GreaterThanOrEqualTo(0).WithMessage(ValidationErrors.ValorMinimo);
         
         RuleFor(x => x.CategoriaId)
-            .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio);
+            .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
+            .Must(categoriaRepository.ExisteComId).WithMessage(ValidationErrors.NaoExiste(Entidades.Categoria));
     }
 }
