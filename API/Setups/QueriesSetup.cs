@@ -10,7 +10,8 @@ public static class QueriesSetup
         services
             .AddScoped<IProdutoQuery, ProdutoQuery>()
             .AddScoped<ICategoriaQuery, CategoriaQuery>()
-            .AddScoped<ILogQuery, LogQuery>();
+            .AddScoped<ILogQuery, LogQuery>()
+            .AddScoped<IQueryBase, QueryBase>();
         
         return services;
     }

@@ -17,9 +17,4 @@ public class CategoriaRepository(ApplicationDbContext context) : Repository<Cate
     {
         return Context.Categorias.Any(c => c.Nome == nome);
     }
-
-    public bool ExisteComId(Guid id)
-    {
-        return Context.Categorias.Any(c => c.Id == id);
-    }
 }
