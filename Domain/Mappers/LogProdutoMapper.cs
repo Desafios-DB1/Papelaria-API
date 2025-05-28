@@ -13,7 +13,7 @@ public static class LogProdutoMapper
             NomeUsuarioResponsavel = logProduto.Usuario.NomeUsuario,
             TipoOperacao = logProduto.TipoOperacao,
             QuantidadeAnterior = logProduto.QuantidadeAnterior,
-            NovaQuantidade = logProduto.QuantidadeAtual,
+            NovaQuantidade = logProduto.NovaQuantidade,
             DataHora = logProduto.DataCriacao
         };
     }
