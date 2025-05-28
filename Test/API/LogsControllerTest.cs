@@ -34,7 +34,7 @@ public class LogsControllerTest
                 NomeProduto = "Produto1",
                 TipoOperacao = TipoOperacao.Entrada,
                 QuantidadeAnterior = 10,
-                QuantidadeAtual = 20,
+                NovaQuantidade = 20,
                 DataHora = DateTime.UtcNow
             }
         };
@@ -83,7 +83,7 @@ public class LogsControllerTest
                 NomeUsuarioResponsavel = "Usuario1",
                 TipoOperacao = TipoOperacao.Entrada,
                 QuantidadeAnterior = 5,
-                QuantidadeAtual = 10,
+                NovaQuantidade = 10,
                 DataHora = DateTime.UtcNow
             }
         };
@@ -113,6 +113,52 @@ public class LogsControllerTest
         _query.Setup(m => m.ObterPorUsuarioIdAsync(usuarioId)).ThrowsAsync(new Exception("Erro no banco"));
         
         Func<Task> act = async () => await _controller.ObterLogsPorUsuarioId(usuarioId);
+        await act.Should().ThrowAsync<Exception>().WithMessage("Erro no banco");
+    }
+
+    #endregion
+
+    #region ObterTodosLogs
+
+    [Fact]
+    public async Task ObterTodosLogs_QuandoHouverLogs_DeveRetornarOkComListaDeLogs()
+    {
+        var logs = new List<LogDto>
+        {
+            new()
+            {
+                NomeProduto = "Produto1",
+                NomeUsuarioResponsavel = "Usuario1",
+                TipoOperacao = TipoOperacao.Entrada,
+                QuantidadeAnterior = 5,
+                NovaQuantidade = 10,
+                DataHora = DateTime.UtcNow
+            }
+        };
+        _query.Setup(q => q.ObterTodosAsync()).ReturnsAsync(logs);
+        
+        var result = await _controller.ObterTodosLogs();
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().BeEquivalentTo(logs);
+    }
+    
+    [Fact]
+    public async Task ObterTodosLogs_QuandoNaoHouverLogs_DeveRetornarOkComListaVazia()
+    {
+        var logs = new List<LogDto>();
+        _query.Setup(m => m.ObterTodosAsync()).ReturnsAsync(logs);
+        
+        var result = await _controller.ObterTodosLogs();
+        var okResult = result.Should().BeOfType<OkObjectResult>().Subject;
+        okResult.Value.Should().BeEquivalentTo(logs);
+    }
+    
+    [Fact]
+    public async Task ObterTodosLogs_QuandoErroNoBanco_DeveLancarException()
+    {
+        _query.Setup(m => m.ObterTodosAsync()).ThrowsAsync(new Exception("Erro no banco"));
+        
+        Func<Task> act = async () => await _controller.ObterTodosLogs();
         await act.Should().ThrowAsync<Exception>().WithMessage("Erro no banco");
     }
 

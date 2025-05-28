@@ -33,8 +33,8 @@ public class LogProdutoMapping : IEntityTypeConfiguration<LogProduto>
             .HasColumnName(nameof(LogProduto.QuantidadeAnterior))
             .IsRequired();
 
-        builder.Property(l => l.QuantidadeAtual)
-            .HasColumnName(nameof(LogProduto.QuantidadeAtual))
+        builder.Property(l => l.NovaQuantidade)
+            .HasColumnName(nameof(LogProduto.NovaQuantidade))
             .IsRequired();
     }
 }

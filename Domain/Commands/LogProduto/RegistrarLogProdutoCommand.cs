@@ -28,7 +28,7 @@ public class RegistrarLogProdutoCommandHandler(ILogProdutoRepository repository)
             UsuarioId = request.UsuarioId,
             TipoOperacao = request.TipoOperacao,
             QuantidadeAnterior = request.QuantidadeAnterior,
-            QuantidadeAtual = request.QuantidadeAtual
+            NovaQuantidade = request.QuantidadeAtual
         };
 
         await repository.AdicionarESalvarAsync(log);
