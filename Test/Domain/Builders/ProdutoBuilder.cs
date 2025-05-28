@@ -67,6 +67,12 @@ public class ProdutoBuilder
         _faker.RuleFor(p=>p.PrecoVenda, precoVenda);
         return this;
     }
+    
+    public ProdutoBuilder ComCategoriaId(Guid categoriaId)
+    {
+        _faker.RuleFor(p => p.CategoriaId, categoriaId);
+        return this;
+    }
 
     public Produto Build()
     {

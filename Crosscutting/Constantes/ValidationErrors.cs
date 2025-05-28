@@ -10,5 +10,6 @@ public static class ValidationErrors
     public static string QuantidadeInsuficiente => "Quantidade insuficiente no estoque.";
     public static string EmailInvalido => "'{PropertyValue}' não é um email válido.";
     public static string JaExiste(string objeto) => $"Já existe um(a) {objeto} com esse {{PropertyName}}.";
+    public static string NaoExiste(string objeto) => $"Esse(a) {objeto} não existe.";
     public static string CategoriaPossuiProdutos => "A categoria possui produtos associados e não pode ser removida.";
 }
