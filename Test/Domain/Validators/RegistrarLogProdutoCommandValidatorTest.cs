@@ -1,5 +1,7 @@
 ﻿using Crosscutting.Constantes;
 using Domain.Commands.LogProduto;
+using Domain.Entities;
+using Domain.Interfaces;
 using Domain.Repositories;
 using Domain.Validadores;
 using FluentAssertions;
@@ -9,12 +11,12 @@ namespace Test.Domain.Validators;
 
 public class RegistrarLogProdutoCommandValidatorTest
 {
-    private readonly Mock<IProdutoRepository> _produtoRepository = new();
+    private readonly Mock<IQueryBase> _queryBase = new();
     private readonly RegistrarLogProdutoCommandValidator _validator;
 
     public RegistrarLogProdutoCommandValidatorTest()
     {
-        _validator = new RegistrarLogProdutoCommandValidator(_produtoRepository.Object);
+        _validator = new RegistrarLogProdutoCommandValidator(_queryBase.Object);
     }
     
     [Fact]
@@ -93,7 +95,8 @@ public class RegistrarLogProdutoCommandValidatorTest
     public async Task Validate_QuandoProdutoNaoExiste_DeveRetornarErro()
     {
         var produtoId = Guid.NewGuid();
-        _produtoRepository.Setup(repo => repo.ExisteComId(produtoId)).Returns(false);
+        _queryBase.Setup(repo => repo.ExisteEntidadePorIdAsync<Produto>(produtoId))
+            .ReturnsAsync(false);
 
         var command = new RegistrarLogProdutoCommand
         {

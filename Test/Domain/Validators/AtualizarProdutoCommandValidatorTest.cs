@@ -1,4 +1,6 @@
-﻿using Domain.Repositories;
+﻿using Domain.Entities;
+using Domain.Interfaces;
+using Domain.Repositories;
 using Domain.Validadores;
 using FluentAssertions;
 using Moq;
@@ -9,12 +11,12 @@ namespace Test.Domain.Validators;
 public class AtualizarProdutoCommandValidatorTest
 {
     private readonly Mock<IProdutoRepository> _produtoRepository = new();
-    private readonly Mock<ICategoriaRepository> _categoriaRepository = new();
+    private readonly Mock<IQueryBase> _queryBase = new();
     private readonly AtualizarProdutoCommandValidator _validator;
 
     public AtualizarProdutoCommandValidatorTest()
     {
-        _validator = new AtualizarProdutoCommandValidator(_produtoRepository.Object, _categoriaRepository.Object);
+        _validator = new AtualizarProdutoCommandValidator(_produtoRepository.Object, _queryBase.Object);
     }
     
     [Fact]
@@ -22,8 +24,8 @@ public class AtualizarProdutoCommandValidatorTest
     {
         _produtoRepository.Setup(x => x.ExisteComNome(It.IsAny<string>()))
             .Returns(false);
-        _categoriaRepository.Setup(x => x.ExisteComId(It.IsAny<Guid>()))
-            .Returns(true);
+        _queryBase.Setup(x => x.ExisteEntidadePorIdAsync<Categoria>(It.IsAny<Guid>()))
+            .ReturnsAsync(true);
         
         var command = ProdutoBuilder.Novo()
             .ComNome("Teste")
@@ -149,8 +151,8 @@ public class AtualizarProdutoCommandValidatorTest
     [Fact]
     public async Task Validate_QuandoCategoriaNaoExiste_DeveRetornarErro()
     {
-        _categoriaRepository.Setup(x => x.ExisteComId(It.IsAny<Guid>()))
-            .Returns(false);
+        _queryBase.Setup(x => x.ExisteEntidadePorIdAsync<Categoria>(It.IsAny<Guid>()))
+            .ReturnsAsync(false);
         
         var command = ProdutoBuilder.Novo().ComCategoriaId(Guid.NewGuid()).AtualizarProdutoCommand();
 

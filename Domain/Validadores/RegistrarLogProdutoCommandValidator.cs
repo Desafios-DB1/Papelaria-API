@@ -1,17 +1,19 @@
 ﻿using Crosscutting.Constantes;
 using Domain.Commands.LogProduto;
-using Domain.Repositories;
+using Domain.Entities;
+using Domain.Interfaces;
 using FluentValidation;
 
 namespace Domain.Validadores;
 
 public class RegistrarLogProdutoCommandValidator : AbstractValidator<RegistrarLogProdutoCommand>
 {
-    public RegistrarLogProdutoCommandValidator(IProdutoRepository produtoRepository)
+    public RegistrarLogProdutoCommandValidator(IQueryBase queryBase)
     {
         RuleFor(x => x.ProdutoId)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
-            .Must(produtoRepository.ExisteComId).WithMessage(ValidationErrors.NaoExiste(Entidades.Produto));
+            .MustAsync( async(categoriaId, _) => await queryBase.ExisteEntidadePorIdAsync<Produto>(categoriaId))
+            .WithMessage(ValidationErrors.NaoExiste(Entidades.Produto));
 
         RuleFor(x => x.UsuarioId)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio);

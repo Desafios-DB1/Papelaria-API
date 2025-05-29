@@ -1,5 +1,7 @@
 ﻿using Crosscutting.Constantes;
 using Domain.Commands.Produto;
+using Domain.Entities;
+using Domain.Interfaces;
 using Domain.Repositories;
 using FluentValidation;
 
@@ -7,7 +9,7 @@ namespace Domain.Validadores;
 
 public class AtualizarProdutoCommandValidator : AbstractValidator<AtualizarProdutoCommand>
 {
-    public AtualizarProdutoCommandValidator(IProdutoRepository produtoRepository, ICategoriaRepository categoriaRepository)
+    public AtualizarProdutoCommandValidator(IProdutoRepository produtoRepository, IQueryBase queryBase)
     {
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
@@ -32,6 +34,7 @@ public class AtualizarProdutoCommandValidator : AbstractValidator<AtualizarProdu
 
         RuleFor(x => x.CategoriaId)
             .NotEmpty().WithMessage(ValidationErrors.CampoObrigatorio)
-            .Must(categoriaRepository.ExisteComId).WithMessage(ValidationErrors.NaoExiste(Entidades.Categoria));
+            .MustAsync( async(categoriaId, _) => await queryBase.ExisteEntidadePorIdAsync<Categoria>(categoriaId))
+            .WithMessage(ValidationErrors.NaoExiste(Entidades.Categoria));
     }
 }
