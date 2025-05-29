@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using API.Exemplos;
 using Crosscutting.Dtos.Auth.Login;
 using Crosscutting.Dtos.Auth.Register;
 using Domain.Entities;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace API.Controllers
 {
@@ -24,8 +26,14 @@ namespace API.Controllers
             _configuration = configuration;
         }
         
+        /// <summary>
+        /// Realiza o login do usuário e retorna um token JWT.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <response code="200">Token JWT gerado com sucesso.</response>
         [AllowAnonymous]
         [HttpPost("login")]
+        [SwaggerRequestExample(typeof(LoginRequestDto), typeof(LoginRequestDtoExample))]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
@@ -36,6 +44,11 @@ namespace API.Controllers
             return Ok(new { token });
         }
 
+        /// <summary>
+        /// Realiza o registro de um novo usuário.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistroRequestDto request)
@@ -45,7 +58,7 @@ namespace API.Controllers
             var result = await _userManager.CreateAsync(user, request.Senha);
 
             if (!result.Succeeded)
-                return BadRequest(result.Errors);
+                return BadRequest(new { Mensagens = result.Errors.Select(e=>e.Description).ToList() });
 
             return Ok("Usuário registrado com sucesso!");
         }
