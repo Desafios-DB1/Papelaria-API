@@ -151,7 +151,7 @@ public class AtualizarProdutoCommandValidatorTest
     [Fact]
     public async Task Validate_QuandoCategoriaNaoExiste_DeveRetornarErro()
     {
-        _queryBase.Setup(x => x.ExisteEntidadePorIdAsync<Produto>(It.IsAny<Guid>()))
+        _queryBase.Setup(x => x.ExisteEntidadePorIdAsync<Categoria>(It.IsAny<Guid>()))
             .ReturnsAsync(false);
         
         var command = ProdutoBuilder.Novo().ComCategoriaId(Guid.NewGuid()).AtualizarProdutoCommand();
