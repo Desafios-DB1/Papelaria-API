@@ -15,17 +15,9 @@ namespace API.Controllers
 {
     [Route("api/auth")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController(UserManager<Usuario> userManager, IConfiguration configuration)
+        : ControllerBase
     {
-        private readonly UserManager<Usuario> _userManager;
-        private readonly IConfiguration _configuration;
-
-        public AuthController(UserManager<Usuario> userManager, IConfiguration configuration)
-        {
-            _userManager = userManager;
-            _configuration = configuration;
-        }
-        
         /// <summary>
         /// Realiza o login do usuário e retorna um token JWT.
         /// </summary>
@@ -36,8 +28,8 @@ namespace API.Controllers
         [SwaggerRequestExample(typeof(LoginRequestDto), typeof(LoginRequestDtoExample))]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
-            var user = await _userManager.FindByEmailAsync(request.Email);
-            if (user == null || !await _userManager.CheckPasswordAsync(user, request.Senha))
+            var user = await userManager.FindByEmailAsync(request.Email);
+            if (user == null || !await userManager.CheckPasswordAsync(user, request.Senha))
                 return Unauthorized("Usuário ou senha inválidos.");
 
             var token = GenerateJwtToken(user);
@@ -55,7 +47,7 @@ namespace API.Controllers
         {
             var user = new Usuario { UserName = request.NomeUsuario, NomeUsuario = request.NomeUsuario, Email = request.Email, NomeCompleto = request.NomeCompleto, DataCriacao = DateTime.Now};
 
-            var result = await _userManager.CreateAsync(user, request.Senha);
+            var result = await userManager.CreateAsync(user, request.Senha);
 
             if (!result.Succeeded)
                 return BadRequest(new { Mensagens = result.Errors.Select(e=>e.Description).ToList() });
@@ -72,21 +64,18 @@ namespace API.Controllers
                 new(ClaimTypes.NameIdentifier, user.Id)
             };
 
-            var userRoles = await _userManager.GetRolesAsync(user);
-            foreach (var role in userRoles)
-            {
-                authClaims.Add(new(ClaimTypes.Role, role));
-            }
+            var userRoles = await userManager.GetRolesAsync(user);
+            authClaims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-            var jwtSecret = _configuration["Jwt:Secret"];
+            var jwtSecret = configuration["Jwt:Secret"];
             if (string.IsNullOrEmpty(jwtSecret))
                 throw new InvalidOperationException("JWT Secret is not configured.");
 
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:ValidIssuer"],
-                audience: _configuration["Jwt:ValidAudience"],
+                issuer: configuration["Jwt:ValidIssuer"],
+                audience: configuration["Jwt:ValidAudience"],
                 expires: DateTime.UtcNow.AddHours(3),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
