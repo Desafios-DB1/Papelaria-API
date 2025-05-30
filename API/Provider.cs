@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using API.Exemplos;
 using API.Setups;
 using Domain.Commands.Produto;
 using Domain.Entities;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Papelaria.API.Setups;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace API;
 
@@ -25,6 +27,7 @@ public static class Provider
             cfg.RegisterServicesFromAssemblyContaining<CriarProdutoCommandHandler>());
         
         services.AddSwaggerGen(SwaggerSetup.ConfigureSwagger);
+        services.AddSwaggerExamplesFromAssemblyOf<LoginRequestDtoExample>();
 
         services.AddAuthentication(options =>
         {
@@ -46,6 +49,11 @@ public static class Provider
             };
         });
 
+        services.Configure<IdentityOptions>(options =>
+        {
+            options.User.RequireUniqueEmail = true;
+        });
+        
         services.AddIdentityCore<Usuario>()
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()

@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Papelaria.API.Setups;
@@ -42,6 +43,6 @@ public static class SwaggerSetup
         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile); 
         c.IncludeXmlComments(xmlPath);
-        /*c.ExampleFilters();*/
+        c.ExampleFilters();
     }
 }
