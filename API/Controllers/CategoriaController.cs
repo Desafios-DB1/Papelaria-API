@@ -1,10 +1,12 @@
-﻿using Crosscutting.Dtos.Categoria;
+﻿using API.Exemplos.Categoria;
+using Crosscutting.Dtos.Categoria;
 using Crosscutting.Erros;
 using Domain.Commands.Categoria;
 using Domain.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace API.Controllers;
 
@@ -21,10 +23,13 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     /// <response code="201">Categoria criada com sucesso</response>
     /// <response code="400">Erro ao criar categoria</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="422">Requisição não atende as regras de validação</response>
     [Authorize]
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 201)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse), 422)]
+    [SwaggerRequestExample(typeof(CriarCategoriaCommand), typeof(CriarCategoriaCommandExample))]
     public async Task<IActionResult> CriarCategoria(CriarCategoriaCommand request, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(request, cancellationToken);
@@ -56,6 +61,22 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
 
         return Ok(result);
     }
+
+    /// <summary>
+    /// Obtém todas as categorias
+    /// </summary>
+    /// <response code="200">Lista de categorias (pode ser vazia)</response>
+    /// <response code="401">Sem autorização</response>
+    /// <response code="500">Erro interno</response>
+    [Authorize]
+    [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<CategoriaDto>), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 500)]
+    public async Task<IActionResult> ObterTodos()
+    {
+        var result = await query.ObterTodos();
+        return Ok(result);
+    }
     
     /// <summary>
     /// Atualizar uma categoria
@@ -64,11 +85,14 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     /// <response code="400">Erro ao atualizar categoria</response>
     /// <response code="401">Sem autorização</response>
     /// <response code="404">Categoria não encontrada</response>
+    /// <response code="422">Requisição não atende as regras de validação</response>
     [Authorize]
     [HttpPut("{id:guid}")]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
+    [ProducesResponseType(typeof(ErrorResponse), 422)]
+    [SwaggerRequestExample(typeof(AtualizarCategoriaCommand), typeof(AtualizarCategoriaCommandExample))]
     public async Task<IActionResult> AtualizarCategoria([FromRoute] Guid id, AtualizarCategoriaCommand request,
         CancellationToken cancellationToken)
     {
@@ -85,6 +109,7 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     /// Remover uma categoria
     /// </summary>
     /// <response code="204">Categoria removida com sucesso</response>
+    /// <response code="400">Erro ao remover a categoria</response>
     /// <response code="401">Sem autorização</response>
     /// <response code="404">Categoria não encontrada</response>
     /// <response code="422">Requisição não atende as regras de validação</response>

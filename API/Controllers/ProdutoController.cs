@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using API.Exemplos.Produto;
 using Crosscutting.Dtos.Produto;
 using Crosscutting.Enums;
 using Crosscutting.Erros;
@@ -7,6 +8,7 @@ using Domain.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace API.Controllers;
 
@@ -23,10 +25,13 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="201">Produto criado com sucesso</response>
     /// <response code="400">Erro ao criar produto</response>
     /// <response code="401">Sem autorização</response>
+    /// <response code="422">Requisição não atende as regras de validação</response>
     [Authorize]
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse), 422)]
+    [SwaggerRequestExample(typeof(CriarProdutoCommand), typeof(CriarProdutoCommandExample))]
     public async Task<IActionResult> CriarProduto(CriarProdutoCommand request, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(request, cancellationToken);
@@ -112,11 +117,14 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     /// <response code="200">Produto atualizado com sucesso</response>
     /// <response code="401">Sem autorização</response>
     /// <response code="404">Produto não encontrado</response>
+    /// <response code="422">Requisição não atende as regras de validação</response>
     [Authorize]
     [HttpPut("{id:guid}")]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
+    [ProducesResponseType(typeof(ErrorResponse), 422)]
+    [SwaggerRequestExample(typeof(AtualizarProdutoCommand), typeof(AtualizarProdutoCommandExample))]
     public async Task<IActionResult> AtualizarProduto([FromRoute] Guid id, AtualizarProdutoCommand request,
         CancellationToken cancellationToken)
     {
@@ -148,11 +156,16 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
         return NoContent();
     }
     
+    /// <summary>
+    /// Atualiza o estoque de um produto
+    /// </summary>
+    /// <response code="200">Estoque atualizado com sucesso</response>
+    /// <response code="401">Sem autorização</response>
+    /// <response code="404">Produto não encontrado</response>
     [Authorize]
     [HttpPatch("estoque")]
     [ProducesResponseType(typeof(ProdutoDto), 200)]
     [ProducesResponseType(typeof(ErrorResponse),404)]
-    [ProducesResponseType(typeof(ErrorResponse),401)]
     public async Task<IActionResult> AlterarEstoque([FromBody] AlterarEstoqueCommand request, CancellationToken cancellationToken)
     {
         var usuarioId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
