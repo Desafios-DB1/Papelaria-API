@@ -65,7 +65,7 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
     /// <summary>
     /// Obtém todas as categorias
     /// </summary>
-    /// <response code="200">Lista de produtos (pode ser vazia)</response>
+    /// <response code="200">Lista de categorias (pode ser vazia)</response>
     /// <response code="401">Sem autorização</response>
     /// <response code="500">Erro interno</response>
     [Authorize]
