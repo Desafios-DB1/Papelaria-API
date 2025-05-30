@@ -15,4 +15,9 @@ public class CategoriaQuery (ApplicationDbContext context)
             .Where(c => c.Id == id)
             .Select(c => c.MapToDto())
             .FirstOrDefaultAsync();
+
+    public async Task<IEnumerable<CategoriaDto>> ObterTodos()
+        => await context.Categorias.AsQueryable()
+            .Select(c => c.MapToDto())
+            .ToListAsync();
 }
