@@ -21,8 +21,8 @@ namespace API.Controllers
         /// <summary>
         /// Realiza o login do usuário e retorna um token JWT.
         /// </summary>
-        /// <param name="request"></param>
         /// <response code="200">Token JWT gerado com sucesso.</response>
+        /// <response code="401">Usuário ou senha inválidos</response>
         [AllowAnonymous]
         [HttpPost("login")]
         [SwaggerRequestExample(typeof(LoginRequestDto), typeof(LoginRequestDtoExample))]
@@ -39,10 +39,11 @@ namespace API.Controllers
         /// <summary>
         /// Realiza o registro de um novo usuário.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <response code="200">Usuario registrado com sucesso</response>
+        /// <response code="422">Requisição não atende as regras de validação</response>
         [AllowAnonymous]
         [HttpPost("register")]
+        [SwaggerRequestExample(typeof(RegistroRequestDto), typeof(RegistroRequestDtoExample))]
         public async Task<IActionResult> Register([FromBody] RegistroRequestDto request)
         {
             var user = new Usuario { UserName = request.NomeUsuario, NomeUsuario = request.NomeUsuario, Email = request.Email, NomeCompleto = request.NomeCompleto, DataCriacao = DateTime.Now};
@@ -50,7 +51,7 @@ namespace API.Controllers
             var result = await userManager.CreateAsync(user, request.Senha);
 
             if (!result.Succeeded)
-                return BadRequest(new { Mensagens = result.Errors.Select(e=>e.Description).ToList() });
+                return UnprocessableEntity(new { Mensagens = result.Errors.Select(e=>e.Description).ToList() });
 
             return Ok("Usuário registrado com sucesso!");
         }
