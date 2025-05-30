@@ -9,6 +9,7 @@ public static class LogProdutoMapper
     {
         return new LogDto
         {
+            Id = logProduto.Id,
             NomeProduto = logProduto.Produto.Nome,
             NomeUsuarioResponsavel = logProduto.Usuario.NomeUsuario,
             TipoOperacao = logProduto.TipoOperacao,

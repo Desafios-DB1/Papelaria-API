@@ -26,6 +26,7 @@ public static class ProdutoMapper
     {
         return new ProdutoDto
         {
+            Id = produto.Id,
             Nome = produto.Nome,
             Descricao = produto.Descricao,
             Ativo = produto.Ativo,

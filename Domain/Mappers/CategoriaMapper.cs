@@ -20,6 +20,7 @@ public static class CategoriaMapper
     {
         return new CategoriaDto
         {
+            Id = categoria.Id,
             Nome = categoria.Nome,
             Descricao = categoria.Descricao,
             Ativo = categoria.Ativo

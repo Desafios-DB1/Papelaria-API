@@ -4,6 +4,7 @@ namespace Crosscutting.Dtos.Log;
 
 public class LogDto
 {
+    public Guid Id { get; set; }
     public string NomeProduto { get; set; }
     public string NomeUsuarioResponsavel { get; set; }
     public TipoOperacao TipoOperacao { get; set; }
