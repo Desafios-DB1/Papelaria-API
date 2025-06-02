@@ -13,6 +13,7 @@ public class LogQuery(ApplicationDbContext context) : ILogQuery
             .Include(l => l.Produto)
             .Include(l => l.Usuario)
             .Where(l => l.ProdutoId == produtoId)
+            .OrderByDescending(l => l.DataCriacao)
             .Select(l => l.MapToDto())
             .ToListAsync();
 
@@ -22,6 +23,7 @@ public class LogQuery(ApplicationDbContext context) : ILogQuery
             .Include(l => l.Produto)
             .Include(l => l.Usuario)
             .Where(l => l.UsuarioId == usuarioId)
+            .OrderByDescending(l => l.DataCriacao)
             .Select(l => l.MapToDto())
             .ToListAsync();
 
@@ -30,6 +32,7 @@ public class LogQuery(ApplicationDbContext context) : ILogQuery
             .AsNoTracking()
             .Include(l => l.Produto)
             .Include(l => l.Usuario)
+            .OrderByDescending(l => l.DataCriacao)
             .Select(l => l.MapToDto())
             .ToListAsync();
 }
