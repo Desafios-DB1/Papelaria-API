@@ -1,6 +1,8 @@
 ﻿using API.Exemplos.Categoria;
+using Crosscutting.Constantes;
 using Crosscutting.Dtos.Categoria;
 using Crosscutting.Erros;
+using Crosscutting.Exceptions;
 using Domain.Commands.Categoria;
 using Domain.Interfaces;
 using MediatR;
@@ -57,7 +59,7 @@ public class CategoriaController(IMediator mediator, ICategoriaQuery query) : Co
         var result = await query.ObterPorId(id);
 
         if (result == null)
-            return NotFound();
+            throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Categoria));
 
         return Ok(result);
     }

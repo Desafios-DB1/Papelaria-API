@@ -1,8 +1,10 @@
 ﻿using System.Security.Claims;
 using API.Exemplos.Produto;
+using Crosscutting.Constantes;
 using Crosscutting.Dtos.Produto;
 using Crosscutting.Enums;
 using Crosscutting.Erros;
+using Crosscutting.Exceptions;
 using Domain.Commands.Produto;
 using Domain.Interfaces;
 using MediatR;
@@ -74,7 +76,11 @@ public class ProdutoController(IMediator mediator, IProdutoQuery query) : Contro
     public async Task<IActionResult> ObterProdutoPorNome([FromRoute] string nome)
     {
         var result = await query.ObterPorNome(nome);
-        return result is null ? NotFound() : Ok(result);
+
+        if (result is null)
+            throw new NaoEncontradoException(ErrorMessages.NaoExiste(Entidades.Produto));
+        
+        return Ok(result);
     }
 
     /// <summary>
